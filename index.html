@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Evara Boutique</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <!-- ==========================
+            TOP BAR
+    =========================== -->
+
+    <div class="top-bar">
+
+    <i class="bi bi-gem"></i>
+
+    <span>Premium Fashion • Free Shipping Above ₹999</span>
+
+</div>
+
+    <!-- ==========================
+            NAVBAR
+    =========================== -->
+
+    <nav class="navbar navbar-expand-lg bg-white sticky-top shadow-sm">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="#">
+
+                <h2 class="mb-0">
+
+                    EVARA
+
+                </h2>
+
+                <small>Boutique</small>
+
+            </a>
+
+            <button class="navbar-toggler"
+
+                data-bs-toggle="collapse"
+
+                data-bs-target="#menu">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <div class="collapse navbar-collapse"
+
+                id="menu">
+
+                <ul class="navbar-nav mx-auto">
+
+                    <li class="nav-item">
+
+                        <a class="nav-link active"
+
+                            href="#hero">
+
+                            Home
+
+                        </a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a class="nav-link"
+
+                            href="#about">
+
+                            Story
+
+                        </a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a class="nav-link"
+
+                            href="#category">
+
+                            Categories
+
+                        </a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a class="nav-link"
+
+                            href="coming-soon.html">
+
+                            Contact
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+                <div class="d-flex align-items-center gap-4">
+
+                    <i class="bi bi-heart fs-5"></i>
+
+                    <i class="bi bi-bag fs-5"></i>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- ==========================
+            MAIN LAYOUT
+    =========================== -->
+
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <!-- ======================
+                    LEFT SIDE
+            ======================= -->
+
+            <div class="col-lg-7 px-lg-5">
+
+                <!-- HERO -->
+
+                <!-- HERO -->
+
+<section id="hero" class="section hero-section">
+
+    <span class="hero-tag">
+
+        LUXURY BOUTIQUE
+
+    </span>
+
+    <h1>
+
+        Timeless Fashion
+
+        <br>
+
+        Curated For
+
+        <br>
+
+        Every Occasion
+
+    </h1>
+
+    <p class="mt-4">
+
+        Discover a thoughtfully curated collection of elegant sarees,
+        graceful churidars, contemporary co-ord sets, premium kurtis,
+        party wear, and bridal ensembles designed to celebrate every
+        moment with style, confidence, and timeless elegance.
+
+    </p>
+
+    <div class="mt-5 d-flex flex-wrap gap-3">
+
+        <a href="#category"
+
+            class="btn btn-dark btn-lg rounded-pill px-4">
+
+            Explore Collections
+
+            <i class="bi bi-arrow-right ms-2"></i>
+
+        </a>
+
+        <a href="#"
+
+            class="btn btn-outline-dark btn-lg rounded-pill px-4">
+
+            <i class="bi bi-whatsapp me-2"></i>
+
+            Book A Styling Consultation
+
+        </a>
+
+    </div>
+
+    <div class="hero-highlights mt-5">
+
+        <div class="highlight-item">
+
+            <h4>500+</h4>
+
+            <span>Curated Designs</span>
+
+        </div>
+
+        <div class="highlight-item">
+
+            <h4>Premium</h4>
+
+            <span>Quality Fabrics</span>
+
+        </div>
+
+        <div class="highlight-item">
+
+            <h4>100%</h4>
+
+            <span>Personalized Service</span>
+
+        </div>
+
+    </div>
+
+</section>
+                <!-- ==========================
+        MOBILE SHOWROOM
+=========================== -->
+
+<section class="mobile-showroom d-lg-none">
+
+    <span class="section-title">
+
+         VIRTUAL STYLE PREVIEW
+
+    </span>
+
+    <h2 class="mb-3">
+
+Discover Your Perfect Look
+
+</h2>
+
+<p>
+
+ Explore our exclusive collections and instantly preview each outfit.
+        Simply tap a category below to experience timeless fashion brought to life.
+
+</p>
+
+
+    <div class="mobile-mannequin">
+
+        <img
+            id="mobileMannequin"
+            src="images/mannequin-default.png"
+            class="img-fluid"
+            alt="Mobile Mannequin">
+
+    </div>
+
+    <div class="mobile-category-list mt-4">
+
+        <button
+            class="mobile-category active"
+            data-dress="saree">
+
+            Sarees
+
+        </button>
+
+        <button
+            class="mobile-category"
+            data-dress="churidar">
+
+            Churidar
+
+        </button>
+
+        <button
+            class="mobile-category"
+            data-dress="coord">
+
+            Co-ord Set
+
+        </button>
+
+        <button
+            class="mobile-category"
+            data-dress="kurti">
+
+            Kurtis
+
+        </button>
+
+        <button
+            class="mobile-category"
+            data-dress="party">
+
+            Party Wear
+
+        </button>
+
+        <button
+            class="mobile-category"
+            data-dress="bridal">
+
+            Bridal
+
+        </button>
+
+    </div>
+    <div class="preview-note mt-4">
+
+        <i class="bi bi-stars"></i>
+
+        <span>
+
+            Tap a collection to instantly preview the outfit.
+
+        </span>
+
+    </div>
+
+</section>
+
+                <!-- ==========================
+        ABOUT EVARA
+========================== -->
+
+<section id="about" class="section">
+
+    <span class="section-title">
+
+        ABOUT EVARA
+
+    </span>
+
+    <h2>
+
+        Where Style Meets
+        Timeless Elegance
+
+    </h2>
+
+    <p>
+
+        At Evara Boutique, fashion is more than just clothing—it's a reflection
+        of confidence, individuality, and elegance. Every collection is carefully
+        curated to help women express their unique style for every occasion.
+
+    </p>
+
+    <p>
+
+        From handcrafted sarees and graceful churidars to contemporary co-ord sets,
+        elegant kurtis, luxurious party wear, and stunning bridal collections, every
+        piece is selected with exceptional attention to quality, comfort, and design.
+
+    </p>
+
+    <div class="row g-4 mt-5">
+
+        <div class="col-md-6">
+
+            <div class="feature-box">
+
+                <i class="bi bi-gem"></i>
+
+                <h5>
+
+                    Premium Quality
+
+                </h5>
+
+                <p>
+
+                    Carefully curated fabrics and craftsmanship that blend comfort with timeless elegance.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+            <div class="feature-box">
+
+                <i class="bi bi-palette"></i>
+
+                <h5>
+
+                    Curated Collections
+
+                </h5>
+
+                <p>
+
+                    Trend-inspired styles thoughtfully selected for everyday wear and special celebrations.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+            <div class="feature-box">
+
+                <i class="bi bi-person-heart"></i>
+
+                <h5>
+
+                    Personalized Styling
+
+                </h5>
+
+                <p>
+
+                    Helping every customer discover outfits that perfectly match their personality and occasion.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+            <div class="feature-box">
+
+                <i class="bi bi-award"></i>
+
+                <h5>
+
+                    Trusted Boutique
+
+                </h5>
+
+                <p>
+
+                    Dedicated to delivering exceptional quality, elegant fashion, and a memorable shopping experience.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+                <!-- CATEGORY STARTS HERE -->
+
+
+
+                    <!-- ==========================
+                        SHOP BY CATEGORY
+                =========================== -->
+
+                <section id="category" class="section">
+
+                    <span class="section-title">
+
+                        SIGNATURE COLLECTIONS
+
+                    </span>
+
+                    <h2>
+
+                         Explore Our Exclusive Fashion Collections
+
+                    </h2>
+
+                    <p class="mb-5">
+
+                        Discover timeless styles thoughtfully curated for every occasion.
+        Hover over a collection to instantly preview it on our virtual mannequin
+        and experience fashion in an interactive way.
+
+                    </p>
+
+                    <div class="category-list">
+
+                        <div class="category-card"
+
+                            data-dress="saree">
+
+                            <div>
+
+                                <h4>Sarees</h4>
+
+                                <small>Timeless elegance crafted for weddings, festivals and celebrations.</small>
+
+                            </div>
+
+                            <i class="bi bi-arrow-right"></i>
+
+                        </div>
+
+                        <div class="category-card"
+
+                            data-dress="churidar">
+
+                            <div>
+
+                                <h4>Churidar</h4>
+
+                                <small>Graceful everyday fashion combining comfort with sophistication.</small>
+
+                            </div>
+
+                            <i class="bi bi-arrow-right"></i>
+
+                        </div>
+
+                        <div class="category-card"
+
+                            data-dress="coord">
+
+                            <div>
+
+                                <h4>Co-ord Set</h4>
+
+                                <small> Contemporary outfits designed for effortless modern style.</small>
+
+                            </div>
+
+                            <i class="bi bi-arrow-right"></i>
+
+                        </div>
+
+                        <div class="category-card"
+
+                            data-dress="kurti">
+
+                            <div>
+
+                                <h4>Kurtis</h4>
+
+                                <small>Elegant everyday essentials with timeless charm.</small>
+
+                            </div>
+
+                            <i class="bi bi-arrow-right"></i>
+
+                        </div>
+
+                        <div class="category-card"
+
+                            data-dress="party">
+
+                            <div>
+
+                                <h4>Party Wear</h4>
+
+                                <small>Make every celebration unforgettable with statement styles.</small>
+
+                            </div>
+
+                            <i class="bi bi-arrow-right"></i>
+
+                        </div>
+
+                        <div class="category-card"
+
+                            data-dress="bridal">
+
+                            <div>
+
+                                <h4>Bridal Collection</h4>
+
+                                <small> Luxurious bridal ensembles designed for your most memorable day.</small>
+
+                            </div>
+
+                            <i class="bi bi-arrow-right"></i>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- CTA -->
+
+                <section class="section text-center">
+
+                    <div class="w-100">
+
+                        <span class="section-title">
+
+                            FIND YOUR PERFECT STYLE
+
+                        </span>
+
+                        <h2>
+
+                            Fashion That Speaks
+                            Your Personality
+
+                        </h2>
+
+                        <p class="my-4">
+
+                            Whether you're shopping for a wedding, festive celebration,
+            office wear or everyday elegance, Evara Boutique offers
+            thoughtfully curated collections for every occasion.
+
+                        </p>
+
+                        <a href="#"
+
+                            class="btn btn-dark btn-lg rounded-pill">
+
+                            <i class="bi bi-whatsapp me-2"></i>
+
+                            Book A Styling Consultation
+
+                        </a>
+
+                    </div>
+
+                </section>
+
+            </div>
+            <!-- RIGHT SIDE -->
+
+<div class="col-lg-5 d-none d-lg-flex">
+
+    <div class="sticky-mannequin">
+
+        <div class="mannequin-wrapper">
+
+            <!-- Background -->
+
+            <div class="circle-bg"></div>
+
+            <!-- Base Dummy -->
+
+            <img
+                src="images/mannequin-default.png"
+                id="mannequin"
+                class="mannequin img-fluid"
+                alt="Mannequin">
+
+            <!-- Dress Overlay -->
+
+            
+
+        </div>
+
+    </div>
+
+</div>
+
+            <!-- END LEFT -->
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ==========================
+        FOOTER
+========================== -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="row gy-5">
+
+            <!-- Brand -->
+
+            <div class="col-lg-4">
+
+                <h2 class="footer-logo">
+
+                    EVARA
+
+                </h2>
+
+                <p class="footer-text">
+
+                    Timeless fashion curated for modern women.
+                    Discover elegant collections crafted with
+                    premium fabrics, contemporary designs,
+                    and exceptional attention to detail.
+
+                </p>
+
+                <div class="social-links">
+
+                    <a href="#"><i class="bi bi-instagram"></i></a>
+
+                    <a href="#"><i class="bi bi-facebook"></i></a>
+
+                    <a href="#"><i class="bi bi-pinterest"></i></a>
+
+                    <a href="#"><i class="bi bi-whatsapp"></i></a>
+
+                </div>
+
+            </div>
+
+            <!-- Quick Links -->
+
+            <div class="col-lg-2">
+
+                <h5>
+
+                    Quick Links
+
+                </h5>
+
+                <ul class="footer-links">
+
+                    <li><a href="#hero">Home</a></li>
+
+                    <li><a href="#about">About</a></li>
+
+                    <li><a href="#category">Collections</a></li>
+
+                    <li><a href="#">Contact</a></li>
+
+                </ul>
+
+            </div>
+
+            <!-- Collections -->
+
+            <div class="col-lg-3">
+
+                <h5>
+
+                    Collections
+
+                </h5>
+
+                <ul class="footer-links">
+
+                    <li><a href="#">Sarees</a></li>
+
+                    <li><a href="#">Churidar</a></li>
+
+                    <li><a href="#">Co-ord Sets</a></li>
+
+                    <li><a href="#">Kurtis</a></li>
+
+                    <li><a href="#">Party Wear</a></li>
+
+                    <li><a href="#">Bridal Collection</a></li>
+
+                </ul>
+
+            </div>
+
+            <!-- Contact -->
+
+            <div class="col-lg-3">
+
+                <h5>
+
+                    Contact
+
+                </h5>
+
+                <ul class="footer-contact">
+
+                    <li>
+
+                        <i class="bi bi-geo-alt-fill"></i>
+
+                        Kochi, Kerala
+
+                    </li>
+
+                    <li>
+
+                        <i class="bi bi-envelope-fill"></i>
+
+                        hello@evaraboutique.com
+
+                    </li>
+
+                    <li>
+
+                        <i class="bi bi-telephone-fill"></i>
+
+                        +91 98765 43210
+
+                    </li>
+
+                    <li>
+
+                        <i class="bi bi-clock-fill"></i>
+
+                        Mon - Sat : 10 AM - 7 PM
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <hr class="footer-divider">
+
+        <div class="footer-bottom">
+
+            <p>
+
+                © 2026 <strong>Evara Boutique</strong>. All Rights Reserved.
+
+            </p>
+
+            <div class="developer">
+
+                <span>
+
+                    Designed & Developed by
+
+                </span>
+
+                <img
+
+                    src="images/ANK LOGO.png"
+
+                    alt="ANK Web Studio"
+
+                    class="ank-logo">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+    <!-- Floating WhatsApp -->
+
+    <a href="#"
+
+        class="whatsapp">
+
+        <i class="bi bi-whatsapp"></i>
+
+    </a>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
