@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Evara · coming soon</title>
+  <!-- Bootstrap + icons (lightweight) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <!-- Google Fonts: elegant serif + clean sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ---- reset / base ---- */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #F9F6F1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+      /* subtle texture overlay (brandable) */
+      background-image: radial-gradient(circle at 10% 30%, rgba(154, 106, 67, 0.03) 0%, transparent 30%),
+                        radial-gradient(circle at 90% 70%, rgba(154, 106, 67, 0.04) 0%, transparent 40%);
+    }
+
+    /* main card – soft, lifted, warm */
+    .coming-box {
+      max-width: 740px;
+      width: 100%;
+      background: #ffffff;
+      padding:50px 70px;
+      border-radius: 48px;
+      text-align: center;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.05), 0 10px 30px rgba(154, 106, 67, 0.06);
+      backdrop-filter: blur(2px);
+      transition: transform 0.25s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(255, 245, 235, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+    /* subtle glow accent */
+    .coming-box::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      left: -20%;
+      width: 160%;
+      height: 80%;
+      background: radial-gradient(ellipse at 30% 40%, rgba(235, 215, 195, 0.2) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .coming-box > * { position: relative; z-index: 1; }
+
+    /* logo – elegant, timeless */
+    .logo {
+      font-family: 'Playfair Display', serif;
+      color: #9A6A43;
+      font-size: 60px;
+      font-weight: 600;
+      letter-spacing: 6px;
+      line-height: 1.1;
+      text-shadow: 0 2px 6px rgba(154, 106, 67, 0.08);
+      margin-bottom: 2px;
+    }
+    .sub {
+      letter-spacing: 10px;
+      color: #a68a78;
+      font-weight: 300;
+      font-size: 15px;
+      text-transform: uppercase;
+      margin-top: -6px;
+      margin-bottom: 28px;
+      opacity: 0.8;
+    }
+
+    /* icon circle – modern, with a touch of luxury */
+    .fashion-icon {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 28px;
+      background: #F6EFE9;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(154, 106, 67, 0.10);
+      border: 2px solid rgba(255, 235, 220, 0.6);
+    }
+    .fashion-icon i {
+      font-size: 54px;
+      color: #9A6A43;
+      filter: drop-shadow(0 2px 6px rgba(154, 106, 67, 0.15));
+      transition: transform 0.3s ease;
+    }
+    .fashion-icon:hover i { transform: scale(1.05) rotate(-2deg); }
+
+    /* headline – refined */
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #2c221c;
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+    h1 span { color: #9A6A43; font-weight: 700; }
+
+    /* description – airy, readable */
+    p {
+      color: #5f5349;
+      font-size: 17px;
+      line-height: 1.85;
+      max-width: 480px;
+      margin: 0 auto 18px;
+      font-weight: 400;
+      letter-spacing: 0.2px;
+    }
+    .highlight-text {
+      color: #9A6A43;
+      font-weight: 500;
+    }
+
+    /* button – warm, earthy, with a brand touch */
+    .btn-custom {
+      margin-top: 30px;
+      border-radius: 60px;
+      padding: 15px 42px;
+      background: #9A6A43;
+      border: none;
+      color: #fff;
+      font-weight: 500;
+      font-size: 16px;
+      letter-spacing: 0.6px;
+      transition: all 0.25s ease;
+      box-shadow: 0 10px 25px -5px rgba(154, 106, 67, 0.25);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .btn-custom i {
+      font-size: 20px;
+      transition: transform 0.2s ease;
+    }
+    .btn-custom:hover {
+      background: #7e5536;
+      transform: translateY(-3px);
+      box-shadow: 0 18px 35px -8px rgba(154, 106, 67, 0.35);
+      color: #fff;
+    }
+    .btn-custom:hover i { transform: translateX(-4px); }
+
+    /* small decorative line (brand signature) */
+    .brand-divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, #c9b09b, #9A6A43, #c9b09b);
+      margin: 20px auto 18px;
+      border-radius: 10px;
+      opacity: 0.6;
+    }
+
+    /* extra brand flair – tiny stars */
+    .sparkle {
+      display: inline-block;
+      font-size: 22px;
+      color: #dac2ae;
+      margin: 0 6px;
+      opacity: 0.5;
+      letter-spacing: 2px;
+    }
+
+    /* ===== DEVELOPER CREDIT – exactly as requested ===== */
+    .developer {
+        display: flex;
+      margin-top: 34px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(154, 106, 67, 0.12);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    }
+    .developer-logo{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:14px 32px;
+
+    background:linear-gradient(135deg,#D6B25E 0%,#C49A57 50%,#E2C77B 100%);
+
+    border-radius:50px;
+
+    box-shadow:0 12px 30px rgba(196,154,87,.35);
+
+    transition:.35s ease;
+
+}
+
+.developer-logo:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 18px 40px rgba(196,154,87,.45);
+
+}
+
+.developer-logo img{
+
+    height:34px;
+
+    width:auto;
+
+}
+    .developer small {
+      font-size: 12px;
+      font-weight: 300;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #b3a093;
+      opacity: 0.7;
+    }
+    .developer a {
+      display: inline-block;
+      transition: transform 0.25s ease, filter 0.3s ease;
+      text-decoration: none;
+      line-height: 1;
+    }
+    .developer a:hover {
+      transform: scale(1.03);
+      filter: brightness(1.05);
+    }
+    .ank-logo {
+      height: 38px;         /* white logo – fits perfectly on light bg */
+      width: auto;
+      display: block;
+      filter: drop-shadow(0 2px 6px rgba(154, 106, 67, 0.08));
+      transition: filter 0.3s ease;
+    }
+    .developer a:hover .ank-logo {
+      filter: drop-shadow(0 4px 12px rgba(154, 106, 67, 0.18));
+    }
+
+    /* responsive */
+    @media (max-width: 576px) {
+      .coming-box { padding: 40px 22px 32px; border-radius: 32px; }
+      .logo { font-size: 44px; letter-spacing: 4px; }
+      .sub { letter-spacing: 6px; font-size: 13px; }
+      .fashion-icon { width: 100px; height: 100px; }
+      .fashion-icon i { font-size: 44px; }
+      h1 { font-size: 34px; }
+      p { font-size: 15px; }
+      .btn-custom { padding: 13px 30px; font-size: 15px; }
+      .ank-logo { height: 32px; }
+    }
+    @media (max-width: 400px) {
+      .logo { font-size: 36px; }
+      h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="coming-box">
+
+  <!-- brand logo -->
+  <div class="brand mb-4">
+
+    <h1 class="logo">
+        EVARA
+    </h1>
+
+    <p class="logo-sub">
+        BOUTIQUE
+    </p>
+
+</div>
+  <!-- icon with subtle animation -->
+  <div class="fashion-icon">
+    <i class="bi bi-stars"></i>
+  </div>
+
+  <!-- headline with brand colour accent -->
+  <h1>
+    Something <span>Beautiful</span> Is Coming
+  </h1>
+
+  <!-- subtle divider -->
+  <div class="brand-divider"></div>
+
+  <!-- description – engaging & brand-forward -->
+  <p>
+    <span class="highlight-text">Evara</span> is preparing a curated world of timeless elegance.<br>
+    Exclusive collections, premium fabrics, and a shopping experience crafted with care.
+    <span style="display: inline-block; margin-top: 8px; font-size: 14px; color: #a68a78;">
+      <i class="bi bi-dot" style="font-size: 20px;"></i> 2026 debut <i class="bi bi-dot" style="font-size: 20px;"></i>
+    </span>
+  </p>
+
+  <!-- back home button – elegant and inviting -->
+  <a href="index.html" class="btn-custom">
+    <i class="bi bi-arrow-left"></i> Back To Home
+  </a>
+
+  <!-- tiny extra brand detail (catchy) -->
+  <div style="margin-top: 28px; font-size: 13px; color: #bba99a; letter-spacing: 2px; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; align-items: center;">
+    <span class="sparkle">✦</span>
+    <span style="font-weight: 300;">luxury redefined</span>
+    <span class="sparkle">✦</span>
+  </div>
+
+  <!-- ===== DEVELOPER CREDIT – exactly as requested ===== -->
+  <div class="developer">
+    <small>Designed &amp; Developed by</small>
+    <div class="developer-logo">
+    <a href="https://ankwebstudio.in" target="_blank">
+      <img src="images/ANK LOGO.png"
+           alt="ANK Web Studio"
+           class="ank-logo">
+    </a>
+  </div>
+  </div>
+  <!-- ===== end developer credit ===== -->
+
+</div>
+
+<!-- optional subtle background animation (css only) -->
+</body>
+</html>
