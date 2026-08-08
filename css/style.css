@@ -100,105 +100,336 @@ body{
 
 }
 
-/*====================================
-        NAVBAR
-=====================================*/
 
-.navbar{
+/*====================================*
+        PREMIUM EVARA NAVBAR
+*=====================================*/
 
-    background:rgba(255,255,255,.95)!important;
+.evara-navbar {
 
-    backdrop-filter:blur(12px);
+    background: rgba(255, 255, 255, 0.94) !important;
 
-    padding:18px 0;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
 
-}
+    padding: 16px 0;
 
-.navbar-brand h2{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 
-    font-family:'Playfair Display',serif;
-
-    color:var(--primary);
-
-    font-size:34px;
-
-    margin-bottom:0;
-
-    letter-spacing:2px;
+    transition: all 0.35s ease;
 
 }
 
-.navbar-brand small{
 
-    color:#777;
+/*====================================*
+            EVARA BRAND
+*=====================================*/
 
-    letter-spacing:4px;
+.evara-brand {
 
-    text-transform:uppercase;
+    display: flex;
 
-}
+    flex-direction: column;
 
-.nav-link{
+    align-items: center;
 
-    color:#333;
+    text-decoration: none;
 
-    font-weight:500;
+    line-height: 1;
 
-    margin:0 14px;
-
-    position:relative;
-
-    transition:.3s;
+    margin-right: 40px;
 
 }
 
-.nav-link::after{
 
-    content:"";
+.brand-name {
 
-    position:absolute;
+    font-family: 'Playfair Display', serif;
 
-    width:0;
+    font-size: 31px;
 
-    height:2px;
+    font-weight: 600;
 
-    left:0;
+    letter-spacing: 4px;
 
-    bottom:-6px;
-
-    background:var(--gold);
-
-    transition:.3s;
+    color: var(--primary);
 
 }
 
-.nav-link:hover::after{
 
-    width:100%;
+.brand-subtitle {
 
-}
+    font-family: 'Poppins', sans-serif;
 
-.nav-link:hover{
+    font-size: 8px;
 
-    color:var(--primary);
+    font-weight: 500;
 
-}
+    letter-spacing: 5px;
 
-.navbar i{
+    color: #777;
 
-    cursor:pointer;
-
-    transition:.3s;
+    margin-top: 6px;
 
 }
 
-.navbar i:hover{
 
-    color:var(--primary);
+/*====================================*
+            NAVIGATION
+*=====================================*/
 
-    transform:scale(1.1);
+.evara-navbar .nav-link {
+
+    position: relative;
+
+    color: #333;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    letter-spacing: 0.5px;
+
+    margin: 0 13px;
+
+    padding: 8px 2px !important;
+
+    transition: color 0.3s ease;
 
 }
+
+
+/* Elegant underline */
+
+.evara-navbar .nav-link::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 0;
+
+    height: 1px;
+
+    left: 50%;
+
+    bottom: 0;
+
+    background: var(--gold);
+
+    transform: translateX(-50%);
+
+    transition: width 0.35s ease;
+
+}
+
+
+.evara-navbar .nav-link:hover,
+
+.evara-navbar .nav-link.active {
+
+    color: var(--primary);
+
+}
+
+
+.evara-navbar .nav-link:hover::after,
+
+.evara-navbar .nav-link.active::after {
+
+    width: 24px;
+
+}
+
+
+/*====================================*
+            NAV ACTIONS
+*=====================================*/
+
+.evara-nav-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+}
+
+
+.nav-icon {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #333;
+
+    font-size: 17px;
+
+    text-decoration: none;
+
+    transition: all 0.3s ease;
+
+}
+
+
+.nav-icon:hover {
+
+    color: var(--primary);
+
+    transform: translateY(-2px);
+
+}
+
+
+/*====================================*
+          WHATSAPP BUTTON
+*=====================================*/
+
+.nav-whatsapp {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    text-decoration: none;
+
+    background: var(--primary);
+
+    color: #fff;
+
+    padding: 10px 17px;
+
+    border-radius: 30px;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 11px;
+
+    font-weight: 500;
+
+    letter-spacing: 0.3px;
+
+    transition: all 0.3s ease;
+
+}
+
+
+.nav-whatsapp i {
+
+    font-size: 14px;
+
+}
+
+
+.nav-whatsapp:hover {
+
+    color: #fff;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+
+}
+
+
+/*====================================*
+          MOBILE NAVBAR
+*=====================================*/
+
+@media (max-width: 991px) {
+
+    .evara-navbar {
+
+        padding: 13px 0;
+
+    }
+
+
+    .evara-brand {
+
+        margin-right: 0;
+
+        align-items: flex-start;
+
+    }
+
+
+    .brand-name {
+
+        font-size: 26px;
+
+    }
+
+
+    .brand-subtitle {
+
+        font-size: 7px;
+
+        letter-spacing: 4px;
+
+    }
+
+
+    .evara-navbar .navbar-collapse {
+
+        background: rgba(255, 255, 255, 0.98);
+
+        margin-top: 15px;
+
+        padding: 15px 5px 20px;
+
+        border-top: 1px solid rgba(0, 0, 0, 0.06);
+
+    }
+
+
+    .evara-navbar .navbar-nav {
+
+        align-items: flex-start !important;
+
+    }
+
+
+    .evara-navbar .nav-link {
+
+        margin: 5px 0;
+
+        padding: 10px 5px !important;
+
+    }
+
+
+    .evara-navbar .nav-link::after {
+
+        left: 5px;
+
+        transform: none;
+
+    }
+
+
+    .evara-nav-actions {
+
+        margin-top: 15px;
+
+        padding-top: 15px;
+
+        border-top: 1px solid rgba(0, 0, 0, 0.06);
+
+        justify-content: flex-start;
+
+    }
+
+}
+
 
 
 /*====================================
