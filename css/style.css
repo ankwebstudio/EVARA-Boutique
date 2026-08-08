@@ -929,68 +929,254 @@ transform:translateY(-3px);
 }
 
 
-/*====================================
-        STORY
-=====================================*/
+/*====================================*
+        OUR STORY SECTION
+*=====================================*/
 
-#about{
+.our-story-section {
+    padding-top: 90px;
+    padding-bottom: 100px;
+}
 
-    background:#fff;
+
+/* Section heading */
+
+.our-story-section h2 {
+
+    font-family: 'Playfair Display', serif;
+
+    font-size: clamp(42px, 4vw, 58px);
+
+    line-height: 1.12;
+
+    font-weight: 400;
+
+    color: #2d2d2d;
+
+    margin: 18px 0 28px;
 
 }
 
-.feature-box{
 
-    background:#fff;
+/* Intro paragraph */
 
-    border:1px solid var(--border);
+.story-intro {
 
-    border-radius:20px;
+    font-size: 17px;
 
-    padding:35px 25px;
+    line-height: 1.8;
 
-    transition:.35s;
+    color: #555;
 
-    height:100%;
+    max-width: 650px;
 
-}
-
-.feature-box i{
-
-    font-size:40px;
-
-    color:var(--primary);
-
-    margin-bottom:20px;
+    margin-bottom: 18px;
 
 }
 
-.feature-box h5{
 
-    font-weight:600;
+/* Secondary paragraph */
 
-    margin-bottom:12px;
+.story-text {
 
-}
+    font-size: 14px;
 
-.feature-box p{
+    line-height: 1.9;
 
-    font-size:15px;
+    color: #777;
 
-    margin-bottom:0;
+    max-width: 650px;
 
-}
-
-.feature-box:hover{
-
-    transform:translateY(-10px);
-
-    box-shadow:0 20px 45px rgba(0,0,0,.08);
-
-    border-color:transparent;
+    margin-bottom: 42px;
 
 }
 
+
+/*====================================*
+        STORY VALUES
+*=====================================*/
+
+.story-values {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0;
+
+    max-width: 680px;
+
+    border-top: 1px solid rgba(0,0,0,.10);
+
+}
+
+
+.story-value {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 22px;
+
+    padding: 20px 0;
+
+    border-bottom: 1px solid rgba(0,0,0,.10);
+
+}
+
+
+.story-number {
+
+    font-family: 'Playfair Display', serif;
+
+    font-size: 16px;
+
+    color: var(--gold);
+
+    min-width: 28px;
+
+    padding-top: 2px;
+
+}
+
+
+.story-value h5 {
+
+    font-family: 'Playfair Display', serif;
+
+    font-size: 18px;
+
+    font-weight: 600;
+
+    color: #333;
+
+    margin: 0 0 6px;
+
+}
+
+
+.story-value p {
+
+    font-size: 13px;
+
+    color: #777;
+
+    line-height: 1.6;
+
+    margin: 0;
+
+}
+
+
+/*====================================*
+        STORY SIGNATURE
+*=====================================*/
+
+.story-signature {
+
+    margin-top: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+}
+
+
+.story-signature span {
+
+    font-family: 'Playfair Display', serif;
+
+    font-size: 22px;
+
+    letter-spacing: 4px;
+
+    color: var(--primary);
+
+}
+
+
+.story-signature small {
+
+    font-size: 10px;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+
+    color: #999;
+
+}
+
+
+/*====================================*
+            MOBILE
+*=====================================*/
+
+@media (max-width: 991px) {
+
+    .our-story-section {
+
+        padding-top: 65px;
+
+        padding-bottom: 70px;
+
+    }
+
+
+    .our-story-section h2 {
+
+        font-size: 42px;
+
+    }
+
+
+    .story-intro {
+
+        font-size: 16px;
+
+    }
+
+
+    .story-text {
+
+        font-size: 14px;
+
+    }
+
+}
+
+
+@media (max-width: 576px) {
+
+    .our-story-section h2 {
+
+        font-size: 36px;
+
+    }
+
+
+    .story-value {
+
+        gap: 15px;
+
+    }
+
+
+    .story-signature {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 5px;
+
+    }
+
+}
 
 /*====================================
         CATEGORY SECTION
