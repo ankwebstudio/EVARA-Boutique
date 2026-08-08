@@ -2004,20 +2004,293 @@ flex-direction:column;
 
 }
 /*====================================*
+        SIGNATURE COLLECTIONS
+*=====================================*/
+
+.collections-section {
+    padding-top: 90px;
+    padding-bottom: 100px;
+}
+
+
+/* Heading */
+
+.collections-section h2 {
+
+    font-family: 'Playfair Display', serif;
+
+    font-size: clamp(42px, 4vw, 58px);
+
+    font-weight: 400;
+
+    line-height: 1.15;
+
+    color: #2d2d2d;
+
+    margin: 15px 0 18px;
+
+}
+
+
+/* Description */
+
+.collections-intro {
+
+    max-width: 570px;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+
+    color: #777;
+
+    margin-bottom: 42px;
+
+}
+
+
+/*====================================*
+        COLLECTION LIST
+*=====================================*/
+
+.collection-list {
+
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+
+    width: 100%;
+
+}
+
+
+/*====================================*
+        COLLECTION CARD
+*=====================================*/
+
+.collection-card {
+
+    width: 100%;
+
+    min-height: 100px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 20px 5px;
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+
+    cursor: pointer;
+
+    transition:
+        background .35s ease,
+        padding .35s ease,
+        transform .35s ease;
+
+}
+
+
+/* Hover */
+
+.collection-card:hover {
+
+    background: rgba(245, 239, 232, .65);
+
+    padding-left: 16px;
+
+    padding-right: 16px;
+
+}
+
+
+/*====================================*
+        CARD INFORMATION
+*=====================================*/
+
+.collection-card-info {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 22px;
+
+}
+
+
+/* Number */
+
+.collection-number {
+
+    min-width: 25px;
+
+    padding-top: 5px;
+
+    font-family: 'Playfair Display', serif;
+
+    font-size: 13px;
+
+    color: var(--gold);
+
+    letter-spacing: 1px;
+
+}
+
+
+/* Collection name */
+
+.collection-card h4 {
+
+    margin: 0 0 6px;
+
+    font-family: 'Playfair Display', serif;
+
+    font-size: 24px;
+
+    font-weight: 500;
+
+    color: #303030;
+
+    transition: color .3s ease;
+
+}
+
+
+.collection-card:hover h4 {
+
+    color: var(--primary);
+
+}
+
+
+/* Description */
+
+.collection-card p {
+
+    margin: 0;
+
+    max-width: 430px;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+
+    color: #888;
+
+}
+
+
+/*====================================*
+            ARROW
+*=====================================*/
+
+.collection-card > i {
+
+    width: 40px;
+
+    height: 40px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 1px solid rgba(0, 0, 0, .15);
+
+    border-radius: 50%;
+
+    color: #555;
+
+    font-size: 14px;
+
+    transition:
+        background .35s ease,
+        color .35s ease,
+        border-color .35s ease,
+        transform .35s ease;
+
+}
+
+
+.collection-card:hover > i {
+
+    background: var(--primary);
+
+    color: #fff;
+
+    border-color: var(--primary);
+
+    transform: rotate(45deg);
+
+}
+
+
+/*====================================*
+            ACTIVE CARD
+*=====================================*/
+
+.collection-card.active {
+
+    background: rgba(245, 239, 232, .7);
+
+    padding-left: 16px;
+
+    padding-right: 16px;
+
+}
+
+
+.collection-card.active h4 {
+
+    color: var(--primary);
+
+}
+
+
+.collection-card.active > i {
+
+    background: var(--primary);
+
+    color: #fff;
+
+    border-color: var(--primary);
+
+    transform: rotate(45deg);
+
+}
+
+
+/*====================================*
         RIGHT SIDE MANNEQUIN
 *=====================================*/
+
+.col-lg-5 {
+
+    position: relative;
+
+}
+
+
+/* Sticky container */
 
 .sticky-mannequin {
 
     position: sticky;
 
-    top: 110px;
+    top: 105px;
 
     width: 100%;
 
-    height: calc(100vh - 130px);
+    height: calc(100vh - 125px);
 
-    min-height: 600px;
+    min-height: 620px;
 
     display: flex;
 
@@ -2027,18 +2300,22 @@ flex-direction:column;
 
     justify-content: center;
 
-    background: #faf7f3;
+    text-align: center;
 
 }
 
+
+/*====================================*
+        MANNEQUIN WRAPPER
+*=====================================*/
 
 .mannequin-wrapper {
 
     position: relative;
 
-    width: 390px;
+    width: min(430px, 90%);
 
-    height: 560px;
+    height: 570px;
 
     display: flex;
 
@@ -2049,7 +2326,9 @@ flex-direction:column;
 }
 
 
-/* Soft circular background */
+/*====================================*
+            CIRCLE BACKGROUND
+*=====================================*/
 
 .circle-bg {
 
@@ -2061,12 +2340,25 @@ flex-direction:column;
 
     border-radius: 50%;
 
-    background: #f0e8df;
+    background: #f3ece4;
+
+    z-index: 0;
+
+    transition: transform .6s ease;
 
 }
 
 
-/* Mannequin */
+.sticky-mannequin:hover .circle-bg {
+
+    transform: scale(1.03);
+
+}
+
+
+/*====================================*
+            MANNEQUIN
+*=====================================*/
 
 .mannequin {
 
@@ -2074,48 +2366,123 @@ flex-direction:column;
 
     z-index: 2;
 
-    width: 85%;
+    width: 88%;
+
+    max-width: 390px;
 
     max-height: 550px;
 
     object-fit: contain;
 
-    transition: all .5s ease;
+    display: block;
+
+    transition:
+        opacity .35s ease,
+        transform .45s ease;
 
 }
 
 
-/* Caption */
+/* Slight movement */
+
+.collection-card:hover ~ .sticky-mannequin .mannequin {
+
+    transform: translateY(-3px);
+
+}
+
+
+/*====================================*
+        MANNEQUIN CAPTION
+*=====================================*/
 
 .mannequin-caption {
 
-    text-align: center;
+    position: relative;
 
-    margin-top: 10px;
+    z-index: 5;
+
+    margin-top: -5px;
 
 }
 
 
 .mannequin-caption span {
 
+    display: block;
+
     font-size: 10px;
+
+    font-weight: 600;
 
     letter-spacing: 3px;
 
     color: var(--gold);
-
-    font-weight: 600;
 
 }
 
 
 .mannequin-caption p {
 
+    margin: 8px 0 0;
+
     font-size: 12px;
 
     color: #888;
 
-    margin-top: 7px;
+}
+
+
+/*====================================*
+        MANNEQUIN BACKGROUND AREA
+*=====================================*/
+
+.col-lg-5.d-none.d-lg-flex {
+
+    background: #faf7f3;
+
+    min-height: 100%;
+
+    align-items: flex-start;
+
+    justify-content: center;
+
+}
+
+
+/*====================================*
+            TABLET
+*=====================================*/
+
+@media (max-width: 1199px) {
+
+    .collection-card h4 {
+
+        font-size: 22px;
+
+    }
+
+    .collection-card p {
+
+        max-width: 350px;
+
+    }
+
+    .mannequin-wrapper {
+
+        width: 360px;
+
+        height: 530px;
+
+    }
+
+    .circle-bg {
+
+        width: 360px;
+
+        height: 360px;
+
+    }
 
 }
 
@@ -2126,9 +2493,109 @@ flex-direction:column;
 
 @media (max-width: 991px) {
 
-    .sticky-mannequin {
+    .collections-section {
 
-        display: none;
+        padding-top: 70px;
+
+        padding-bottom: 80px;
+
+    }
+
+
+    /*
+        Hide desktop mannequin.
+        Your mobile mannequin section
+        can be shown separately.
+    */
+
+    .col-lg-5.d-none.d-lg-flex {
+
+        display: none !important;
+
+    }
+
+}
+
+
+/*====================================*
+            SMALL MOBILE
+*=====================================*/
+
+@media (max-width: 576px) {
+
+    .collections-section h2 {
+
+        font-size: 38px;
+
+    }
+
+
+    .collections-intro {
+
+        font-size: 13px;
+
+        margin-bottom: 30px;
+
+    }
+
+
+    .collection-card {
+
+        min-height: 90px;
+
+        padding: 18px 3px;
+
+    }
+
+
+    .collection-card:hover {
+
+        padding-left: 10px;
+
+        padding-right: 10px;
+
+    }
+
+
+    .collection-card-info {
+
+        gap: 12px;
+
+    }
+
+
+    .collection-number {
+
+        min-width: 20px;
+
+        font-size: 11px;
+
+    }
+
+
+    .collection-card h4 {
+
+        font-size: 20px;
+
+    }
+
+
+    .collection-card p {
+
+        font-size: 11px;
+
+        max-width: 250px;
+
+    }
+
+
+    .collection-card > i {
+
+        width: 34px;
+
+        height: 34px;
+
+        font-size: 12px;
 
     }
 
