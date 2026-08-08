@@ -2003,3 +2003,92 @@ flex-direction:column;
 }
 
 }
+/*====================================*
+        RIGHT SIDE MANNEQUIN
+*=====================================*/
+
+@media (min-width: 992px) {
+
+    .col-lg-5.d-none.d-lg-flex {
+
+        display: flex !important;
+
+        align-items: flex-start;
+
+        justify-content: center;
+
+        position: relative;
+
+    }
+
+
+    .sticky-mannequin {
+
+        position: sticky;
+
+        top: 110px;
+
+        width: 100%;
+
+        height: calc(100vh - 140px);
+
+        min-height: 650px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+    }
+
+
+    .mannequin-wrapper {
+
+        position: relative;
+
+        width: min(390px, 85%);
+
+        height: 620px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+    }
+
+
+    .circle-bg {
+
+        position: absolute;
+
+        width: 420px;
+
+        height: 420px;
+
+        border-radius: 50%;
+
+        background: #f4eee7;
+
+        z-index: 0;
+
+    }
+
+
+    .mannequin {
+
+        position: relative;
+
+        z-index: 2;
+
+        width: 85%;
+
+        max-height: 590px;
+
+        object-fit: contain;
+
+    }
+
+}
