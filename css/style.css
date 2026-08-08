@@ -1178,6 +1178,358 @@ transform:translateY(-3px);
 
 }
 
+/*====================================*
+        SIGNATURE COLLECTIONS
+*=====================================*/
+
+.collections-section {
+    padding-top: 90px;
+    padding-bottom: 100px;
+}
+
+
+/* Section heading */
+
+.collections-section h2 {
+
+    font-family: 'Playfair Display', serif;
+
+    font-size: clamp(42px, 4vw, 58px);
+
+    font-weight: 400;
+
+    line-height: 1.15;
+
+    color: #2d2d2d;
+
+    margin: 16px 0 18px;
+
+}
+
+
+.collections-intro {
+
+    max-width: 600px;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+
+    color: #777;
+
+    margin-bottom: 45px;
+
+}
+
+
+/*====================================*
+            COLLECTION GRID
+*=====================================*/
+
+.collection-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 38px 24px;
+
+}
+
+
+/*====================================*
+            COLLECTION CARD
+*=====================================*/
+
+.collection-card {
+
+    cursor: pointer;
+
+    transition: transform 0.4s ease;
+
+}
+
+
+.collection-card:hover {
+
+    transform: translateY(-6px);
+
+}
+
+
+/*====================================*
+            IMAGE AREA
+*=====================================*/
+
+.collection-image {
+
+    position: relative;
+
+    height: 390px;
+
+    overflow: hidden;
+
+    background: #f4f0eb;
+
+}
+
+
+.collection-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+
+    display: block;
+
+    transition: transform 0.7s ease;
+
+}
+
+
+.collection-card:hover .collection-image img {
+
+    transform: scale(1.05);
+
+}
+
+
+/*====================================*
+            IMAGE OVERLAY
+*=====================================*/
+
+.collection-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.02),
+        rgba(0,0,0,0.12)
+    );
+
+    opacity: 0;
+
+    transition: opacity 0.4s ease;
+
+}
+
+
+.collection-card:hover .collection-overlay {
+
+    opacity: 1;
+
+}
+
+
+/*====================================*
+            NUMBER
+*=====================================*/
+
+.collection-number {
+
+    position: absolute;
+
+    top: 18px;
+
+    left: 18px;
+
+    font-family: 'Playfair Display', serif;
+
+    font-size: 13px;
+
+    color: #555;
+
+    letter-spacing: 1px;
+
+}
+
+
+/*====================================*
+            ARROW
+*=====================================*/
+
+.collection-arrow {
+
+    position: absolute;
+
+    right: 18px;
+
+    top: 18px;
+
+    width: 40px;
+
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.9);
+
+    color: #333;
+
+    font-size: 16px;
+
+    opacity: 0;
+
+    transform: translateY(8px);
+
+    transition: all 0.35s ease;
+
+}
+
+
+.collection-card:hover .collection-arrow {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}
+
+
+/*====================================*
+        COLLECTION CONTENT
+*=====================================*/
+
+.collection-content {
+
+    padding: 17px 2px 0;
+
+    display: flex;
+
+    align-items: baseline;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+}
+
+
+.collection-content h4 {
+
+    font-family: 'Playfair Display', serif;
+
+    font-size: 22px;
+
+    font-weight: 500;
+
+    color: #333;
+
+    margin: 0;
+
+}
+
+
+.collection-content span {
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1.5px;
+
+    color: #999;
+
+}
+
+
+/*====================================*
+            TABLET
+*=====================================*/
+
+@media (max-width: 768px) {
+
+    .collection-grid {
+
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 28px 15px;
+
+    }
+
+
+    .collection-image {
+
+        height: 320px;
+
+    }
+
+
+    .collection-content {
+
+        display: block;
+
+    }
+
+
+    .collection-content span {
+
+        display: block;
+
+        margin-top: 5px;
+
+    }
+
+}
+
+
+/*====================================*
+            MOBILE
+*=====================================*/
+
+@media (max-width: 576px) {
+
+    .collections-section {
+
+        padding-top: 65px;
+
+        padding-bottom: 70px;
+
+    }
+
+
+    .collections-section h2 {
+
+        font-size: 38px;
+
+    }
+
+
+    .collection-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+
+    }
+
+
+    .collection-image {
+
+        height: 420px;
+
+    }
+
+
+    .collection-content h4 {
+
+        font-size: 23px;
+
+    }
+
+}
+
 /*====================================
         CATEGORY SECTION
 =====================================*/
