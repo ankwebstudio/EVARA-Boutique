@@ -2268,184 +2268,267 @@ flex-direction:column;
 
 
 /*====================================*
-        RIGHT SIDE MANNEQUIN
+        SIGNATURE COLLECTIONS
 *=====================================*/
 
-.col-lg-5 {
+.collections-section {
+    padding-top: 90px;
+    padding-bottom: 100px;
+}
 
-    position: relative;
+
+/* Section heading */
+
+.collections-section h2 {
+
+    font-family: 'Playfair Display', serif;
+
+    font-size: clamp(42px, 4vw, 58px);
+
+    font-weight: 400;
+
+    line-height: 1.15;
+
+    color: #2d2d2d;
+
+    margin: 16px 0 18px;
 
 }
 
 
-/* Sticky container */
+.collections-intro {
 
-.sticky-mannequin {
+    max-width: 600px;
 
-    position: sticky;
+    font-size: 14px;
 
-    top: 105px;
+    line-height: 1.8;
+
+    color: #777;
+
+    margin-bottom: 45px;
+
+}
+
+
+/*====================================*
+            COLLECTION GRID
+*=====================================*/
+
+.collection-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 38px 24px;
+
+}
+
+
+/*====================================*
+            COLLECTION CARD
+*=====================================*/
+
+.collection-card {
+
+    cursor: pointer;
+
+    transition: transform 0.4s ease;
+
+}
+
+
+.collection-card:hover {
+
+    transform: translateY(-6px);
+
+}
+
+
+/*====================================*
+            IMAGE AREA
+*=====================================*/
+
+.collection-image {
+
+    position: relative;
+
+    height: 390px;
+
+    overflow: hidden;
+
+    background: #f4f0eb;
+
+}
+
+
+.collection-image img {
 
     width: 100%;
 
-    height: calc(100vh - 125px);
-
-    min-height: 620px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    text-align: center;
-
-}
-
-
-/*====================================*
-        MANNEQUIN WRAPPER
-*=====================================*/
-
-.mannequin-wrapper {
-
-    position: relative;
-
-    width: min(430px, 90%);
-
-    height: 570px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-}
-
-
-/*====================================*
-            CIRCLE BACKGROUND
-*=====================================*/
-
-.circle-bg {
-
-    position: absolute;
-
-    width: 420px;
-
-    height: 420px;
-
-    border-radius: 50%;
-
-    background: #f3ece4;
-
-    z-index: 0;
-
-    transition: transform .6s ease;
-
-}
-
-
-.sticky-mannequin:hover .circle-bg {
-
-    transform: scale(1.03);
-
-}
-
-
-/*====================================*
-            MANNEQUIN
-*=====================================*/
-
-.mannequin {
-
-    position: relative;
-
-    z-index: 2;
-
-    width: 88%;
-
-    max-width: 390px;
-
-    max-height: 550px;
+    height: 100%;
 
     object-fit: contain;
 
     display: block;
 
-    transition:
-        opacity .35s ease,
-        transform .45s ease;
+    transition: transform 0.7s ease;
 
 }
 
 
-/* Slight movement */
+.collection-card:hover .collection-image img {
 
-.collection-card:hover ~ .sticky-mannequin .mannequin {
-
-    transform: translateY(-3px);
+    transform: scale(1.05);
 
 }
 
 
 /*====================================*
-        MANNEQUIN CAPTION
+            IMAGE OVERLAY
 *=====================================*/
 
-.mannequin-caption {
+.collection-overlay {
 
-    position: relative;
+    position: absolute;
 
-    z-index: 5;
+    inset: 0;
 
-    margin-top: -5px;
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.02),
+        rgba(0,0,0,0.12)
+    );
+
+    opacity: 0;
+
+    transition: opacity 0.4s ease;
 
 }
 
 
-.mannequin-caption span {
+.collection-card:hover .collection-overlay {
 
-    display: block;
+    opacity: 1;
+
+}
+
+
+/*====================================*
+            NUMBER
+*=====================================*/
+
+.collection-number {
+
+    position: absolute;
+
+    top: 18px;
+
+    left: 18px;
+
+    font-family: 'Playfair Display', serif;
+
+    font-size: 13px;
+
+    color: #555;
+
+    letter-spacing: 1px;
+
+}
+
+
+/*====================================*
+            ARROW
+*=====================================*/
+
+.collection-arrow {
+
+    position: absolute;
+
+    right: 18px;
+
+    top: 18px;
+
+    width: 40px;
+
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.9);
+
+    color: #333;
+
+    font-size: 16px;
+
+    opacity: 0;
+
+    transform: translateY(8px);
+
+    transition: all 0.35s ease;
+
+}
+
+
+.collection-card:hover .collection-arrow {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}
+
+
+/*====================================*
+        COLLECTION CONTENT
+*=====================================*/
+
+.collection-content {
+
+    padding: 17px 2px 0;
+
+    display: flex;
+
+    align-items: baseline;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+}
+
+
+.collection-content h4 {
+
+    font-family: 'Playfair Display', serif;
+
+    font-size: 22px;
+
+    font-weight: 500;
+
+    color: #333;
+
+    margin: 0;
+
+}
+
+
+.collection-content span {
 
     font-size: 10px;
 
-    font-weight: 600;
+    text-transform: uppercase;
 
-    letter-spacing: 3px;
+    letter-spacing: 1.5px;
 
-    color: var(--gold);
-
-}
-
-
-.mannequin-caption p {
-
-    margin: 8px 0 0;
-
-    font-size: 12px;
-
-    color: #888;
-
-}
-
-
-/*====================================*
-        MANNEQUIN BACKGROUND AREA
-*=====================================*/
-
-.col-lg-5.d-none.d-lg-flex {
-
-    background: #faf7f3;
-
-    min-height: 100%;
-
-    align-items: flex-start;
-
-    justify-content: center;
+    color: #999;
 
 }
 
@@ -2454,33 +2537,36 @@ flex-direction:column;
             TABLET
 *=====================================*/
 
-@media (max-width: 1199px) {
+@media (max-width: 768px) {
 
-    .collection-card h4 {
+    .collection-grid {
 
-        font-size: 22px;
+        grid-template-columns: repeat(2, 1fr);
 
-    }
-
-    .collection-card p {
-
-        max-width: 350px;
+        gap: 28px 15px;
 
     }
 
-    .mannequin-wrapper {
 
-        width: 360px;
+    .collection-image {
 
-        height: 530px;
+        height: 320px;
 
     }
 
-    .circle-bg {
 
-        width: 360px;
+    .collection-content {
 
-        height: 360px;
+        display: block;
+
+    }
+
+
+    .collection-content span {
+
+        display: block;
+
+        margin-top: 5px;
 
     }
 
@@ -2491,37 +2577,16 @@ flex-direction:column;
             MOBILE
 *=====================================*/
 
-@media (max-width: 991px) {
+@media (max-width: 576px) {
 
     .collections-section {
 
-        padding-top: 70px;
+        padding-top: 65px;
 
-        padding-bottom: 80px;
-
-    }
-
-
-    /*
-        Hide desktop mannequin.
-        Your mobile mannequin section
-        can be shown separately.
-    */
-
-    .col-lg-5.d-none.d-lg-flex {
-
-        display: none !important;
+        padding-bottom: 70px;
 
     }
 
-}
-
-
-/*====================================*
-            SMALL MOBILE
-*=====================================*/
-
-@media (max-width: 576px) {
 
     .collections-section h2 {
 
@@ -2530,72 +2595,25 @@ flex-direction:column;
     }
 
 
-    .collections-intro {
+    .collection-grid {
 
-        font-size: 13px;
+        grid-template-columns: 1fr;
 
-        margin-bottom: 30px;
-
-    }
-
-
-    .collection-card {
-
-        min-height: 90px;
-
-        padding: 18px 3px;
+        gap: 35px;
 
     }
 
 
-    .collection-card:hover {
+    .collection-image {
 
-        padding-left: 10px;
-
-        padding-right: 10px;
+        height: 420px;
 
     }
 
 
-    .collection-card-info {
+    .collection-content h4 {
 
-        gap: 12px;
-
-    }
-
-
-    .collection-number {
-
-        min-width: 20px;
-
-        font-size: 11px;
-
-    }
-
-
-    .collection-card h4 {
-
-        font-size: 20px;
-
-    }
-
-
-    .collection-card p {
-
-        font-size: 11px;
-
-        max-width: 250px;
-
-    }
-
-
-    .collection-card > i {
-
-        width: 34px;
-
-        height: 34px;
-
-        font-size: 12px;
+        font-size: 23px;
 
     }
 
