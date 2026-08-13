@@ -3085,3 +3085,40 @@ flex-direction:column;
     }
 
 }
+
+/* ====================================
+        MOBILE CATEGORY BUTTONS
+==================================== */
+
+.mobile-category {
+    color: #555 !important;
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+
+/* Active / Selected */
+
+.mobile-category.active {
+    color: #92745e !important;
+    border-color: #92745e;
+    background: rgba(146, 116, 94, 0.08);
+}
+
+
+/* Mobile tap effect */
+
+.mobile-category:active {
+    color: #92745e !important;
+}
+
+
+/* Remove Bootstrap/browser focus blue */
+
+.mobile-category:focus,
+.mobile-category:focus-visible {
+    color: #92745e !important;
+    outline: none;
+    box-shadow: none;
+}
