@@ -5,7 +5,9 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================================= */
 
     const mannequin = document.getElementById("mannequin");
-    const cards = document.querySelectorAll(".collection-card");
+
+    const cards =
+        document.querySelectorAll(".collection-card");
 
     const showcaseTitle =
         document.getElementById("showcaseTitle");
@@ -18,67 +20,85 @@ document.addEventListener("DOMContentLoaded", () => {
 
         saree: {
             title: "Sarees",
-            description: "Timeless elegance for every beautiful occasion."
+            description:
+                "Timeless elegance for every beautiful occasion."
         },
 
         churidar: {
             title: "Churidars",
-            description: "Effortless grace with a contemporary touch."
+            description:
+                "Effortless grace with a contemporary touch."
         },
 
         coord: {
             title: "Co-ord Sets",
-            description: "Modern silhouettes designed for the modern muse."
+            description:
+                "Modern silhouettes designed for the modern muse."
         },
 
         kurti: {
             title: "Kurtis",
-            description: "Everyday chic with effortless sophistication."
+            description:
+                "Everyday chic with effortless sophistication."
         },
 
         party: {
             title: "Party Edit",
-            description: "Statement styles made to make an entrance."
+            description:
+                "Statement styles made to make an entrance."
         },
 
         bridal: {
             title: "Bridal Edit",
-            description: "Elegant pieces for your most unforgettable moments."
+            description:
+                "Elegant pieces for your most unforgettable moments."
         }
 
     };
 
 
+    /* =========================================
+       HOVER COLLECTION
+    ========================================= */
+
     cards.forEach(card => {
 
         card.addEventListener("mouseenter", () => {
 
-            cards.forEach(c =>
-                c.classList.remove("active")
-            );
+            cards.forEach(c => {
+                c.classList.remove("active");
+            });
 
             card.classList.add("active");
 
 
-            const dress = card.dataset.dress;
+            const dress =
+                card.dataset.dress;
 
-            const info = collectionInfo[dress];
+            const info =
+                collectionInfo[dress];
 
 
-            /* Fade out */
+            /* Fade mannequin */
 
             mannequin.style.opacity = "0";
-            mannequin.style.transform = "scale(.95)";
+            mannequin.style.transform =
+                "scale(.96)";
 
 
             setTimeout(() => {
 
+                /*
+                Change mannequin image
+                */
+
                 mannequin.src =
                     `images/mannequin-${dress}.png`;
 
-                mannequin.style.opacity = "1";
-                mannequin.style.transform = "scale(1)";
 
+                /*
+                Update text
+                */
 
                 if (info) {
 
@@ -90,6 +110,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 }
 
+
+                /*
+                Fade back in
+                */
+
+                mannequin.style.opacity = "1";
+                mannequin.style.transform =
+                    "scale(1)";
+
             }, 250);
 
         });
@@ -98,24 +127,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================
-       DESKTOP DEFAULT STATE
+       RESET WHEN LEAVING SHOWCASE
     ========================================= */
 
-    const showcase = document.querySelector(
-        ".collection-showcase"
-    );
+    const showcase =
+        document.querySelector(".collection-showcase");
 
 
     if (showcase) {
 
         showcase.addEventListener("mouseleave", () => {
 
-            cards.forEach(c =>
-                c.classList.remove("active")
-            );
+            cards.forEach(card => {
+                card.classList.remove("active");
+            });
+
 
             mannequin.style.opacity = "0";
-            mannequin.style.transform = "scale(.95)";
+            mannequin.style.transform =
+                "scale(.96)";
 
 
             setTimeout(() => {
@@ -123,15 +153,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 mannequin.src =
                     "images/mannequin-default.png";
 
-                mannequin.style.opacity = "1";
-                mannequin.style.transform = "scale(1)";
-
 
                 showcaseTitle.textContent =
                     "Discover Your Style";
 
+
                 showcaseDescription.textContent =
                     "Hover over a collection to preview the look.";
+
+
+                mannequin.style.opacity = "1";
+                mannequin.style.transform =
+                    "scale(1)";
 
             }, 250);
 
@@ -157,9 +190,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             button.addEventListener("click", () => {
 
-                mobileButtons.forEach(btn =>
-                    btn.classList.remove("active")
-                );
+                mobileButtons.forEach(btn => {
+                    btn.classList.remove("active");
+                });
 
                 button.classList.add("active");
 
@@ -169,6 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
                 mobileImage.style.opacity = "0";
+
                 mobileImage.style.transform =
                     "scale(.96)";
 
@@ -178,7 +212,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     mobileImage.src =
                         `images/mannequin-${dress}.png`;
 
+
                     mobileImage.style.opacity = "1";
+
                     mobileImage.style.transform =
                         "scale(1)";
 
