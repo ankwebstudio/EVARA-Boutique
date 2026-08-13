@@ -2597,3 +2597,136 @@ flex-direction:column;
     }
 
 }
+
+/*====================================*
+        RIGHT SIDE SHOWCASE
+*=====================================*/
+
+.collection-showcase {
+
+    position: sticky;
+    top: 100px;
+
+    height: calc(100vh - 120px);
+    min-height: 650px;
+
+    background: #f4f0eb;
+
+    padding: 35px 35px 30px;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+}
+
+
+/* LABEL */
+
+.showcase-label {
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 10px;
+    font-weight: 500;
+
+    letter-spacing: 4px;
+
+    color: #92745e;
+}
+
+
+/* MANNEQUIN */
+
+.showcase-mannequin {
+
+    flex: 1;
+
+    min-height: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px 0;
+}
+
+
+.showcase-mannequin img {
+
+    width: 100%;
+    height: 100%;
+
+    max-height: 570px;
+
+    object-fit: contain;
+
+    display: block;
+
+    transition:
+        opacity .35s ease,
+        transform .5s ease;
+}
+
+
+/* CAPTION */
+
+.showcase-caption {
+
+    padding-top: 20px;
+
+    border-top: 1px solid rgba(80, 60, 45, .15);
+}
+
+
+.showcase-caption > span {
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    color: #92745e;
+}
+
+
+.showcase-caption h4 {
+
+    font-family: 'Playfair Display', serif;
+
+    font-size: 28px;
+
+    font-weight: 500;
+
+    color: #333;
+
+    margin: 7px 0 3px;
+}
+
+
+.showcase-caption p {
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 12px;
+
+    color: #806b5b;
+
+    margin: 0;
+}
+
+
+/*====================================*
+        TABLET / MOBILE
+*=====================================*/
+
+@media (max-width: 991px) {
+
+    .collection-showcase {
+        display: none;
+    }
+
+}
