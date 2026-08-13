@@ -1,14 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     /* =========================================
-            DESKTOP COLLECTION SHOWCASE
+       DESKTOP COLLECTION SHOWCASE
     ========================================= */
 
-    const mannequin =
-        document.getElementById("showcaseMannequin");
-
-    const cards =
-        document.querySelectorAll(".collection-card");
+    const mannequin = document.getElementById("mannequin");
+    const cards = document.querySelectorAll(".collection-card");
 
     const showcaseTitle =
         document.getElementById("showcaseTitle");
@@ -17,69 +14,44 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("showcaseDescription");
 
 
-    const collectionData = {
+    const collectionInfo = {
 
         saree: {
-            image: "images/mannequin-saree.png",
             title: "Sarees",
-            description:
-                "Timeless silhouettes crafted for graceful occasions."
+            description: "Timeless elegance for every beautiful occasion."
         },
 
         churidar: {
-            image: "images/mannequin-churidar.png",
             title: "Churidars",
-            description:
-                "Effortless elegance designed for everyday beauty."
+            description: "Effortless grace with a contemporary touch."
         },
 
         coord: {
-            image: "images/mannequin-coord.png",
             title: "Co-ord Sets",
-            description:
-                "Modern silhouettes for the contemporary woman."
+            description: "Modern silhouettes designed for the modern muse."
         },
 
         kurti: {
-            image: "images/mannequin-kurti.png",
             title: "Kurtis",
-            description:
-                "Elegant everyday styles with effortless comfort."
+            description: "Everyday chic with effortless sophistication."
         },
 
         party: {
-            image: "images/mannequin-party.png",
             title: "Party Edit",
-            description:
-                "Statement styles made to make an entrance."
+            description: "Statement styles made to make an entrance."
         },
 
         bridal: {
-            image: "images/mannequin-bridal.png",
             title: "Bridal Edit",
-            description:
-                "Beautifully curated pieces for your forever moments."
+            description: "Elegant pieces for your most unforgettable moments."
         }
 
     };
 
 
-    /* =========================================
-            COLLECTION CARD CLICK
-    ========================================= */
-
     cards.forEach(card => {
 
         card.addEventListener("mouseenter", () => {
-
-            const dress = card.dataset.dress;
-
-            const data = collectionData[dress];
-
-            if (!data || !mannequin) return;
-
-
-            /* Active card */
 
             cards.forEach(c =>
                 c.classList.remove("active")
@@ -88,38 +60,37 @@ document.addEventListener("DOMContentLoaded", () => {
             card.classList.add("active");
 
 
+            const dress = card.dataset.dress;
+
+            const info = collectionInfo[dress];
+
+
             /* Fade out */
 
-            mannequin.style.opacity = "0.15";
+            mannequin.style.opacity = "0";
             mannequin.style.transform = "scale(.95)";
-            mannequin.style.filter = "blur(4px)";
 
 
             setTimeout(() => {
 
-                mannequin.src = data.image;
-
-                if (showcaseTitle) {
-                    showcaseTitle.textContent = data.title;
-                }
-
-                if (showcaseDescription) {
-                    showcaseDescription.textContent =
-                        data.description;
-                }
-
-            }, 300);
-
-
-            /* Fade in */
-
-            setTimeout(() => {
+                mannequin.src =
+                    `images/mannequin-${dress}.png`;
 
                 mannequin.style.opacity = "1";
                 mannequin.style.transform = "scale(1)";
-                mannequin.style.filter = "blur(0)";
 
-            }, 350);
+
+                if (info) {
+
+                    showcaseTitle.textContent =
+                        info.title;
+
+                    showcaseDescription.textContent =
+                        info.description;
+
+                }
+
+            }, 250);
 
         });
 
@@ -127,7 +98,50 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================
-            MOBILE SHOWROOM
+       DESKTOP DEFAULT STATE
+    ========================================= */
+
+    const showcase = document.querySelector(
+        ".collection-showcase"
+    );
+
+
+    if (showcase) {
+
+        showcase.addEventListener("mouseleave", () => {
+
+            cards.forEach(c =>
+                c.classList.remove("active")
+            );
+
+            mannequin.style.opacity = "0";
+            mannequin.style.transform = "scale(.95)";
+
+
+            setTimeout(() => {
+
+                mannequin.src =
+                    "images/mannequin-default.png";
+
+                mannequin.style.opacity = "1";
+                mannequin.style.transform = "scale(1)";
+
+
+                showcaseTitle.textContent =
+                    "Discover Your Style";
+
+                showcaseDescription.textContent =
+                    "Hover over a collection to preview the look.";
+
+            }, 250);
+
+        });
+
+    }
+
+
+    /* =========================================
+       MOBILE SHOWROOM
     ========================================= */
 
     const mobileImage =
@@ -137,54 +151,43 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll(".mobile-category");
 
 
-    mobileButtons.forEach(button => {
+    if (mobileImage && mobileButtons.length) {
 
-        button.addEventListener("click", () => {
+        mobileButtons.forEach(button => {
 
-            mobileButtons.forEach(btn =>
-                btn.classList.remove("active")
-            );
+            button.addEventListener("click", () => {
 
-            button.classList.add("active");
+                mobileButtons.forEach(btn =>
+                    btn.classList.remove("active")
+                );
 
-
-            const dress =
-                button.dataset.dress;
+                button.classList.add("active");
 
 
-            if (!mobileImage) return;
+                const dress =
+                    button.dataset.dress;
 
 
-            /* Fade out */
+                mobileImage.style.opacity = "0";
+                mobileImage.style.transform =
+                    "scale(.96)";
 
-            mobileImage.style.opacity = ".2";
-            mobileImage.style.transform = "scale(.96)";
 
-
-            setTimeout(() => {
-
-                if (dress === "default") {
-
-                    mobileImage.src =
-                        "images/mannequin-default.png";
-
-                } else {
+                setTimeout(() => {
 
                     mobileImage.src =
                         `images/mannequin-${dress}.png`;
 
-                }
+                    mobileImage.style.opacity = "1";
+                    mobileImage.style.transform =
+                        "scale(1)";
 
+                }, 250);
 
-                /* Fade in */
-
-                mobileImage.style.opacity = "1";
-                mobileImage.style.transform = "scale(1)";
-
-            }, 300);
+            });
 
         });
 
-    });
+    }
 
 });
