@@ -2730,3 +2730,358 @@ flex-direction:column;
     }
 
 }
+
+/*====================================*
+            LOOKBOOK
+*=====================================*/
+
+.lookbook-section {
+
+    padding-top: 110px;
+    padding-bottom: 120px;
+
+}
+
+
+/* HEADING */
+
+.lookbook-heading {
+
+    max-width: 650px;
+
+    margin-bottom: 55px;
+
+}
+
+
+.lookbook-heading h2 {
+
+    font-family: 'Playfair Display', serif;
+
+    font-size: clamp(42px, 5vw, 68px);
+
+    font-weight: 400;
+
+    line-height: 1.05;
+
+    color: #2d2d2d;
+
+    margin: 18px 0;
+
+}
+
+
+.lookbook-heading p {
+
+    max-width: 520px;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+    color: #777;
+
+}
+
+
+/*====================================*
+        LOOKBOOK GRID
+*=====================================*/
+
+.lookbook-grid {
+
+    display: grid;
+
+    grid-template-columns: 1.25fr .75fr;
+
+    grid-template-rows: 430px 330px;
+
+    gap: 18px;
+
+}
+
+
+/* ITEM */
+
+.lookbook-item {
+
+    position: relative;
+
+    overflow: hidden;
+
+    background: #f3eee8;
+
+}
+
+
+.lookbook-item img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition:
+        transform .8s cubic-bezier(.2,.6,.2,1);
+
+}
+
+
+.lookbook-item:hover img {
+
+    transform: scale(1.06);
+
+}
+
+
+/* FEATURED */
+
+.lookbook-featured {
+
+    grid-row: span 2;
+
+}
+
+
+/* WIDE */
+
+.lookbook-wide {
+
+    grid-column: 1 / -1;
+
+}
+
+
+/*====================================*
+            OVERLAY
+*=====================================*/
+
+.lookbook-overlay {
+
+    position: absolute;
+
+    inset: auto 0 0 0;
+
+    padding: 35px 30px 28px;
+
+    color: #fff;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.65),
+            rgba(0,0,0,0)
+        );
+
+    transform: translateY(10px);
+
+    transition:
+        transform .4s ease;
+
+}
+
+
+.lookbook-item:hover .lookbook-overlay {
+
+    transform: translateY(0);
+
+}
+
+
+.lookbook-overlay span {
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    opacity: .8;
+
+}
+
+
+.lookbook-overlay h4 {
+
+    font-family: 'Playfair Display', serif;
+
+    font-size: 26px;
+
+    font-weight: 400;
+
+    margin: 8px 0 5px;
+
+}
+
+
+.lookbook-overlay p {
+
+    font-size: 11px;
+
+    margin: 0;
+
+    opacity: .85;
+
+}
+
+
+/*====================================*
+            CTA
+*=====================================*/
+
+.lookbook-cta {
+
+    margin-top: 70px;
+
+    padding: 60px 30px;
+
+    text-align: center;
+
+    background: #f4f0eb;
+
+}
+
+
+.lookbook-cta > span {
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    color: #92745e;
+
+}
+
+
+.lookbook-cta h3 {
+
+    font-family: 'Playfair Display', serif;
+
+    font-size: clamp(32px, 4vw, 48px);
+
+    font-weight: 400;
+
+    line-height: 1.2;
+
+    color: #333;
+
+    margin: 15px 0 28px;
+
+}
+
+
+.lookbook-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 13px 22px;
+
+    border: 1px solid #333;
+
+    border-radius: 50px;
+
+    color: #333;
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    letter-spacing: .5px;
+
+    transition: all .3s ease;
+
+}
+
+
+.lookbook-button:hover {
+
+    background: #333;
+
+    color: #fff;
+
+}
+
+
+.lookbook-button i {
+
+    transition: transform .3s ease;
+
+}
+
+
+.lookbook-button:hover i {
+
+    transform: translate(3px,-3px);
+
+}
+
+/*====================================*
+            LOOKBOOK MOBILE
+*=====================================*/
+
+@media (max-width: 768px) {
+
+    .lookbook-section {
+
+        padding-top: 75px;
+
+        padding-bottom: 80px;
+
+    }
+
+
+    .lookbook-grid {
+
+        grid-template-columns: 1fr;
+
+        grid-template-rows: auto;
+
+        gap: 15px;
+
+    }
+
+
+    .lookbook-featured {
+
+        grid-row: auto;
+
+    }
+
+
+    .lookbook-wide {
+
+        grid-column: auto;
+
+    }
+
+
+    .lookbook-item {
+
+        height: 400px;
+
+    }
+
+
+    .lookbook-overlay {
+
+        transform: none;
+
+    }
+
+
+    .lookbook-cta {
+
+        margin-top: 45px;
+
+        padding: 45px 20px;
+
+    }
+
+}
