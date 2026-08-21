@@ -3122,3 +3122,666 @@ flex-direction:column;
     outline: none;
     box-shadow: none;
 }
+
+/* =========================================================
+   NEW ARRIVALS / FEATURED PRODUCTS
+========================================================= */
+
+.featured-section {
+    padding: 110px 0 120px;
+    background: #faf8f5;
+}
+
+.featured-heading {
+    max-width: 680px;
+    margin: 0 auto 55px;
+    text-align: center;
+}
+
+.featured-heading .section-title {
+    display: block;
+    margin-bottom: 16px;
+}
+
+.featured-heading h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(40px, 5vw, 58px);
+    font-weight: 400;
+    line-height: 1.15;
+    color: #2d2d2d;
+    margin-bottom: 18px;
+}
+
+.featured-heading p {
+    max-width: 580px;
+    margin: 0 auto;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: #777;
+}
+
+
+/* Product Grid */
+
+.featured-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+
+/* Product Card */
+
+.product-card {
+    background: #fff;
+    overflow: hidden;
+    transition: transform 0.4s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+}
+
+
+/* Product Image */
+
+.product-image {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    background: #f1eeeb;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.7s ease;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.05);
+}
+
+
+/* Product Badge */
+
+.product-badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    padding: 6px 11px;
+    background: #2d2d2d;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+}
+
+
+/* Wishlist */
+
+.product-wishlist {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+
+    width: 38px;
+    height: 38px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.92);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #333;
+    font-size: 17px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.product-wishlist:hover {
+    background: #2d2d2d;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+
+/* Product Overlay */
+
+.product-overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    padding: 18px;
+
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.55),
+        transparent
+    );
+
+    opacity: 0;
+    transform: translateY(10px);
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+}
+
+.product-card:hover .product-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.product-view {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    color: #fff;
+    text-decoration: none;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+
+.product-view:hover {
+    color: #fff;
+}
+
+
+/* Product Content */
+
+.product-content {
+    padding: 22px 4px 8px;
+}
+
+.product-category {
+    display: block;
+    margin-bottom: 8px;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2px;
+
+    color: #999;
+}
+
+.product-content h4 {
+    margin: 0 0 7px;
+
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    font-weight: 400;
+
+    color: #2d2d2d;
+}
+
+.product-description {
+    margin: 0 0 17px;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 1.6;
+
+    color: #888;
+}
+
+
+/* Product Bottom */
+
+.product-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.product-price {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #2d2d2d;
+}
+
+.product-enquiry {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #ddd;
+    border-radius: 50%;
+
+    color: #444;
+    text-decoration: none;
+
+    transition: all 0.3s ease;
+}
+
+.product-enquiry:hover {
+    background: #2d2d2d;
+    color: #fff;
+    border-color: #2d2d2d;
+}
+
+
+/* Featured CTA */
+
+.featured-cta {
+    margin-top: 55px;
+    text-align: center;
+}
+
+
+/* =========================================================
+   CUSTOMER REVIEWS
+========================================================= */
+
+.testimonials-section {
+    padding: 120px 0;
+    background: #fff;
+}
+
+.testimonials-heading {
+    max-width: 680px;
+    margin: 0 auto 60px;
+    text-align: center;
+}
+
+.testimonials-heading .section-title {
+    display: block;
+    margin-bottom: 16px;
+}
+
+.testimonials-heading h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(40px, 5vw, 58px);
+    font-weight: 400;
+    line-height: 1.15;
+
+    color: #2d2d2d;
+
+    margin-bottom: 18px;
+}
+
+.testimonials-heading p {
+    max-width: 560px;
+    margin: 0 auto;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.8;
+
+    color: #777;
+}
+
+
+/* Reviews Grid */
+
+.testimonials-grid {
+    max-width: 1150px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+
+/* Review Card */
+
+.testimonial-card {
+    position: relative;
+
+    padding: 38px 32px;
+
+    background: #faf8f5;
+
+    border: 1px solid #eee9e4;
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.06);
+}
+
+
+/* Stars */
+
+.testimonial-stars {
+    display: flex;
+    gap: 4px;
+
+    margin-bottom: 22px;
+
+    color: #b8945b;
+    font-size: 12px;
+}
+
+
+/* Review Text */
+
+.testimonial-text {
+    margin-bottom: 30px;
+
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.7;
+
+    color: #444;
+}
+
+
+/* Author */
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.author-initial {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #2d2d2d;
+    color: #fff;
+
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+}
+
+.testimonial-author h5 {
+    margin: 0 0 3px;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+
+    color: #333;
+}
+
+.testimonial-author span {
+    font-family: 'Poppins', sans-serif;
+    font-size: 10px;
+    font-weight: 300;
+
+    color: #999;
+}
+
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+.faq-section {
+    padding: 120px 0;
+    background: #faf8f5;
+}
+
+.faq-heading {
+    max-width: 680px;
+    margin: 0 auto 55px;
+
+    text-align: center;
+}
+
+.faq-heading .section-title {
+    display: block;
+    margin-bottom: 16px;
+}
+
+.faq-heading h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(40px, 5vw, 58px);
+    font-weight: 400;
+    line-height: 1.15;
+
+    color: #2d2d2d;
+
+    margin-bottom: 18px;
+}
+
+.faq-heading p {
+    max-width: 560px;
+    margin: 0 auto;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.8;
+
+    color: #777;
+}
+
+
+/* FAQ Container */
+
+.faq-container {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+
+/* Bootstrap Accordion */
+
+.faq-section .accordion {
+    --bs-accordion-border-color: #e8e3de;
+    --bs-accordion-bg: transparent;
+    --bs-accordion-btn-bg: transparent;
+    --bs-accordion-active-bg: transparent;
+    --bs-accordion-active-color: #2d2d2d;
+}
+
+
+/* Accordion Item */
+
+.faq-section .accordion-item {
+    background: transparent;
+
+    border: none;
+    border-bottom: 1px solid #ddd7d1;
+
+    border-radius: 0;
+}
+
+
+/* Question */
+
+.faq-section .accordion-button {
+    padding: 24px 45px 24px 0;
+
+    background: transparent !important;
+
+    box-shadow: none !important;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+
+    color: #333;
+}
+
+
+/* Remove Bootstrap blue focus */
+
+.faq-section .accordion-button:focus {
+    box-shadow: none;
+}
+
+
+/* Accordion Icon */
+
+.faq-section .accordion-button::after {
+    width: 14px;
+    height: 14px;
+
+    background-size: 14px;
+
+    transition: transform 0.3s ease;
+}
+
+
+/* Answer */
+
+.faq-section .accordion-body {
+    padding: 0 45px 25px 0;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.8;
+
+    color: #777;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+
+/* ---------- TABLET ---------- */
+
+@media (max-width: 1199px) {
+
+    .featured-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 850px;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 800px;
+    }
+
+    .testimonial-card:last-child {
+        grid-column: 1 / -1;
+        max-width: 390px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 767px) {
+
+    .featured-section,
+    .testimonials-section,
+    .faq-section {
+        padding: 80px 20px;
+    }
+
+
+    /* New Arrivals */
+
+    .featured-heading {
+        margin-bottom: 40px;
+    }
+
+    .featured-heading h2,
+    .testimonials-heading h2,
+    .faq-heading h2 {
+        font-size: 40px;
+    }
+
+    .featured-heading p,
+    .testimonials-heading p,
+    .faq-heading p {
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    .featured-grid {
+        grid-template-columns: 1fr;
+        gap: 38px;
+    }
+
+    .product-content {
+        padding-top: 18px;
+    }
+
+
+    /* Reviews */
+
+    .testimonials-heading {
+        margin-bottom: 40px;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .testimonial-card:last-child {
+        grid-column: auto;
+        max-width: none;
+    }
+
+    .testimonial-card {
+        padding: 30px 25px;
+    }
+
+    .testimonial-text {
+        font-size: 17px;
+    }
+
+
+    /* FAQ */
+
+    .faq-heading {
+        margin-bottom: 35px;
+    }
+
+    .faq-section .accordion-button {
+        padding: 21px 35px 21px 0;
+
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    .faq-section .accordion-body {
+        padding-right: 20px;
+        font-size: 12px;
+    }
+
+}
