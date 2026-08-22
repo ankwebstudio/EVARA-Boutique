@@ -1,0 +1,530 @@
+/* =====================================================
+   COLLECTION HERO
+===================================================== */
+
+.collection-hero {
+    padding: 100px 0 80px;
+    text-align: center;
+    background: #f8f5f1;
+}
+
+.collection-label {
+    display: block;
+    margin-bottom: 18px;
+
+    font-size: 12px;
+    letter-spacing: 4px;
+    font-weight: 500;
+
+    color: #9a704d;
+}
+
+.collection-hero h1 {
+    margin: 0;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(48px, 7vw, 82px);
+    font-weight: 400;
+
+    color: #292525;
+}
+
+.collection-hero p {
+    max-width: 650px;
+
+    margin: 25px auto 0;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 16px;
+    line-height: 1.9;
+
+    color: #756d68;
+}
+
+
+
+/* =====================================================
+   COLLECTION SECTION
+===================================================== */
+
+.saree-collection {
+    padding: 90px 0;
+    background: #fff;
+}
+
+.collection-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    gap: 40px;
+
+    margin-bottom: 45px;
+}
+
+.collection-heading > div span {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #9a704d;
+}
+
+.collection-heading h2 {
+    margin-top: 10px;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 48px;
+    font-weight: 400;
+
+    color: #292525;
+}
+
+.collection-heading > p {
+    max-width: 430px;
+
+    margin: 0;
+
+    font-size: 14px;
+    line-height: 1.8;
+
+    color: #756d68;
+}
+
+
+
+/* =====================================================
+   FILTER
+===================================================== */
+
+.collection-filter {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    margin-bottom: 45px;
+}
+
+.filter-btn {
+    border: 1px solid #ddd4cc;
+
+    background: transparent;
+
+    padding: 10px 22px;
+
+    border-radius: 30px;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition: all .3s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: #292525;
+    color: #fff;
+    border-color: #292525;
+}
+
+
+
+/* =====================================================
+   PRODUCT GRID
+===================================================== */
+
+.saree-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 24px;
+}
+
+
+
+/* =====================================================
+   PRODUCT CARD
+===================================================== */
+
+.saree-product {
+    background: #fff;
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease;
+}
+
+.saree-product:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 18px 45px rgba(0,0,0,.08);
+}
+
+
+
+/* =====================================================
+   IMAGE
+===================================================== */
+
+.saree-image {
+    position: relative;
+
+    overflow: hidden;
+
+    aspect-ratio: 3 / 4;
+
+    background: #f4f0eb;
+}
+
+.saree-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: transform .6s ease;
+}
+
+.saree-product:hover
+.saree-image img {
+    transform: scale(1.04);
+}
+
+
+
+/* BADGE */
+
+.saree-badge {
+    position: absolute;
+
+    top: 15px;
+    left: 15px;
+
+    padding: 7px 11px;
+
+    background: #292525;
+    color: #fff;
+
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+
+    z-index: 2;
+}
+
+
+
+/* WISHLIST */
+
+.saree-wishlist {
+    position: absolute;
+
+    top: 15px;
+    right: 15px;
+
+    width: 38px;
+    height: 38px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.95);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    z-index: 3;
+
+    transition: all .3s ease;
+}
+
+.saree-wishlist:hover {
+    background: #292525;
+    color: #fff;
+}
+
+
+
+/* =====================================================
+   OVERLAY
+===================================================== */
+
+.saree-overlay {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    padding: 25px 18px;
+
+    background:
+        linear-gradient(
+            transparent,
+            rgba(0,0,0,.65)
+        );
+
+    opacity: 0;
+
+    transform: translateY(10px);
+
+    transition: all .35s ease;
+}
+
+.saree-product:hover
+.saree-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.saree-view {
+    color: #fff;
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.saree-view i {
+    margin-left: 6px;
+}
+
+
+
+/* =====================================================
+   PRODUCT CONTENT
+===================================================== */
+
+.saree-content {
+    padding: 20px 4px 5px;
+}
+
+.saree-content > span {
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    color: #9a704d;
+}
+
+.saree-content h3 {
+    margin: 8px 0;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 22px;
+    font-weight: 400;
+
+    color: #292525;
+}
+
+.saree-content p {
+    margin: 0;
+
+    font-size: 12px;
+    line-height: 1.7;
+
+    color: #7c7470;
+}
+
+.saree-bottom {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 18px;
+}
+
+.saree-bottom strong {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.saree-bottom a {
+    width: 36px;
+    height: 36px;
+
+    border: 1px solid #ddd4cc;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #292525;
+
+    text-decoration: none;
+
+    transition: all .3s ease;
+}
+
+.saree-bottom a:hover {
+    background: #292525;
+    color: #fff;
+}
+
+
+
+/* =====================================================
+   CTA
+===================================================== */
+
+.collection-cta {
+    padding: 90px 20px;
+
+    text-align: center;
+
+    background: #f8f5f1;
+}
+
+.collection-cta span {
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    color: #9a704d;
+}
+
+.collection-cta h2 {
+    margin: 15px 0;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 42px;
+    font-weight: 400;
+}
+
+.collection-cta p {
+    color: #756d68;
+}
+
+.collection-cta-button {
+    display: inline-flex;
+
+    align-items: center;
+    gap: 10px;
+
+    margin-top: 20px;
+
+    padding: 13px 25px;
+
+    border-radius: 30px;
+
+    background: #292525;
+    color: #fff;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    transition: all .3s ease;
+}
+
+.collection-cta-button:hover {
+    transform: translateY(-3px);
+    color: #fff;
+}
+
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 991px) {
+
+    .saree-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .collection-heading {
+        display: block;
+    }
+
+    .collection-heading > p {
+        margin-top: 20px;
+    }
+
+}
+
+
+@media (max-width: 576px) {
+
+    .collection-hero {
+        padding: 70px 20px 60px;
+    }
+
+    .collection-hero h1 {
+        font-size: 52px;
+    }
+
+    .collection-hero p {
+        font-size: 14px;
+    }
+
+
+    .saree-collection {
+        padding: 65px 15px;
+    }
+
+    .collection-heading h2 {
+        font-size: 38px;
+    }
+
+
+    .saree-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 14px;
+    }
+
+
+    .saree-content h3 {
+        font-size: 18px;
+    }
+
+    .saree-content p {
+        font-size: 11px;
+    }
+
+
+    .saree-overlay {
+        opacity: 1;
+        transform: translateY(0);
+
+        padding: 18px 12px;
+    }
+
+
+    .saree-view {
+        font-size: 11px;
+    }
+
+
+    .collection-cta {
+        padding: 70px 20px;
+    }
+
+    .collection-cta h2 {
+        font-size: 34px;
+    }
+
+}
