@@ -201,6 +201,12 @@
                     <i class="bi bi-bag"></i>
                 </a>
 
+                <a href="#" class="nav-icon"  data-bs-toggle="modal" data-bs-target="#authModal" aria-label="Login or Register">
+
+                <i class="bi bi-person"></i>
+
+                </a>
+
                 <a href="#" class="nav-whatsapp">
                     <i class="bi bi-whatsapp"></i>
                     <span>Chat With Us</span>
@@ -1920,6 +1926,262 @@
         <i class="bi bi-whatsapp"></i>
 
     </a>
+    <!-- ==========================
+        LOGIN / REGISTER MODAL
+========================== -->
+
+<div class="modal fade"
+     id="authModal"
+     tabindex="-1"
+     aria-labelledby="authModalLabel"
+     aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-centered">
+
+        <div class="modal-content auth-modal">
+
+            <!-- CLOSE BUTTON -->
+
+            <button type="button"
+                    class="auth-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close">
+
+                <i class="bi bi-x-lg"></i>
+
+            </button>
+
+
+            <!-- HEADER -->
+
+            <div class="auth-header">
+
+                <span class="auth-brand">
+                    EVARA
+                </span>
+
+                <p>
+                    Timeless fashion, made personal.
+                </p>
+
+            </div>
+
+
+            <!-- TABS -->
+
+            <div class="auth-tabs">
+
+                <button class="auth-tab active"
+                        id="loginTab"
+                        type="button">
+
+                    Login
+
+                </button>
+
+
+                <button class="auth-tab"
+                        id="registerTab"
+                        type="button">
+
+                    Create Account
+
+                </button>
+
+            </div>
+
+
+            <!-- ================= LOGIN FORM ================= -->
+
+            <form id="loginForm"
+                  class="auth-form">
+
+                <div class="auth-input">
+
+                    <label>Email Address</label>
+
+                    <div class="input-wrapper">
+
+                        <i class="bi bi-envelope"></i>
+
+                        <input type="email"
+                               placeholder="Enter your email"
+                               required>
+
+                    </div>
+
+                </div>
+
+
+                <div class="auth-input">
+
+                    <label>Password</label>
+
+                    <div class="input-wrapper">
+
+                        <i class="bi bi-lock"></i>
+
+                        <input type="password"
+                               placeholder="Enter your password"
+                               required>
+
+                    </div>
+
+                </div>
+
+
+                <div class="auth-options">
+
+                    <label class="remember-me">
+
+                        <input type="checkbox">
+
+                        Remember me
+
+                    </label>
+
+
+                    <a href="#"
+                       class="forgot-password">
+
+                        Forgot password?
+
+                    </a>
+
+                </div>
+
+
+                <button type="submit"
+                        class="auth-submit">
+
+                    Login to Evara
+
+                    <i class="bi bi-arrow-right"></i>
+
+                </button>
+
+
+                <p class="auth-switch-text">
+
+                    New to Evara?
+
+                    <button type="button"
+                            id="switchToRegister">
+
+                        Create an account
+
+                    </button>
+
+                </p>
+
+            </form>
+
+
+
+            <!-- ================= REGISTER FORM ================= -->
+
+            <form id="registerForm"
+                  class="auth-form d-none">
+
+                <div class="auth-input">
+
+                    <label>Full Name</label>
+
+                    <div class="input-wrapper">
+
+                        <i class="bi bi-person"></i>
+
+                        <input type="text"
+                               placeholder="Enter your name"
+                               required>
+
+                    </div>
+
+                </div>
+
+
+                <div class="auth-input">
+
+                    <label>Email Address</label>
+
+                    <div class="input-wrapper">
+
+                        <i class="bi bi-envelope"></i>
+
+                        <input type="email"
+                               placeholder="Enter your email"
+                               required>
+
+                    </div>
+
+                </div>
+
+
+                <div class="auth-input">
+
+                    <label>Phone Number</label>
+
+                    <div class="input-wrapper">
+
+                        <i class="bi bi-telephone"></i>
+
+                        <input type="tel"
+                               placeholder="Enter your phone number"
+                               required>
+
+                    </div>
+
+                </div>
+
+
+                <div class="auth-input">
+
+                    <label>Create Password</label>
+
+                    <div class="input-wrapper">
+
+                        <i class="bi bi-lock"></i>
+
+                        <input type="password"
+                               placeholder="Create a password"
+                               required>
+
+                    </div>
+
+                </div>
+
+
+                <button type="submit"
+                        class="auth-submit">
+
+                    Create Account
+
+                    <i class="bi bi-arrow-right"></i>
+
+                </button>
+
+
+                <p class="auth-switch-text">
+
+                    Already have an account?
+
+                    <button type="button"
+                            id="switchToLogin">
+
+                        Login
+
+                    </button>
+
+                </p>
+
+            </form>
+
+
+        </div>
+
+    </div>
+
+</div>
 
 
 
