@@ -228,9 +228,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-/* ==========================
-   LOGIN / REGISTER SWITCH
-========================== */
+/* =========================================================
+                    AUTH MODAL
+========================================================= */
+
 
 const loginTab = document.getElementById("loginTab");
 const registerTab = document.getElementById("registerTab");
@@ -245,6 +246,8 @@ const switchToLogin =
     document.getElementById("switchToLogin");
 
 
+/* SHOW LOGIN */
+
 function showLogin() {
 
     loginForm.classList.remove("d-none");
@@ -257,6 +260,8 @@ function showLogin() {
 
 }
 
+
+/* SHOW REGISTER */
 
 function showRegister() {
 
@@ -271,38 +276,77 @@ function showRegister() {
 }
 
 
-if (loginTab) {
+/* TAB EVENTS */
 
-    loginTab.addEventListener("click", showLogin);
+loginTab?.addEventListener(
+    "click",
+    showLogin
+);
 
-}
+
+registerTab?.addEventListener(
+    "click",
+    showRegister
+);
 
 
-if (registerTab) {
+/* SWITCH EVENTS */
 
-    registerTab.addEventListener(
+switchToRegister?.addEventListener(
+    "click",
+    showRegister
+);
+
+
+switchToLogin?.addEventListener(
+    "click",
+    showLogin
+);
+
+
+/* =========================================================
+                    SHOW / HIDE PASSWORD
+========================================================= */
+
+const passwordToggles =
+    document.querySelectorAll(".password-toggle");
+
+
+passwordToggles.forEach(toggle => {
+
+    toggle.addEventListener(
         "click",
-        showRegister
+        function () {
+
+            const input =
+                this.parentElement.querySelector("input");
+
+
+            const icon =
+                this.querySelector("i");
+
+
+            if (input.type === "password") {
+
+                input.type = "text";
+
+                icon.classList.remove("bi-eye");
+
+                icon.classList.add("bi-eye-slash");
+
+            }
+
+            else {
+
+                input.type = "password";
+
+                icon.classList.remove("bi-eye-slash");
+
+                icon.classList.add("bi-eye");
+
+            }
+
+        }
     );
 
-}
-
-
-if (switchToRegister) {
-
-    switchToRegister.addEventListener(
-        "click",
-        showRegister
-    );
-
-}
-
-
-if (switchToLogin) {
-
-    switchToLogin.addEventListener(
-        "click",
-        showLogin
-    );
-
-}
+});
