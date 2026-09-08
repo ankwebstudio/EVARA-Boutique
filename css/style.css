@@ -3787,124 +3787,655 @@ flex-direction:column;
 }
 
 /* =========================================================
-                    AUTH MODAL
+                    EVARA AUTH MODAL
 ========================================================= */
 
 
-const loginTab = document.getElementById("loginTab");
-const registerTab = document.getElementById("registerTab");
+/* BACKDROP */
 
-const loginForm = document.getElementById("loginForm");
-const registerForm = document.getElementById("registerForm");
-
-const switchToRegister =
-    document.getElementById("switchToRegister");
-
-const switchToLogin =
-    document.getElementById("switchToLogin");
+.modal-backdrop.show {
+    opacity: 0.45;
+}
 
 
-/* SHOW LOGIN */
+/* DIALOG */
 
-function showLogin() {
+.auth-dialog {
+    max-width: 500px;
+}
 
-    loginForm.classList.remove("d-none");
 
-    registerForm.classList.add("d-none");
+/* MODAL */
 
-    loginTab.classList.add("active");
+.auth-modal {
 
-    registerTab.classList.remove("active");
+    border: none;
+
+    border-radius: 0;
+
+    background: #FCF9F5;
+
+    padding: 55px 52px 42px;
+
+    position: relative;
+
+    box-shadow:
+        0 25px 80px rgba(50, 35, 25, 0.16);
 
 }
 
 
-/* SHOW REGISTER */
+/* TOP ACCENT */
 
-function showRegister() {
+.auth-modal::before {
 
-    registerForm.classList.remove("d-none");
+    content: "";
 
-    loginForm.classList.add("d-none");
+    position: absolute;
 
-    registerTab.classList.add("active");
+    top: 0;
 
-    loginTab.classList.remove("active");
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 80px;
+
+    height: 2px;
+
+    background: var(--gold);
 
 }
-
-
-/* TAB EVENTS */
-
-loginTab?.addEventListener(
-    "click",
-    showLogin
-);
-
-
-registerTab?.addEventListener(
-    "click",
-    showRegister
-);
-
-
-/* SWITCH EVENTS */
-
-switchToRegister?.addEventListener(
-    "click",
-    showRegister
-);
-
-
-switchToLogin?.addEventListener(
-    "click",
-    showLogin
-);
 
 
 /* =========================================================
-                    SHOW / HIDE PASSWORD
+                    CLOSE BUTTON
 ========================================================= */
 
-const passwordToggles =
-    document.querySelectorAll(".password-toggle");
+.auth-close {
+
+    position: absolute;
+
+    top: 18px;
+
+    right: 18px;
+
+    width: 38px;
+
+    height: 38px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #555;
+
+    font-size: 22px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+
+}
 
 
-passwordToggles.forEach(toggle => {
+.auth-close:hover {
 
-    toggle.addEventListener(
-        "click",
-        function () {
+    color: var(--primary);
 
-            const input =
-                this.parentElement.querySelector("input");
+    transform: rotate(90deg);
 
-
-            const icon =
-                this.querySelector("i");
+}
 
 
-            if (input.type === "password") {
+/* =========================================================
+                    HEADER
+========================================================= */
 
-                input.type = "text";
+.auth-header {
 
-                icon.classList.remove("bi-eye");
+    text-align: center;
 
-                icon.classList.add("bi-eye-slash");
+    margin-bottom: 38px;
 
-            }
+}
 
-            else {
 
-                input.type = "password";
+.auth-eyebrow {
 
-                icon.classList.remove("bi-eye-slash");
+    display: block;
 
-                icon.classList.add("bi-eye");
+    margin-bottom: 14px;
 
-            }
+    font-family: 'Poppins', sans-serif;
 
-        }
-    );
+    font-size: 10px;
 
-});
+    font-weight: 500;
+
+    letter-spacing: 3px;
+
+    color: #92745e;
+
+}
+
+
+.auth-header h2 {
+
+    margin: 0 0 14px;
+
+    font-family: 'Playfair Display', serif;
+
+    font-size: 40px;
+
+    font-weight: 400;
+
+    color: #2d2d2d;
+
+}
+
+
+.auth-header p {
+
+    max-width: 340px;
+
+    margin: 0 auto;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 12px;
+
+    font-weight: 300;
+
+    line-height: 1.8;
+
+    color: #777;
+
+}
+
+
+/* =========================================================
+                    TABS
+========================================================= */
+
+.auth-tabs {
+
+    display: flex;
+
+    border-bottom: 1px solid var(--border);
+
+    margin-bottom: 32px;
+
+}
+
+
+.auth-tab {
+
+    flex: 1;
+
+    position: relative;
+
+    padding: 12px 5px;
+
+    border: none;
+
+    background: transparent;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    letter-spacing: 0.4px;
+
+    color: #999;
+
+    cursor: pointer;
+
+    transition: color 0.3s ease;
+
+}
+
+
+.auth-tab::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: -1px;
+
+    width: 0;
+
+    height: 2px;
+
+    background: var(--primary);
+
+    transform: translateX(-50%);
+
+    transition: width 0.35s ease;
+
+}
+
+
+.auth-tab.active {
+
+    color: var(--primary);
+
+}
+
+
+.auth-tab.active::after {
+
+    width: 45px;
+
+}
+
+
+/* =========================================================
+                    FORM
+========================================================= */
+
+.auth-form {
+
+    animation: authFade 0.35s ease;
+
+}
+
+
+@keyframes authFade {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(8px);
+
+    }
+
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+
+/* =========================================================
+                    INPUT FIELD
+========================================================= */
+
+.auth-field {
+
+    margin-bottom: 22px;
+
+}
+
+
+.auth-field label {
+
+    display: block;
+
+    margin-bottom: 9px;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 11px;
+
+    font-weight: 500;
+
+    letter-spacing: 0.4px;
+
+    color: #444;
+
+}
+
+
+.auth-field input {
+
+    width: 100%;
+
+    height: 48px;
+
+    padding: 0 15px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 0;
+
+    outline: none;
+
+    background: #fff;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 12px;
+
+    font-weight: 300;
+
+    color: #333;
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+
+}
+
+
+.auth-field input::placeholder {
+
+    color: #aaa;
+
+}
+
+
+.auth-field input:focus {
+
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 3px rgba(139, 94, 60, 0.07);
+
+}
+
+
+/* =========================================================
+                    PASSWORD
+========================================================= */
+
+.password-field {
+
+    position: relative;
+
+}
+
+
+.password-field input {
+
+    padding-right: 50px;
+
+}
+
+
+.password-toggle {
+
+    position: absolute;
+
+    top: 50%;
+
+    right: 0;
+
+    transform: translateY(-50%);
+
+    width: 45px;
+
+    height: 45px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #888;
+
+    cursor: pointer;
+
+    transition: color 0.3s ease;
+
+}
+
+
+.password-toggle:hover {
+
+    color: var(--primary);
+
+}
+
+
+/* =========================================================
+                    OPTIONS
+========================================================= */
+
+.auth-options {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-top: -5px;
+
+    margin-bottom: 28px;
+
+}
+
+
+.remember-option,
+.terms-option {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 300;
+
+    color: #777;
+
+    cursor: pointer;
+
+}
+
+
+.terms-option {
+
+    align-items: flex-start;
+
+    margin: -3px 0 25px;
+
+}
+
+
+.remember-option input,
+.terms-option input {
+
+    accent-color: var(--primary);
+
+}
+
+
+.forgot-link {
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 500;
+
+    color: var(--primary);
+
+    text-decoration: none;
+
+}
+
+
+.forgot-link:hover {
+
+    color: var(--gold);
+
+}
+
+
+/* =========================================================
+                    MAIN BUTTON
+========================================================= */
+
+.auth-button {
+
+    width: 100%;
+
+    height: 52px;
+
+    border: none;
+
+    border-radius: 0;
+
+    background: var(--primary);
+
+    color: #fff;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    letter-spacing: 0.5px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+
+}
+
+
+.auth-button i {
+
+    margin-left: 8px;
+
+    transition: transform 0.3s ease;
+
+}
+
+
+.auth-button:hover {
+
+    background: #765034;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 25px rgba(139, 94, 60, 0.18);
+
+}
+
+
+.auth-button:hover i {
+
+    transform: translateX(4px);
+
+}
+
+
+/* =========================================================
+                    FOOTER TEXT
+========================================================= */
+
+.auth-footer-text {
+
+    margin: 25px 0 0;
+
+    text-align: center;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 11px;
+
+    font-weight: 300;
+
+    color: #888;
+
+}
+
+
+.auth-footer-text button {
+
+    border: none;
+
+    background: transparent;
+
+    padding: 0;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 11px;
+
+    font-weight: 500;
+
+    color: var(--primary);
+
+    cursor: pointer;
+
+}
+
+
+.auth-footer-text button:hover {
+
+    color: var(--gold);
+
+}
+
+
+/* =========================================================
+                    MOBILE
+========================================================= */
+
+@media (max-width: 576px) {
+
+    .auth-dialog {
+
+        margin: 12px;
+
+    }
+
+
+    .auth-modal {
+
+        padding:
+            50px 25px
+            32px;
+
+    }
+
+
+    .auth-header h2 {
+
+        font-size: 34px;
+
+    }
+
+
+    .auth-options {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 12px;
+
+    }
+
+}
