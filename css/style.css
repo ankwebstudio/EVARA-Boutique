@@ -3786,289 +3786,125 @@ flex-direction:column;
 
 }
 
-/* ==========================
-   AUTH MODAL
-========================== */
-
-.auth-modal {
-    border: none;
-    border-radius: 24px;
-    padding: 35px;
-    position: relative;
-    overflow: hidden;
-}
+/* =========================================================
+                    AUTH MODAL
+========================================================= */
 
 
-/* CLOSE */
+const loginTab = document.getElementById("loginTab");
+const registerTab = document.getElementById("registerTab");
 
-.auth-close {
-    position: absolute;
-    right: 20px;
-    top: 18px;
+const loginForm = document.getElementById("loginForm");
+const registerForm = document.getElementById("registerForm");
 
-    width: 38px;
-    height: 38px;
+const switchToRegister =
+    document.getElementById("switchToRegister");
 
-    border: none;
-    background: #f5f5f5;
-
-    border-radius: 50%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    cursor: pointer;
-
-    z-index: 2;
-}
+const switchToLogin =
+    document.getElementById("switchToLogin");
 
 
-/* HEADER */
+/* SHOW LOGIN */
 
-.auth-header {
-    text-align: center;
-    margin-bottom: 30px;
-}
+function showLogin() {
 
-.auth-brand {
-    display: block;
+    loginForm.classList.remove("d-none");
 
-    font-family: "Playfair Display", serif;
+    registerForm.classList.add("d-none");
 
-    font-size: 34px;
-    font-weight: 700;
+    loginTab.classList.add("active");
 
-    letter-spacing: 4px;
-}
-
-.auth-header p {
-    margin-top: 8px;
-
-    font-size: 14px;
-
-    color: #777;
-}
-
-
-/* TABS */
-
-.auth-tabs {
-    display: flex;
-
-    background: #f5f5f5;
-
-    padding: 5px;
-
-    border-radius: 12px;
-
-    margin-bottom: 28px;
-}
-
-.auth-tab {
-    flex: 1;
-
-    border: none;
-
-    background: transparent;
-
-    padding: 12px;
-
-    border-radius: 9px;
-
-    font-weight: 500;
-
-    transition: 0.3s;
-}
-
-.auth-tab.active {
-    background: #111;
-
-    color: white;
-}
-
-
-/* FORM */
-
-.auth-form {
-    animation: authFade 0.3s ease;
-}
-
-
-@keyframes authFade {
-
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    registerTab.classList.remove("active");
 
 }
 
 
-/* INPUT */
+/* SHOW REGISTER */
 
-.auth-input {
-    margin-bottom: 18px;
-}
+function showRegister() {
 
-.auth-input label {
-    display: block;
+    registerForm.classList.remove("d-none");
 
-    margin-bottom: 8px;
+    loginForm.classList.add("d-none");
 
-    font-size: 14px;
+    registerTab.classList.add("active");
 
-    font-weight: 500;
-}
+    loginTab.classList.remove("active");
 
-
-.input-wrapper {
-    display: flex;
-
-    align-items: center;
-
-    border: 1px solid #ddd;
-
-    border-radius: 12px;
-
-    padding: 0 15px;
-
-    transition: 0.3s;
-}
-
-.input-wrapper:focus-within {
-    border-color: #111;
 }
 
 
-.input-wrapper i {
-    color: #777;
+/* TAB EVENTS */
 
-    margin-right: 12px;
-}
-
-
-.input-wrapper input {
-    width: 100%;
-
-    border: none;
-
-    outline: none;
-
-    padding: 14px 0;
-
-    font-size: 14px;
-
-    background: transparent;
-}
+loginTab?.addEventListener(
+    "click",
+    showLogin
+);
 
 
-/* OPTIONS */
-
-.auth-options {
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    margin-bottom: 22px;
-
-    font-size: 13px;
-}
-
-.remember-me {
-    display: flex;
-
-    align-items: center;
-
-    gap: 7px;
-}
+registerTab?.addEventListener(
+    "click",
+    showRegister
+);
 
 
-.forgot-password {
-    color: #111;
+/* SWITCH EVENTS */
 
-    text-decoration: none;
-
-    font-weight: 500;
-}
-
-
-/* SUBMIT BUTTON */
-
-.auth-submit {
-    width: 100%;
-
-    border: none;
-
-    background: #111;
-
-    color: white;
-
-    padding: 15px;
-
-    border-radius: 12px;
-
-    font-size: 15px;
-
-    transition: 0.3s;
-}
-
-.auth-submit:hover {
-    transform: translateY(-2px);
-
-    opacity: 0.9;
-}
-
-.auth-submit i {
-    margin-left: 8px;
-}
+switchToRegister?.addEventListener(
+    "click",
+    showRegister
+);
 
 
-/* SWITCH TEXT */
-
-.auth-switch-text {
-    text-align: center;
-
-    margin-top: 22px;
-
-    font-size: 14px;
-
-    color: #777;
-}
-
-.auth-switch-text button {
-    border: none;
-
-    background: none;
-
-    color: #111;
-
-    font-weight: 600;
-
-    padding: 0;
-
-    cursor: pointer;
-}
+switchToLogin?.addEventListener(
+    "click",
+    showLogin
+);
 
 
-/* MOBILE */
+/* =========================================================
+                    SHOW / HIDE PASSWORD
+========================================================= */
 
-@media (max-width: 576px) {
+const passwordToggles =
+    document.querySelectorAll(".password-toggle");
 
-    .auth-modal {
-        padding: 28px 20px;
-        margin: 12px;
-    }
 
-    .auth-brand {
-        font-size: 28px;
-    }
+passwordToggles.forEach(toggle => {
 
-}
+    toggle.addEventListener(
+        "click",
+        function () {
+
+            const input =
+                this.parentElement.querySelector("input");
+
+
+            const icon =
+                this.querySelector("i");
+
+
+            if (input.type === "password") {
+
+                input.type = "text";
+
+                icon.classList.remove("bi-eye");
+
+                icon.classList.add("bi-eye-slash");
+
+            }
+
+            else {
+
+                input.type = "password";
+
+                icon.classList.remove("bi-eye-slash");
+
+                icon.classList.add("bi-eye");
+
+            }
+
+        }
+    );
+
+});
