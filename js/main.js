@@ -227,3 +227,82 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+
+/* ==========================
+   LOGIN / REGISTER SWITCH
+========================== */
+
+const loginTab = document.getElementById("loginTab");
+const registerTab = document.getElementById("registerTab");
+
+const loginForm = document.getElementById("loginForm");
+const registerForm = document.getElementById("registerForm");
+
+const switchToRegister =
+    document.getElementById("switchToRegister");
+
+const switchToLogin =
+    document.getElementById("switchToLogin");
+
+
+function showLogin() {
+
+    loginForm.classList.remove("d-none");
+
+    registerForm.classList.add("d-none");
+
+    loginTab.classList.add("active");
+
+    registerTab.classList.remove("active");
+
+}
+
+
+function showRegister() {
+
+    registerForm.classList.remove("d-none");
+
+    loginForm.classList.add("d-none");
+
+    registerTab.classList.add("active");
+
+    loginTab.classList.remove("active");
+
+}
+
+
+if (loginTab) {
+
+    loginTab.addEventListener("click", showLogin);
+
+}
+
+
+if (registerTab) {
+
+    registerTab.addEventListener(
+        "click",
+        showRegister
+    );
+
+}
+
+
+if (switchToRegister) {
+
+    switchToRegister.addEventListener(
+        "click",
+        showRegister
+    );
+
+}
+
+
+if (switchToLogin) {
+
+    switchToLogin.addEventListener(
+        "click",
+        showLogin
+    );
+
+}
