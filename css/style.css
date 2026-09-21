@@ -3421,6 +3421,70 @@ flex-direction:column;
     color: #888;
 }
 
+/*9-21-2026 moday */
+/* =========================================
+   PRODUCT ACTIONS
+========================================= */
+
+.product-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+.product-cart,
+.product-enquiry {
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(0, 0, 0, 0.12);
+
+    background: transparent;
+
+    color: inherit;
+
+    border-radius: 50%;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+
+.product-cart:hover,
+.product-enquiry:hover {
+
+    transform: translateY(-2px);
+
+}
+
+
+.product-enquiry {
+
+    border: none;
+
+    background: #25D366;
+
+    color: #fff;
+
+}
+
+
+.product-enquiry:hover {
+
+    color: #fff;
+
+}
+/*end*/
+
 
 /* Product Bottom */
 
