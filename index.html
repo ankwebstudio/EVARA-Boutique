@@ -193,19 +193,47 @@
             <!-- NAV ACTIONS -->
             <div class="evara-nav-actions">
 
-                <a href="#" class="nav-icon" aria-label="Wishlist">
-                    <i class="bi bi-heart"></i>
-                </a>
+                 <!-- Wishlist -->
+    <a href="wishlist.html"
+       class="nav-action"
+       aria-label="Wishlist">
 
-                <a href="#" class="nav-icon" aria-label="Shopping Bag">
-                    <i class="bi bi-bag"></i>
-                </a>
+        <i class="bi bi-heart"></i>
 
-                <a href="#" class="nav-icon"  data-bs-toggle="modal" data-bs-target="#authModal" aria-label="Login or Register">
+        <span class="nav-count"
+              id="wishlistCount">
+            0
+        </span>
 
-                <i class="bi bi-person"></i>
+    </a>
 
-                </a>
+
+    <!-- Cart -->
+    <a href="cart.html"
+       class="nav-action"
+       aria-label="Shopping Cart">
+
+        <i class="bi bi-bag"></i>
+
+        <span class="nav-count"
+              id="cartCount">
+            0
+        </span>
+
+    </a>
+
+
+    <!-- Account -->
+    <button
+        type="button"
+        class="nav-action account-action"
+        data-bs-toggle="modal"
+        data-bs-target="#authModal"
+        aria-label="Account">
+
+        <i class="bi bi-person"></i>
+
+    </button>
 
                 <a href="#" class="nav-whatsapp">
                     <i class="bi bi-whatsapp"></i>
@@ -825,79 +853,107 @@
     <div class="featured-grid">
 
 
-        <!-- PRODUCT 01 -->
+       <!-- PRODUCT 01 -->
 
-        <div class="product-card">
+<div class="product-card">
 
-            <div class="product-image">
+    <div class="product-image">
 
-                <img
-                    src="images/product-1.png"
-                    alt="Evara Elegant Saree"
-                    loading="lazy">
+        <img
+            src="images/product-1.png"
+            alt="Evara Elegant Saree"
+            loading="lazy">
 
-                <span class="product-badge">
-                    NEW
-                </span>
+        <span class="product-badge">
+            NEW
+        </span>
 
-                <button class="product-wishlist"
-                        type="button"
-                        aria-label="Add Elegant Saree to wishlist">
+        <!-- WISHLIST -->
 
-                    <i class="bi bi-heart"></i>
+        <button
+            class="product-wishlist"
+            type="button"
+            data-product="saree"
+            aria-label="Add Elegant Saree to wishlist">
+
+            <i class="bi bi-heart"></i>
+
+        </button>
+
+
+        <div class="product-overlay">
+
+            <a
+                href="view-details.html?product=saree"
+                class="product-view">
+
+                View Details
+
+                <i class="bi bi-arrow-up-right"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="product-content">
+
+        <span class="product-category">
+            SAREES
+        </span>
+
+        <h4>
+            Timeless Silk Saree
+        </h4>
+
+        <p class="product-description">
+            Elegant drape with a refined finish.
+        </p>
+
+
+        <div class="product-bottom">
+
+            <span class="product-price">
+                ₹2,499
+            </span>
+
+
+            <div class="product-actions">
+
+                <!-- ADD TO CART -->
+
+                <button
+                    type="button"
+                    class="product-cart"
+                    data-product="saree"
+                    aria-label="Add Timeless Silk Saree to cart">
+
+                    <i class="bi bi-bag"></i>
 
                 </button>
 
-                <div class="product-overlay">
 
-                    <a href="view-details.html?product=saree"
-                       class="product-view">
+                <!-- WHATSAPP -->
 
-                        View Details
+                <a
+                    href="#"
+                    class="product-enquiry"
+                    data-product="saree"
+                    aria-label="Enquire about Timeless Silk Saree">
 
-                        <i class="bi bi-arrow-up-right"></i>
+                    <i class="bi bi-whatsapp"></i>
 
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <div class="product-content">
-
-                <span class="product-category">
-                    SAREES
-                </span>
-
-                <h4>
-                    Timeless Silk Saree
-                </h4>
-
-                <p class="product-description">
-                    Elegant drape with a refined finish.
-                </p>
-
-                <div class="product-bottom">
-
-                    <span class="product-price">
-                        ₹2,499
-                    </span>
-
-                    <a href="#"
-                       class="product-enquiry"
-                       aria-label="Enquire about Timeless Silk Saree">
-
-                        <i class="bi bi-whatsapp"></i>
-
-                    </a>
-
-                </div>
+                </a>
 
             </div>
 
         </div>
 
+    </div>
+
+</div>
 
 
         <!-- PRODUCT 02 -->
