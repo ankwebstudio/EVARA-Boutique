@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
 
     /* =========================================================
@@ -12,8 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
             price: "₹2,499",
             priceNumber: 2499,
             image: "images/product-1.png",
-            description:
-                "Elegant drape with a refined finish.",
+            description: "Elegant drape with a refined finish.",
             fabric: "Premium Silk",
             occasion: "Festive & Wedding",
             details:
@@ -66,6 +66,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================================
+       WHATSAPP NUMBER
+       Replace with actual boutique number later
+    ========================================================= */
+
+    const whatsappNumber = "919XXXXXXXXX";
+
+
+    /* =========================================================
        LOCAL STORAGE
     ========================================================= */
 
@@ -79,6 +87,63 @@ document.addEventListener("DOMContentLoaded", () => {
         JSON.parse(
             localStorage.getItem("evaraWishlist")
         ) || [];
+
+
+    /* =========================================================
+       NORMALIZE OLD CART DATA
+       Supports older cart formats
+    ========================================================= */
+
+    cart = cart
+        .map(item => {
+
+            /* Old format:
+               ["saree", "dress"]
+            */
+
+            if (typeof item === "string") {
+
+                if (!products[item]) {
+                    return null;
+                }
+
+                return {
+                    productKey: item,
+                    quantity: 1
+                };
+
+            }
+
+
+            /* Current format */
+
+            if (
+                item &&
+                item.productKey &&
+                products[item.productKey]
+            ) {
+
+                return {
+                    productKey: item.productKey,
+                    quantity:
+                        Number(item.quantity) || 1
+                };
+
+            }
+
+
+            return null;
+
+        })
+        .filter(Boolean);
+
+
+    /* Normalize wishlist */
+
+    wishlist = wishlist.filter(
+        productKey =>
+            products[productKey]
+    );
 
 
     /* =========================================================
@@ -109,6 +174,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
+    saveCart();
+    saveWishlist();
+
+
     /* =========================================================
        CART COUNT
     ========================================================= */
@@ -118,18 +187,21 @@ document.addEventListener("DOMContentLoaded", () => {
         const cartCount =
             document.getElementById("cartCount");
 
+
         if (!cartCount) return;
 
 
         const total =
             cart.reduce(
                 (sum, item) =>
-                    sum + item.quantity,
+                    sum +
+                    (Number(item.quantity) || 0),
                 0
             );
 
 
-        cartCount.textContent = total;
+        cartCount.textContent =
+            total;
 
     }
 
@@ -145,6 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "wishlistCount"
             );
 
+
         if (!wishlistCount) return;
 
 
@@ -155,7 +228,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================================
-       CART TOAST
+       TOAST MESSAGE
     ========================================================= */
 
     function showMessage(message) {
@@ -206,7 +279,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
             setTimeout(() => {
 
-                messageBox.remove();
+                if (
+                    messageBox.parentNode
+                ) {
+
+                    messageBox.remove();
+
+                }
 
             }, 300);
 
@@ -216,7 +295,176 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================================
-       ADD TO CART
+       SHOP SIDEBAR ELEMENTS
+    ========================================================= */
+
+    const shopSidebar =
+        document.getElementById(
+            "shopSidebar"
+        );
+
+
+    const shopSidebarOverlay =
+        document.getElementById(
+            "shopSidebarOverlay"
+        );
+
+
+    const sidebarTitle =
+        document.getElementById(
+            "sidebarTitle"
+        );
+
+
+    const sidebarContent =
+        document.getElementById(
+            "shopSidebarContent"
+        );
+
+
+    const cartSidebarFooter =
+        document.getElementById(
+            "cartSidebarFooter"
+        );
+
+
+    const cartSidebarTotal =
+        document.getElementById(
+            "cartSidebarTotal"
+        );
+
+
+    const cartWhatsappButton =
+        document.getElementById(
+            "cartWhatsappButton"
+        );
+
+
+    const openCartButton =
+        document.getElementById(
+            "openCart"
+        );
+
+
+    const openWishlistButton =
+        document.getElementById(
+            "openWishlist"
+        );
+
+
+    const closeShopSidebar =
+        document.getElementById(
+            "closeShopSidebar"
+        );
+
+
+    let currentSidebar = "";
+
+
+    /* =========================================================
+       OPEN SIDEBAR
+    ========================================================= */
+
+    function openSidebar(type) {
+
+        if (!shopSidebar) return;
+
+
+        currentSidebar =
+            type;
+
+
+        shopSidebar.classList.add(
+            "active"
+        );
+
+
+        shopSidebarOverlay?.classList.add(
+            "active"
+        );
+
+
+        document.body.classList.add(
+            "sidebar-open"
+        );
+
+
+        if (type === "cart") {
+
+            if (sidebarTitle) {
+
+                sidebarTitle.textContent =
+                    "Your Cart";
+
+            }
+
+
+            if (cartSidebarFooter) {
+
+                cartSidebarFooter.style.display =
+                    "block";
+
+            }
+
+
+            renderCartSidebar();
+
+        }
+
+        else {
+
+            if (sidebarTitle) {
+
+                sidebarTitle.textContent =
+                    "Your Wishlist";
+
+            }
+
+
+            if (cartSidebarFooter) {
+
+                cartSidebarFooter.style.display =
+                    "none";
+
+            }
+
+
+            renderWishlistSidebar();
+
+        }
+
+    }
+
+
+    /* =========================================================
+       CLOSE SIDEBAR
+    ========================================================= */
+
+    function closeSidebar() {
+
+        shopSidebar?.classList.remove(
+            "active"
+        );
+
+
+        shopSidebarOverlay?.classList.remove(
+            "active"
+        );
+
+
+        document.body.classList.remove(
+            "sidebar-open"
+        );
+
+
+        currentSidebar =
+            "";
+
+    }
+
+
+    /* =========================================================
+       CART
     ========================================================= */
 
     function addToCart(productKey) {
@@ -231,7 +479,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const existing =
             cart.find(
                 item =>
-                    item.productKey === productKey
+                    item.productKey ===
+                    productKey
             );
 
 
@@ -245,17 +494,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             cart.push({
 
-                productKey: productKey,
+                productKey:
+                    productKey,
 
-                name: product.name,
-
-                price: product.price,
-
-                priceNumber: product.priceNumber,
-
-                image: product.image,
-
-                quantity: 1
+                quantity:
+                    1
 
             });
 
@@ -271,6 +514,16 @@ document.addEventListener("DOMContentLoaded", () => {
             `${product.name} added to cart`
         );
 
+
+        if (
+            currentSidebar ===
+            "cart"
+        ) {
+
+            renderCartSidebar();
+
+        }
+
     }
 
 
@@ -283,13 +536,24 @@ document.addEventListener("DOMContentLoaded", () => {
         cart =
             cart.filter(
                 item =>
-                    item.productKey !== productKey
+                    item.productKey !==
+                    productKey
             );
 
 
         saveCart();
 
         updateCartCount();
+
+
+        if (
+            currentSidebar ===
+            "cart"
+        ) {
+
+            renderCartSidebar();
+
+        }
 
     }
 
@@ -306,19 +570,26 @@ document.addEventListener("DOMContentLoaded", () => {
         const item =
             cart.find(
                 product =>
-                    product.productKey === productKey
+                    product.productKey ===
+                    productKey
             );
 
 
         if (!item) return;
 
 
-        item.quantity += change;
+        item.quantity =
+            Number(item.quantity) +
+            change;
 
 
-        if (item.quantity <= 0) {
+        if (
+            item.quantity <= 0
+        ) {
 
-            removeFromCart(productKey);
+            removeFromCart(
+                productKey
+            );
 
             return;
 
@@ -329,11 +600,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
         updateCartCount();
 
+
+        if (
+            currentSidebar ===
+            "cart"
+        ) {
+
+            renderCartSidebar();
+
+        }
+
     }
 
 
     /* =========================================================
-       TOGGLE WISHLIST
+       WISHLIST
     ========================================================= */
 
     function toggleWishlist(productKey) {
@@ -346,7 +627,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         const exists =
-            wishlist.includes(productKey);
+            wishlist.includes(
+                productKey
+            );
 
 
         if (exists) {
@@ -354,7 +637,8 @@ document.addEventListener("DOMContentLoaded", () => {
             wishlist =
                 wishlist.filter(
                     key =>
-                        key !== productKey
+                        key !==
+                        productKey
                 );
 
 
@@ -366,7 +650,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         else {
 
-            wishlist.push(productKey);
+            wishlist.push(
+                productKey
+            );
 
 
             showMessage(
@@ -384,11 +670,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
         updateProductWishlistButton();
 
+
+        if (
+            currentSidebar ===
+            "wishlist"
+        ) {
+
+            renderWishlistSidebar();
+
+        }
+
     }
 
 
     /* =========================================================
-       UPDATE HOMEPAGE WISHLIST BUTTONS
+       HOMEPAGE WISHLIST BUTTONS
     ========================================================= */
 
     function updateWishlistButtons() {
@@ -404,11 +700,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
                 const icon =
-                    button.querySelector("i");
+                    button.querySelector(
+                        "i"
+                    );
 
 
                 if (
-                    wishlist.includes(productKey)
+                    wishlist.includes(
+                        productKey
+                    )
                 ) {
 
                     button.classList.add(
@@ -457,7 +757,600 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================================
-       HOMEPAGE ADD TO CART BUTTONS
+       RENDER CART SIDEBAR
+    ========================================================= */
+
+    function renderCartSidebar() {
+
+        if (!sidebarContent) return;
+
+
+        /* Clean invalid items */
+
+        cart =
+            cart.filter(
+                item =>
+                    item &&
+                    item.productKey &&
+                    products[item.productKey]
+            );
+
+
+        saveCart();
+
+
+        /* EMPTY */
+
+        if (
+            cart.length === 0
+        ) {
+
+            sidebarContent.innerHTML = `
+
+                <div class="sidebar-empty">
+
+                    <i class="bi bi-bag"></i>
+
+                    <h4>
+                        Your cart is empty
+                    </h4>
+
+                    <p>
+                        Add your favourite pieces
+                        to enquire on WhatsApp.
+                    </p>
+
+                </div>
+
+            `;
+
+
+            if (cartSidebarTotal) {
+
+                cartSidebarTotal.textContent =
+                    "₹0";
+
+            }
+
+
+            if (cartWhatsappButton) {
+
+                cartWhatsappButton.removeAttribute(
+                    "href"
+                );
+
+
+                cartWhatsappButton.style.opacity =
+                    "0.5";
+
+
+                cartWhatsappButton.style.pointerEvents =
+                    "none";
+
+            }
+
+
+            return;
+
+        }
+
+
+        let total = 0;
+
+
+        sidebarContent.innerHTML =
+            cart
+                .map(item => {
+
+                    const product =
+                        products[
+                            item.productKey
+                        ];
+
+
+                    if (!product) {
+                        return "";
+                    }
+
+
+                    const quantity =
+                        Number(
+                            item.quantity
+                        ) || 1;
+
+
+                    const itemTotal =
+                        product.priceNumber *
+                        quantity;
+
+
+                    total +=
+                        itemTotal;
+
+
+                    return `
+
+                        <div class="sidebar-product">
+
+                            <img
+                                src="${product.image}"
+                                alt="${product.name}">
+
+
+                            <div class="sidebar-product-info">
+
+                                <h4>
+                                    ${product.name}
+                                </h4>
+
+
+                                <span>
+                                    ${product.category}
+                                </span>
+
+
+                                <strong>
+                                    ${product.price}
+                                </strong>
+
+
+                                <div class="sidebar-product-bottom">
+
+                                    <div class="quantity-control">
+
+                                        <button
+                                            type="button"
+                                            class="quantity-btn"
+                                            data-action="minus"
+                                            data-product="${item.productKey}">
+                                            −
+                                        </button>
+
+
+                                        <span>
+                                            ${quantity}
+                                        </span>
+
+
+                                        <button
+                                            type="button"
+                                            class="quantity-btn"
+                                            data-action="plus"
+                                            data-product="${item.productKey}">
+                                            +
+                                        </button>
+
+                                    </div>
+
+
+                                    <button
+                                        type="button"
+                                        class="sidebar-remove"
+                                        data-remove-cart="${item.productKey}"
+                                        aria-label="Remove ${product.name}">
+
+                                        <i class="bi bi-trash"></i>
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+                })
+                .join("");
+
+
+        /* TOTAL */
+
+        if (cartSidebarTotal) {
+
+            cartSidebarTotal.textContent =
+                `₹${total.toLocaleString(
+                    "en-IN"
+                )}`;
+
+        }
+
+
+        /* WHATSAPP */
+
+        if (cartWhatsappButton) {
+
+            cartWhatsappButton.href =
+                createCartWhatsAppLink();
+
+
+            cartWhatsappButton.target =
+                "_blank";
+
+
+            cartWhatsappButton.style.opacity =
+                "1";
+
+
+            cartWhatsappButton.style.pointerEvents =
+                "auto";
+
+        }
+
+    }
+
+
+    /* =========================================================
+       RENDER WISHLIST SIDEBAR
+    ========================================================= */
+
+    function renderWishlistSidebar() {
+
+        if (!sidebarContent) return;
+
+
+        wishlist =
+            wishlist.filter(
+                productKey =>
+                    products[productKey]
+            );
+
+
+        saveWishlist();
+
+
+        /* EMPTY */
+
+        if (
+            wishlist.length === 0
+        ) {
+
+            sidebarContent.innerHTML = `
+
+                <div class="sidebar-empty">
+
+                    <i class="bi bi-heart"></i>
+
+                    <h4>
+                        Your wishlist is empty
+                    </h4>
+
+                    <p>
+                        Save your favourite styles
+                        here for later.
+                    </p>
+
+                </div>
+
+            `;
+
+
+            return;
+
+        }
+
+
+        sidebarContent.innerHTML =
+            wishlist
+                .map(productKey => {
+
+                    const product =
+                        products[
+                            productKey
+                        ];
+
+
+                    if (!product) {
+                        return "";
+                    }
+
+
+                    return `
+
+                        <div class="sidebar-product">
+
+                            <img
+                                src="${product.image}"
+                                alt="${product.name}">
+
+
+                            <div class="sidebar-product-info">
+
+                                <h4>
+                                    ${product.name}
+                                </h4>
+
+
+                                <span>
+                                    ${product.category}
+                                </span>
+
+
+                                <strong>
+                                    ${product.price}
+                                </strong>
+
+
+                                <div class="wishlist-sidebar-actions">
+
+                                    <button
+                                        type="button"
+                                        class="wishlist-add-cart"
+                                        data-wishlist-cart="${productKey}">
+
+                                        <i class="bi bi-bag"></i>
+
+                                        Add to Cart
+
+                                    </button>
+
+
+                                    <button
+                                        type="button"
+                                        class="sidebar-remove"
+                                        data-remove-wishlist="${productKey}"
+                                        aria-label="Remove ${product.name}">
+
+                                        <i class="bi bi-trash"></i>
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+                })
+                .join("");
+
+    }
+
+
+    /* =========================================================
+       CART WHATSAPP LINK
+    ========================================================= */
+
+    function createCartWhatsAppLink() {
+
+        let message =
+            "Hi Evara Boutique!\n\n";
+
+
+        message +=
+            "I would like to enquire about these products:\n\n";
+
+
+        let total = 0;
+
+
+        cart.forEach(item => {
+
+            const product =
+                products[
+                    item.productKey
+                ];
+
+
+            if (!product) return;
+
+
+            const quantity =
+                Number(
+                    item.quantity
+                ) || 1;
+
+
+            const itemTotal =
+                product.priceNumber *
+                quantity;
+
+
+            total +=
+                itemTotal;
+
+
+            message +=
+                `• ${product.name} × ${quantity} - ₹${itemTotal.toLocaleString(
+                    "en-IN"
+                )}\n`;
+
+        });
+
+
+        message +=
+            `\nEstimated Total: ₹${total.toLocaleString(
+                "en-IN"
+            )}`;
+
+
+        message +=
+            "\n\nPlease share availability and ordering details.";
+
+
+        return (
+            `https://wa.me/${whatsappNumber}` +
+            `?text=${encodeURIComponent(
+                message
+            )}`
+        );
+
+    }
+
+
+    /* =========================================================
+       SIDEBAR CLICK EVENTS
+    ========================================================= */
+
+    sidebarContent?.addEventListener(
+        "click",
+        event => {
+
+            /* REMOVE CART */
+
+            const removeCart =
+                event.target.closest(
+                    "[data-remove-cart]"
+                );
+
+
+            if (removeCart) {
+
+                removeFromCart(
+                    removeCart.dataset
+                        .removeCart
+                );
+
+                return;
+
+            }
+
+
+            /* QUANTITY */
+
+            const quantityButton =
+                event.target.closest(
+                    "[data-action]"
+                );
+
+
+            if (quantityButton) {
+
+                const productKey =
+                    quantityButton.dataset
+                        .product;
+
+
+                const action =
+                    quantityButton.dataset
+                        .action;
+
+
+                changeCartQuantity(
+                    productKey,
+                    action === "plus"
+                        ? 1
+                        : -1
+                );
+
+                return;
+
+            }
+
+
+            /* WISHLIST → CART */
+
+            const wishlistCart =
+                event.target.closest(
+                    "[data-wishlist-cart]"
+                );
+
+
+            if (wishlistCart) {
+
+                addToCart(
+                    wishlistCart.dataset
+                        .wishlistCart
+                );
+
+
+                return;
+
+            }
+
+
+            /* REMOVE WISHLIST */
+
+            const removeWishlist =
+                event.target.closest(
+                    "[data-remove-wishlist]"
+                );
+
+
+            if (removeWishlist) {
+
+                toggleWishlist(
+                    removeWishlist.dataset
+                        .removeWishlist
+                );
+
+                return;
+
+            }
+
+        }
+    );
+
+
+    /* =========================================================
+       NAVBAR CART
+    ========================================================= */
+
+    openCartButton?.addEventListener(
+        "click",
+        () => {
+
+            openSidebar("cart");
+
+        }
+    );
+
+
+    /* =========================================================
+       NAVBAR WISHLIST
+    ========================================================= */
+
+    openWishlistButton?.addEventListener(
+        "click",
+        () => {
+
+            openSidebar("wishlist");
+
+        }
+    );
+
+
+    /* =========================================================
+       CLOSE SIDEBAR
+    ========================================================= */
+
+    closeShopSidebar?.addEventListener(
+        "click",
+        closeSidebar
+    );
+
+
+    shopSidebarOverlay?.addEventListener(
+        "click",
+        closeSidebar
+    );
+
+
+    /* =========================================================
+       ESC KEY
+    ========================================================= */
+
+    document.addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                event.key === "Escape"
+            ) {
+
+                closeSidebar();
+
+            }
+
+        }
+    );
+
+
+    /* =========================================================
+       HOMEPAGE ADD TO CART
     ========================================================= */
 
     document
@@ -471,10 +1364,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 () => {
 
                     const productKey =
-                        button.dataset.product;
+                        button.dataset
+                            .product;
 
 
-                    addToCart(productKey);
+                    addToCart(
+                        productKey
+                    );
 
                 }
             );
@@ -483,7 +1379,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================================
-       HOMEPAGE WISHLIST BUTTONS
+       HOMEPAGE WISHLIST
     ========================================================= */
 
     document
@@ -497,7 +1393,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 () => {
 
                     const productKey =
-                        button.dataset.product;
+                        button.dataset
+                            .product;
 
 
                     toggleWishlist(
@@ -514,10 +1411,6 @@ document.addEventListener("DOMContentLoaded", () => {
        WHATSAPP PRODUCT ENQUIRY
     ========================================================= */
 
-    const whatsappNumber =
-        "919XXXXXXXXX";
-
-
     document
         .querySelectorAll(
             ".product-enquiry"
@@ -525,11 +1418,14 @@ document.addEventListener("DOMContentLoaded", () => {
         .forEach(button => {
 
             const productKey =
-                button.dataset.product;
+                button.dataset
+                    .product;
 
 
             const product =
-                products[productKey];
+                products[
+                    productKey
+                ];
 
 
             if (!product) return;
@@ -540,10 +1436,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             button.href =
-                `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+                `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+                    message
+                )}`;
 
 
-            button.target = "_blank";
+            button.target =
+                "_blank";
 
         });
 
@@ -559,11 +1458,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     const productKey =
-        urlParams.get("product");
+        urlParams.get(
+            "product"
+        );
 
 
     const currentProduct =
-        products[productKey];
+        products[
+            productKey
+        ];
 
 
     if (currentProduct) {
@@ -693,20 +1596,16 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
 
-        if (addToCartButton) {
+        addToCartButton?.addEventListener(
+            "click",
+            () => {
 
-            addToCartButton.addEventListener(
-                "click",
-                () => {
+                addToCart(
+                    productKey
+                );
 
-                    addToCart(
-                        productKey
-                    );
-
-                }
-            );
-
-        }
+            }
+        );
 
 
         /* =====================================================
@@ -793,7 +1692,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             whatsappButton.href =
-                `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+                `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+                    message
+                )}`;
 
 
             whatsappButton.target =
@@ -802,9 +1703,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        /* =====================================================
-           PAGE TITLE
-        ===================================================== */
+        /* PAGE TITLE */
 
         document.title =
             `${currentProduct.name} | Evara Boutique`;
@@ -910,7 +1809,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
                     const info =
-                        collectionInfo[dress];
+                        collectionInfo[
+                            dress
+                        ];
 
 
                     mannequin.style.opacity =
@@ -928,17 +1829,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
                         if (
-                            info &&
-                            showcaseTitle &&
-                            showcaseDescription
+                            info
                         ) {
 
-                            showcaseTitle.textContent =
-                                info.title;
+                            if (
+                                showcaseTitle
+                            ) {
+
+                                showcaseTitle.textContent =
+                                    info.title;
+
+                            }
 
 
-                            showcaseDescription.textContent =
-                                info.description;
+                            if (
+                                showcaseDescription
+                            ) {
+
+                                showcaseDescription.textContent =
+                                    info.description;
+
+                            }
 
                         }
 
@@ -1050,69 +1961,60 @@ document.addEventListener("DOMContentLoaded", () => {
         mobileButtons.length
     ) {
 
-        mobileButtons.forEach(button => {
+        mobileButtons.forEach(
+            button => {
 
-            button.addEventListener(
-                "click",
-                () => {
+                button.addEventListener(
+                    "click",
+                    () => {
 
-                    mobileButtons.forEach(
-                        btn =>
-                            btn.classList.remove(
-                                "active"
-                            )
-                    );
-
-
-                    button.classList.add(
-                        "active"
-                    );
+                        mobileButtons.forEach(
+                            btn =>
+                                btn.classList.remove(
+                                    "active"
+                                )
+                        );
 
 
-                    const dress =
-                        button.dataset.dress;
+                        button.classList.add(
+                            "active"
+                        );
 
 
-                    mobileImage.style.opacity =
-                        "0";
-
-
-                    mobileImage.style.transform =
-                        "scale(.96)";
-
-
-                    setTimeout(() => {
-
-                        mobileImage.src =
-                            `images/mannequin-${dress}.png`;
+                        const dress =
+                            button.dataset.dress;
 
 
                         mobileImage.style.opacity =
-                            "1";
+                            "0";
 
 
                         mobileImage.style.transform =
-                            "scale(1)";
+                            "scale(.96)";
 
-                    }, 250);
 
-                }
-            );
+                        setTimeout(() => {
 
-        });
+                            mobileImage.src =
+                                `images/mannequin-${dress}.png`;
+
+
+                            mobileImage.style.opacity =
+                                "1";
+
+
+                            mobileImage.style.transform =
+                                "scale(1)";
+
+                        }, 250);
+
+                    }
+                );
+
+            }
+        );
 
     }
-
-
-    /* =========================================================
-       INITIAL COUNTS
-    ========================================================= */
-
-    updateCartCount();
-
-    updateWishlistCount();
-
-    updateWishlistButtons();
 
 
     /* =========================================================
@@ -1157,8 +2059,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function showLogin() {
 
-        if (!loginForm || !registerForm)
-            return;
+        if (
+            !loginForm ||
+            !registerForm
+        ) return;
 
 
         loginForm.classList.remove(
@@ -1185,8 +2089,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function showRegister() {
 
-        if (!loginForm || !registerForm)
-            return;
+        if (
+            !loginForm ||
+            !registerForm
+        ) return;
 
 
         registerForm.classList.remove(
@@ -1251,7 +2157,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     const input =
                         this.parentElement
-                            .querySelector(
+                            ?.querySelector(
                                 "input"
                             );
 
@@ -1310,98 +2216,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
         });
 
-});
 
-/* ==========================================
-   SHOP SIDEBAR
-========================================== */
+    /* =========================================================
+       INITIAL STATE
+    ========================================================= */
 
-const shopSidebar = document.getElementById("shopSidebar");
-const shopSidebarOverlay =
-    document.getElementById("shopSidebarOverlay");
+    updateCartCount();
 
-const sidebarTitle =
-    document.getElementById("sidebarTitle");
+    updateWishlistCount();
 
-const sidebarContent =
-    document.getElementById("shopSidebarContent");
-
-const cartSidebarFooter =
-    document.getElementById("cartSidebarFooter");
-
-const cartSidebarTotal =
-    document.getElementById("cartSidebarTotal");
-
-const cartWhatsappButton =
-    document.getElementById("cartWhatsappButton");
-
-const openCartButton =
-    document.getElementById("openCart");
-
-const openWishlistButton =
-    document.getElementById("openWishlist");
-
-const closeShopSidebar =
-    document.getElementById("closeShopSidebar");
-
-
-/* OPEN SIDEBAR */
-
-function openSidebar(type) {
-
-    if (!shopSidebar) return;
-
-    shopSidebar.classList.add("active");
-
-    shopSidebarOverlay?.classList.add("active");
-
-    if (type === "cart") {
-
-        sidebarTitle.textContent = "Your Cart";
-
-        renderCartSidebar();
-
-    } else {
-
-        sidebarTitle.textContent = "Your Wishlist";
-
-        renderWishlistSidebar();
-
-    }
-}
-
-
-/* CLOSE SIDEBAR */
-
-function closeSidebar() {
-
-    shopSidebar?.classList.remove("active");
-
-    shopSidebarOverlay?.classList.remove("active");
-
-}
-
-
-/* BUTTON EVENTS */
-
-openCartButton?.addEventListener("click", function () {
-
-    openSidebar("cart");
+    updateWishlistButtons();
 
 });
 
-
-openWishlistButton?.addEventListener("click", function () {
-
-    openSidebar("wishlist");
-
-});
-
-
-closeShopSidebar?.addEventListener("click", closeSidebar);
-
-
-shopSidebarOverlay?.addEventListener(
-    "click",
-    closeSidebar
-);
