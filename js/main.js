@@ -350,3 +350,95 @@ passwordToggles.forEach(toggle => {
     );
 
 });
+
+/* =================================================
+   PRODUCT CART
+================================================= */
+
+const addToCartButton =
+    document.getElementById(
+        "addToCartButton"
+    );
+
+
+if (addToCartButton) {
+
+    addToCartButton.addEventListener(
+        "click",
+        () => {
+
+            addToCart(productKey);
+
+        }
+    );
+
+}
+
+
+
+/* =================================================
+   PRODUCT WISHLIST
+================================================= */
+
+const productWishlistButton =
+    document.getElementById(
+        "productWishlistButton"
+    );
+
+
+function updateProductWishlistButton() {
+
+    if (!productWishlistButton)
+        return;
+
+
+    const icon =
+        productWishlistButton.querySelector(
+            "i"
+        );
+
+
+    if (wishlist.includes(productKey)) {
+
+        productWishlistButton.classList.add(
+            "active"
+        );
+
+        productWishlistButton.innerHTML =
+            `<i class="bi bi-heart-fill"></i>
+             Saved to Wishlist`;
+
+    }
+
+    else {
+
+        productWishlistButton.classList.remove(
+            "active"
+        );
+
+        productWishlistButton.innerHTML =
+            `<i class="bi bi-heart"></i>
+             Add to Wishlist`;
+
+    }
+
+}
+
+
+if (productWishlistButton) {
+
+    productWishlistButton.addEventListener(
+        "click",
+        () => {
+
+            toggleWishlist(productKey);
+
+            updateProductWishlistButton();
+
+        }
+    );
+
+}
+
+
+updateProductWishlistButton();
