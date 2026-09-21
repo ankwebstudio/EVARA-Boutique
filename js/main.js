@@ -1312,323 +1312,96 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-function renderCartSidebar() {
+/* ==========================================
+   SHOP SIDEBAR
+========================================== */
 
-    if (!sidebarContent) return;
+const shopSidebar = document.getElementById("shopSidebar");
+const shopSidebarOverlay =
+    document.getElementById("shopSidebarOverlay");
 
+const sidebarTitle =
+    document.getElementById("sidebarTitle");
 
-    sidebarTitle.textContent =
-        "Your Cart";
+const sidebarContent =
+    document.getElementById("shopSidebarContent");
 
+const cartSidebarFooter =
+    document.getElementById("cartSidebarFooter");
 
-    cartSidebarFooter.style.display =
-        "block";
+const cartSidebarTotal =
+    document.getElementById("cartSidebarTotal");
 
+const cartWhatsappButton =
+    document.getElementById("cartWhatsappButton");
 
-    if (!cart.length) {
+const openCartButton =
+    document.getElementById("openCart");
 
-        sidebarContent.innerHTML = `
+const openWishlistButton =
+    document.getElementById("openWishlist");
 
-            <div class="sidebar-empty">
-
-                <i class="bi bi-bag"></i>
-
-                <h4>
-                    Your cart is empty
-                </h4>
-
-                <p>
-                    Add something beautiful
-                    to your cart.
-                </p>
-
-            </div>
-
-        `;
+const closeShopSidebar =
+    document.getElementById("closeShopSidebar");
 
 
-        cartSidebarFooter.style.display =
-            "none";
+/* OPEN SIDEBAR */
 
-        return;
+function openSidebar(type) {
+
+    if (!shopSidebar) return;
+
+    shopSidebar.classList.add("active");
+
+    shopSidebarOverlay?.classList.add("active");
+
+    if (type === "cart") {
+
+        sidebarTitle.textContent = "Your Cart";
+
+        renderCartSidebar();
+
+    } else {
+
+        sidebarTitle.textContent = "Your Wishlist";
+
+        renderWishlistSidebar();
 
     }
+}
 
 
-    sidebarContent.innerHTML =
-        cart.map(item => `
+/* CLOSE SIDEBAR */
 
-            <div
-                class="sidebar-product"
-                data-product="${item.productKey}">
+function closeSidebar() {
 
-                <img
-                    src="${item.image}"
-                    alt="${item.name}"
-                    class="sidebar-product-image">
+    shopSidebar?.classList.remove("active");
 
-
-                <div class="sidebar-product-info">
-
-                    <h4>
-                        ${item.name}
-                    </h4>
-
-                    <div class="sidebar-product-price">
-                        ${item.price}
-                    </div>
-
-
-                    <div class="sidebar-quantity">
-
-                        <button
-                            type="button"
-                            class="quantity-minus"
-                            data-product="${item.productKey}">
-
-                            −
-
-                        </button>
-
-
-                        <span>
-                            ${item.quantity}
-                        </span>
-
-
-                        <button
-                            type="button"
-                            class="quantity-plus"
-                            data-product="${item.productKey}">
-
-                            +
-
-                        </button>
-
-                    </div>
-
-
-                    <button
-                        type="button"
-                        class="sidebar-remove"
-                        data-product="${item.productKey}">
-
-                        Remove
-
-                    </button>
-
-                </div>
-
-            </div>
-
-        `).join("");
-
-
-    const total =
-        cart.reduce(
-            (sum, item) =>
-                sum +
-                (
-                    item.priceNumber *
-                    item.quantity
-                ),
-            0
-        );
-
-
-    document.getElementById(
-        "cartSidebarTotal"
-    ).textContent =
-        `₹${total.toLocaleString("en-IN")}`;
-
-
-    setupCartSidebarEvents();
-
-    updateCartWhatsapp();
+    shopSidebarOverlay?.classList.remove("active");
 
 }
 
-function setupCartSidebarEvents() {
 
-    document
-        .querySelectorAll(
-            ".quantity-minus"
-        )
-        .forEach(button => {
+/* BUTTON EVENTS */
 
-            button.addEventListener(
-                "click",
-                () => {
+openCartButton?.addEventListener("click", function () {
 
-                    changeCartQuantity(
-                        button.dataset.product,
-                        -1
-                    );
+    openSidebar("cart");
 
-                    renderCartSidebar();
+});
 
-                }
-            );
 
-        });
+openWishlistButton?.addEventListener("click", function () {
 
+    openSidebar("wishlist");
 
-    document
-        .querySelectorAll(
-            ".quantity-plus"
-        )
-        .forEach(button => {
+});
 
-            button.addEventListener(
-                "click",
-                () => {
 
-                    changeCartQuantity(
-                        button.dataset.product,
-                        1
-                    );
+closeShopSidebar?.addEventListener("click", closeSidebar);
 
-                    renderCartSidebar();
 
-                }
-            );
-
-        });
-
-
-    document
-        .querySelectorAll(
-            ".sidebar-remove"
-        )
-        .forEach(button => {
-
-            button.addEventListener(
-                "click",
-                () => {
-
-                    removeFromCart(
-                        button.dataset.product
-                    );
-
-                    renderCartSidebar();
-
-                }
-            );
-
-        });
-
-}
-
-function setupWishlistSidebarEvents() {
-
-    document
-        .querySelectorAll(
-            ".wishlist-add-cart"
-        )
-        .forEach(button => {
-
-            button.addEventListener(
-                "click",
-                () => {
-
-                    addToCart(
-                        button.dataset.product
-                    );
-
-                    renderWishlistSidebar();
-
-                }
-            );
-
-        });
-
-
-    document
-        .querySelectorAll(
-            ".wishlist-remove"
-        )
-        .forEach(button => {
-
-            button.addEventListener(
-                "click",
-                () => {
-
-                    toggleWishlist(
-                        button.dataset.product
-                    );
-
-                    renderWishlistSidebar();
-
-                }
-            );
-
-        });
-
-}
-
-function updateCartWhatsapp() {
-
-    const whatsappButton =
-        document.getElementById(
-            "cartWhatsappButton"
-        );
-
-
-    if (!whatsappButton)
-        return;
-
-
-    if (!cart.length) {
-
-        whatsappButton.style.display =
-            "none";
-
-        return;
-
-    }
-
-
-    whatsappButton.style.display =
-        "flex";
-
-
-    let message =
-        "Hi Evara Boutique, I am interested in these products:%0A%0A";
-
-
-    cart.forEach(item => {
-
-        message +=
-            `• ${item.name} × ${item.quantity} — ${item.price}%0A`;
-
-    });
-
-
-    const total =
-        cart.reduce(
-            (sum, item) =>
-                sum +
-                (
-                    item.priceNumber *
-                    item.quantity
-                ),
-            0
-        );
-
-
-    message +=
-        `%0ATotal: ₹${total.toLocaleString("en-IN")}`;
-
-
-    message +=
-        "%0A%0APlease share availability and details.";
-
-
-    const whatsappNumber =
-        "919XXXXXXXXX";
-
-
-    whatsappButton.href =
-        `https://wa.me/${whatsappNumber}?text=${message}`;
-
-}
+shopSidebarOverlay?.addEventListener(
+    "click",
+    closeSidebar
+);
