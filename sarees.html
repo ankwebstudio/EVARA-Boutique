@@ -87,6 +87,52 @@ product1
     transform: translateY(-3px);
 }
 
+        /* OVERLAY */
+.shop-panel-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 9998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+}
+
+/* SIDEBAR */
+.shop-side-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 430px;
+    max-width: 100%;
+    height: 100vh;
+    background: #fff;
+    z-index: 9999;
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: transform 0.4s ease, visibility 0.4s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+/* OPEN STATE */
+.shop-side-panel.active {
+    transform: translateX(0);
+    visibility: visible;
+}
+
+.shop-panel-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* MOBILE */
+@media (max-width: 576px) {
+    .shop-side-panel {
+        width: 100%;
+    }
+}
+
     </style>
 
 </head>
