@@ -35,6 +35,60 @@
         rel="stylesheet"
         href="css/collection.css">
 
+    <style>
+        
+.saree-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.saree-product-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.saree-cart-btn,
+.saree-whatsapp-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: all .3s ease;
+}
+
+.saree-cart-btn {
+    background: #fff;
+    color: #986642;
+    border: 1px solid #e5d9ce;
+    cursor: pointer;
+}
+
+.saree-cart-btn:hover {
+    background: #986642;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+.saree-whatsapp-btn {
+    background: #25d366;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+}
+
+.saree-whatsapp-btn:hover {
+    background: #1da851;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+    </style>
+
 </head>
 
 
@@ -426,12 +480,29 @@
                             ₹2,499
                         </strong>
 
-                        <a href="#"
-                           aria-label="Enquire on WhatsApp">
+                       <div class="saree-product-actions">
 
-                            <i class="bi bi-whatsapp"></i>
+                                <!-- ADD TO CART -->
+                                <button class="saree-cart-btn"
+                                        type="button"
+                                        aria-label="Add to Cart">
+                        
+                                    <i class="bi bi-bag"></i>
+                        
+                                </button>
+                        
+                                <!-- WHATSAPP -->
+                                <a href="https://wa.me/919876543210"
+                                   class="saree-whatsapp-btn"
+                                   aria-label="Enquire on WhatsApp"
+                                   target="_blank">
+                        
+                                    <i class="bi bi-whatsapp"></i>
+                        
+                                </a>
+                    
+                        </div>
 
-                        </a>
 
                     </div>
 
