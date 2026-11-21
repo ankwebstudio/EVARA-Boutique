@@ -2488,6 +2488,874 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
+    
+<!-- EVARA PREMIUM CHECKOUT MODAL -->
+<div class="evara-checkout-modal" id="evaraCheckoutModal">
+
+    <div class="checkout-backdrop"></div>
+
+    <div class="checkout-container">
+
+        <!-- HEADER -->
+        <div class="checkout-header">
+            <div>
+                <span class="checkout-eyebrow">EVARA · CHECKOUT</span>
+                <h2>A thoughtful purchase.</h2>
+                <p>Every detail matters. Complete your order with care.</p>
+            </div>
+
+            <button class="checkout-close" id="checkoutClose" aria-label="Close checkout">
+                <i class="bi bi-x-lg"></i>
+            </button>
+        </div>
+
+        <!-- PROGRESS -->
+        <div class="checkout-progress">
+            <div class="checkout-progress-step active" id="checkoutStep1Indicator">
+                <span>01</span>
+                <p>Details</p>
+            </div>
+
+            <div class="checkout-progress-line"></div>
+
+            <div class="checkout-progress-step" id="checkoutStep2Indicator">
+                <span>02</span>
+                <p>Delivery</p>
+            </div>
+
+            <div class="checkout-progress-line"></div>
+
+            <div class="checkout-progress-step" id="checkoutStep3Indicator">
+                <span>03</span>
+                <p>Complete</p>
+            </div>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="checkout-body">
+
+            <!-- LEFT SIDE FORM -->
+            <div class="checkout-form-area">
+
+                <!-- STEP 1 -->
+                <div class="checkout-form-step active" id="checkoutStep1">
+
+                    <div class="checkout-section-heading">
+                        <span>YOUR INFORMATION</span>
+                        <h3>Who are we sending this to?</h3>
+                        <p>Let's start with a few details.</p>
+                    </div>
+
+                    <form id="evaraCheckoutForm">
+
+                        <div class="checkout-input-group">
+                            <label for="checkoutName">Full Name</label>
+                            <input type="text" id="checkoutName"
+                                   placeholder="Enter your full name" required>
+                        </div>
+
+                        <div class="checkout-input-row">
+
+                            <div class="checkout-input-group">
+                                <label for="checkoutEmail">Email Address</label>
+                                <input type="email" id="checkoutEmail"
+                                       placeholder="you@example.com" required>
+                            </div>
+
+                            <div class="checkout-input-group">
+                                <label for="checkoutPhone">Phone Number</label>
+                                <input type="tel" id="checkoutPhone"
+                                       placeholder="10-digit mobile number"
+                                       pattern="[6-9][0-9]{9}" maxlength="10" required>
+                            </div>
+
+                        </div>
+
+                        <button type="button" class="checkout-next-btn" id="checkoutNext1">
+                            Continue to Delivery
+                            <i class="bi bi-arrow-right"></i>
+                        </button>
+
+                    </form>
+                </div>
+
+
+                <!-- STEP 2 -->
+                <div class="checkout-form-step" id="checkoutStep2">
+
+                    <div class="checkout-section-heading">
+                        <span>DELIVERY DETAILS</span>
+                        <h3>Where should it arrive?</h3>
+                        <p>We will make sure your pieces reach you safely.</p>
+                    </div>
+
+                    <form id="evaraDeliveryForm">
+
+                        <div class="checkout-input-group">
+                            <label for="checkoutAddress">House / Building / Street</label>
+                            <input type="text" id="checkoutAddress"
+                                   placeholder="House name, street, address" required>
+                        </div>
+
+                        <div class="checkout-input-row">
+
+                            <div class="checkout-input-group">
+                                <label for="checkoutCity">City / Town</label>
+                                <input type="text" id="checkoutCity"
+                                       placeholder="Your city" required>
+                            </div>
+
+                            <div class="checkout-input-group">
+                                <label for="checkoutDistrict">District</label>
+                                <input type="text" id="checkoutDistrict"
+                                       placeholder="District" required>
+                            </div>
+
+                        </div>
+
+                        <div class="checkout-input-row">
+
+                            <div class="checkout-input-group">
+                                <label for="checkoutState">State</label>
+                                <input type="text" id="checkoutState"
+                                       value="Kerala" required>
+                            </div>
+
+                            <div class="checkout-input-group">
+                                <label for="checkoutPincode">PIN Code</label>
+                                <input type="text" id="checkoutPincode"
+                                       placeholder="6-digit PIN" maxlength="6"
+                                       pattern="[0-9]{6}" required>
+                            </div>
+
+                        </div>
+
+                        <div class="checkout-input-group">
+                            <label for="checkoutLandmark">Landmark <span>(Optional)</span></label>
+                            <input type="text" id="checkoutLandmark"
+                                   placeholder="Nearby landmark">
+                        </div>
+
+                        <!-- DELIVERY METHOD -->
+                        <div class="checkout-option-heading">
+                            <label>Delivery Preference</label>
+                        </div>
+
+                        <div class="checkout-delivery-options">
+
+                            <label class="checkout-option-card selected">
+                                <input type="radio" name="deliveryMethod"
+                                       value="Standard Delivery" checked>
+
+                                <div>
+                                    <strong>Standard</strong>
+                                    <span>Carefully packed · Free</span>
+                                </div>
+
+                                <b>FREE</b>
+                            </label>
+
+                            <label class="checkout-option-card">
+                                <input type="radio" name="deliveryMethod"
+                                       value="Express Delivery">
+
+                                <div>
+                                    <strong>Express</strong>
+                                    <span>Priority handling</span>
+                                </div>
+
+                                <b>₹150</b>
+                            </label>
+
+                        </div>
+
+                        <div class="checkout-buttons">
+
+                            <button type="button" class="checkout-back-btn" id="checkoutBack1">
+                                <i class="bi bi-arrow-left"></i>
+                                Back
+                            </button>
+
+                            <button type="button" class="checkout-next-btn" id="checkoutNext2">
+                                Continue to Payment
+                                <i class="bi bi-arrow-right"></i>
+                            </button>
+
+                        </div>
+
+                    </form>
+                </div>
+
+
+                <!-- STEP 3 -->
+                <div class="checkout-form-step" id="checkoutStep3">
+
+                    <div class="checkout-section-heading">
+                        <span>FINAL STEP</span>
+                        <h3>Almost yours.</h3>
+                        <p>Choose how you'd like to complete your purchase.</p>
+                    </div>
+
+                    <div class="checkout-payment-options">
+
+                        <label class="checkout-payment-card selected">
+                            <input type="radio" name="paymentMethod"
+                                   value="Cash on Delivery" checked>
+
+                            <div class="payment-icon">
+                                <i class="bi bi-cash"></i>
+                            </div>
+
+                            <div>
+                                <strong>Cash on Delivery</strong>
+                                <span>Pay when your order arrives</span>
+                            </div>
+
+                            <i class="bi bi-check-circle payment-check"></i>
+                        </label>
+
+                        <label class="checkout-payment-card">
+                            <input type="radio" name="paymentMethod"
+                                   value="UPI">
+
+                            <div class="payment-icon">
+                                <i class="bi bi-phone"></i>
+                            </div>
+
+                            <div>
+                                <strong>UPI Payment</strong>
+                                <span>Pay using UPI apps</span>
+                            </div>
+
+                            <i class="bi bi-check-circle payment-check"></i>
+                        </label>
+
+        <label class="checkout-payment-card">
+            <input type="radio" name="paymentMethod" value="Online Payment">
+
+            <div class="payment-icon">
+                <i class="bi bi-credit-card"></i>
+            </div>
+
+            <div>
+                <strong>Online Payment</strong>
+                <span>Debit / Credit Card</span>
+            </div>
+
+            <i class="bi bi-check-circle payment-check"></i>
+        </label>
+
+                    </div>
+
+                    <div class="checkout-note">
+                        <i class="bi bi-shield-lock"></i>
+                        <span>Your details are used only to process this order.</span>
+                    </div>
+
+                    <div class="checkout-buttons">
+
+                        <button type="button" class="checkout-back-btn" id="checkoutBack2">
+                            <i class="bi bi-arrow-left"></i>
+                            Back
+                        </button>
+
+                        <button type="button" class="checkout-place-btn" id="checkoutPlaceOrder">
+                            Place My Order
+                            <i class="bi bi-arrow-right"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SUCCESS SCREEN -->
+                <div class="checkout-success" id="checkoutSuccess">
+
+                    <div class="checkout-success-icon">
+                        <i class="bi bi-flower1"></i>
+                    </div>
+
+                    <span>THANK YOU FOR CHOOSING EVARA</span>
+
+                    <h2>Your order is<br>beautifully begun.</h2>
+
+                    <p>
+                        Your selection has been received.
+                        We look forward to preparing something special for you.
+                    </p>
+
+                    <div class="checkout-order-number">
+                        <span>ORDER REFERENCE</span>
+                        <strong id="checkoutOrderNumber">EVR-000000</strong>
+                    </div>
+
+                    <button type="button" class="checkout-done-btn" id="checkoutDone">
+                        Continue Exploring
+                        <i class="bi bi-arrow-right"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT ORDER SUMMARY -->
+            <aside class="checkout-summary">
+
+                <div class="checkout-summary-top">
+                    <span>YOUR SELECTION</span>
+                    <h3>Order Summary</h3>
+                </div>
+
+                <div id="checkoutSummaryItems" class="checkout-summary-items">
+                    <!-- Products rendered by JavaScript -->
+                </div>
+
+                <div class="checkout-summary-calculation">
+
+                    <div>
+                        <span>Subtotal</span>
+                        <strong id="checkoutSubtotal">₹0</strong>
+                    </div>
+
+                    <div>
+                        <span>Delivery</span>
+                        <strong id="checkoutDeliveryFee">FREE</strong>
+                    </div>
+
+                    <div class="checkout-total-row">
+                        <span>Total</span>
+                        <strong id="checkoutTotal">₹0</strong>
+                    </div>
+
+                </div>
+
+                <div class="checkout-summary-footer">
+                    <i class="bi bi-box-seam"></i>
+                    <p>Every order is packed with care, just for you.</p>
+                </div>
+
+            </aside>
+
+        </div>
+
+    </div>
+
+</div>
+
+    <script>
+        
+document.addEventListener("DOMContentLoaded", () => {
+
+    const checkoutModal = document.getElementById("evaraCheckoutModal");
+    const checkoutButton = document.getElementById("shopCheckout");
+    const checkoutClose = document.getElementById("checkoutClose");
+    const checkoutDone = document.getElementById("checkoutDone");
+
+    const step1 = document.getElementById("checkoutStep1");
+    const step2 = document.getElementById("checkoutStep2");
+    const step3 = document.getElementById("checkoutStep3");
+    const successScreen = document.getElementById("checkoutSuccess");
+
+    const next1 = document.getElementById("checkoutNext1");
+    const next2 = document.getElementById("checkoutNext2");
+    const back1 = document.getElementById("checkoutBack1");
+    const back2 = document.getElementById("checkoutBack2");
+    const placeOrder = document.getElementById("checkoutPlaceOrder");
+
+    const summaryItems = document.getElementById("checkoutSummaryItems");
+
+    const subtotalElement = document.getElementById("checkoutSubtotal");
+    const deliveryElement = document.getElementById("checkoutDeliveryFee");
+    const totalElement = document.getElementById("checkoutTotal");
+
+    const indicators = [
+        document.getElementById("checkoutStep1Indicator"),
+        document.getElementById("checkoutStep2Indicator"),
+        document.getElementById("checkoutStep3Indicator")
+    ];
+
+    if (!checkoutModal || !checkoutButton) return;
+
+
+    /* ==================================
+       HELPERS
+    ================================== */
+
+    function getCart() {
+        try {
+            return JSON.parse(localStorage.getItem("evaraCart")) || [];
+        } catch {
+            return [];
+        }
+    }
+
+    function getProductName(item) {
+        return item.name || item.title || item.productName || "EVARA Product";
+    }
+
+    function getProductPrice(item) {
+        const rawPrice = item.price ?? item.productPrice ?? 0;
+        return Number(String(rawPrice).replace(/[₹,\s]/g, "")) || 0;
+    }
+
+    function getProductQuantity(item) {
+        return Number(item.quantity ?? item.qty ?? 1) || 1;
+    }
+
+    function getProductImage(item) {
+        return item.image || item.img || item.imageUrl || "";
+    }
+
+    function formatPrice(value) {
+        return "₹" + Number(value).toLocaleString("en-IN");
+    }
+
+
+    /* ==================================
+       DELIVERY CHARGE
+    ================================== */
+
+    function getDeliveryCharge() {
+        const selected = document.querySelector(
+            'input[name="deliveryMethod"]:checked'
+        );
+
+        return selected && selected.value === "Express Delivery" ? 150 : 0;
+    }
+
+
+    /* ==================================
+       ORDER SUMMARY
+    ================================== */
+
+    function renderCheckoutSummary() {
+
+        const cart = getCart();
+
+        let subtotal = 0;
+
+        summaryItems.innerHTML = "";
+
+        if (!cart.length) {
+            summaryItems.innerHTML = `
+                <p class="checkout-empty-message">
+                    Your shopping bag is empty.
+                </p>
+            `;
+        }
+
+        cart.forEach(item => {
+
+            const price = getProductPrice(item);
+            const quantity = getProductQuantity(item);
+
+            subtotal += price * quantity;
+
+            const product = document.createElement("div");
+            product.className = "checkout-summary-product";
+
+            const image = document.createElement("img");
+            image.src = getProductImage(item);
+            image.alt = getProductName(item);
+
+            image.onerror = function () {
+                this.style.display = "none";
+            };
+
+            const info = document.createElement("div");
+            info.className = "checkout-summary-product-info";
+
+            const name = document.createElement("h4");
+            name.textContent = getProductName(item);
+
+            const qty = document.createElement("p");
+            qty.textContent = "Quantity: " + quantity;
+
+            const priceText = document.createElement("strong");
+            priceText.textContent = formatPrice(price * quantity);
+
+            info.append(name, qty, priceText);
+            product.append(image, info);
+
+            summaryItems.appendChild(product);
+
+        });
+
+        updateCheckoutTotals(subtotal);
+
+    }
+
+
+    /* ==================================
+       TOTALS
+    ================================== */
+
+    function updateCheckoutTotals(subtotal) {
+
+        const delivery = getDeliveryCharge();
+        const total = subtotal + delivery;
+
+        subtotalElement.textContent = formatPrice(subtotal);
+
+        deliveryElement.textContent = delivery === 0
+            ? "FREE"
+            : formatPrice(delivery);
+
+        totalElement.textContent = formatPrice(total);
+
+    }
+
+
+    /* ==================================
+       MODAL OPEN / CLOSE
+    ================================== */
+
+    function openCheckout() {
+
+        if (!getCart().length) {
+            alert("Your shopping bag is empty.");
+            return;
+        }
+
+        renderCheckoutSummary();
+        resetCheckout();
+
+        checkoutModal.classList.add("active");
+        document.body.classList.add("checkout-modal-open");
+
+    }
+
+    function closeCheckout() {
+
+        checkoutModal.classList.remove("active");
+        document.body.classList.remove("checkout-modal-open");
+
+    }
+
+    checkoutButton.addEventListener("click", openCheckout);
+
+    checkoutClose.addEventListener("click", closeCheckout);
+
+    checkoutModal.querySelector(".checkout-backdrop")
+        .addEventListener("click", closeCheckout);
+
+
+    /* ==================================
+       STEP NAVIGATION
+    ================================== */
+
+    function showStep(stepNumber) {
+
+        [step1, step2, step3].forEach(step => {
+            step.classList.remove("active");
+        });
+
+        successScreen.classList.remove("active");
+
+        if (stepNumber === 1) step1.classList.add("active");
+        if (stepNumber === 2) step2.classList.add("active");
+        if (stepNumber === 3) step3.classList.add("active");
+
+        indicators.forEach((indicator, index) => {
+
+            indicator.classList.remove("active", "completed");
+
+            if (index + 1 < stepNumber) {
+                indicator.classList.add("completed");
+            }
+
+            if (index + 1 === stepNumber) {
+                indicator.classList.add("active");
+            }
+
+        });
+
+        checkoutModal.querySelector(".checkout-container")
+            .scrollTo({ top: 0, behavior: "smooth" });
+
+    }
+
+
+    /* ==================================
+       VALIDATION
+    ================================== */
+
+    function validateFields(container) {
+
+        const fields = container.querySelectorAll(
+            "input[required]"
+        );
+
+        for (const field of fields) {
+
+            if (!field.checkValidity()) {
+
+                field.reportValidity();
+                field.focus();
+
+                return false;
+            }
+
+        }
+
+        return true;
+    }
+
+
+    /* STEP 1 -> STEP 2 */
+
+    next1.addEventListener("click", () => {
+
+        const form = document.getElementById("evaraCheckoutForm");
+
+        if (!validateFields(form)) return;
+
+        showStep(2);
+
+    });
+
+
+    /* STEP 2 -> STEP 3 */
+
+    next2.addEventListener("click", () => {
+
+        const form = document.getElementById("evaraDeliveryForm");
+
+        if (!validateFields(form)) return;
+
+        showStep(3);
+
+    });
+
+
+    /* BACK BUTTONS */
+
+    back1.addEventListener("click", () => showStep(1));
+    back2.addEventListener("click", () => showStep(2));
+
+
+    /* ==================================
+       SELECTED DELIVERY / PAYMENT STYLES
+    ================================== */
+
+    document.querySelectorAll(".checkout-option-card").forEach(card => {
+
+        card.addEventListener("click", () => {
+
+            document.querySelectorAll(".checkout-option-card")
+                .forEach(item => item.classList.remove("selected"));
+
+            card.classList.add("selected");
+
+            const radio = card.querySelector('input[type="radio"]');
+            radio.checked = true;
+
+            renderCheckoutSummary();
+
+        });
+
+    });
+
+
+    document.querySelectorAll(".checkout-payment-card").forEach(card => {
+
+        card.addEventListener("click", () => {
+
+            document.querySelectorAll(".checkout-payment-card")
+                .forEach(item => item.classList.remove("selected"));
+
+            card.classList.add("selected");
+
+            const radio = card.querySelector('input[type="radio"]');
+            radio.checked = true;
+
+        });
+
+    });
+
+
+    /* ==================================
+       PLACE ORDER
+    ================================== */
+
+    placeOrder.addEventListener("click", () => {
+
+        const cart = getCart();
+
+        if (!cart.length) {
+            alert("Your shopping bag is empty.");
+            return;
+        }
+
+        const deliveryForm = document.getElementById("evaraDeliveryForm");
+
+        if (!validateFields(deliveryForm)) {
+            showStep(2);
+            return;
+        }
+
+        const customerForm = document.getElementById("evaraCheckoutForm");
+
+        if (!validateFields(customerForm)) {
+            showStep(1);
+            return;
+        }
+
+        const subtotal = cart.reduce((sum, item) => {
+            return sum + getProductPrice(item) * getProductQuantity(item);
+        }, 0);
+
+        const deliveryCharge = getDeliveryCharge();
+
+        const orderNumber =
+            "EVR-" + Date.now().toString().slice(-6);
+
+        const order = {
+
+            orderId: orderNumber,
+
+            customer: {
+                name: document.getElementById("checkoutName").value.trim(),
+                email: document.getElementById("checkoutEmail").value.trim(),
+                phone: document.getElementById("checkoutPhone").value.trim()
+            },
+
+            address: {
+                street: document.getElementById("checkoutAddress").value.trim(),
+                city: document.getElementById("checkoutCity").value.trim(),
+                district: document.getElementById("checkoutDistrict").value.trim(),
+                state: document.getElementById("checkoutState").value.trim(),
+                pincode: document.getElementById("checkoutPincode").value.trim(),
+                landmark: document.getElementById("checkoutLandmark").value.trim()
+            },
+
+            delivery: document.querySelector(
+                'input[name="deliveryMethod"]:checked'
+            )?.value || "Standard Delivery",
+
+            payment: document.querySelector(
+                'input[name="paymentMethod"]:checked'
+            )?.value || "Cash on Delivery",
+
+            products: cart,
+
+            subtotal: subtotal,
+            deliveryCharge: deliveryCharge,
+            total: subtotal + deliveryCharge,
+
+            date: new Date().toISOString()
+
+        };
+
+
+        /* SAVE DEMO ORDER */
+
+        let orders = [];
+
+        try {
+            orders = JSON.parse(localStorage.getItem("evaraOrders")) || [];
+        } catch {
+            orders = [];
+        }
+
+        orders.push(order);
+
+        localStorage.setItem("evaraOrders", JSON.stringify(orders));
+
+
+        /* DISPLAY SUCCESS */
+
+        document.getElementById("checkoutOrderNumber")
+            .textContent = orderNumber;
+
+        step1.classList.remove("active");
+        step2.classList.remove("active");
+        step3.classList.remove("active");
+
+        indicators.forEach(indicator => {
+            indicator.classList.remove("active");
+            indicator.classList.add("completed");
+        });
+
+        successScreen.classList.add("active");
+
+        checkoutModal.querySelector(".checkout-container")
+            .scrollTo({ top: 0, behavior: "smooth" });
+
+    });
+
+
+    /* ==================================
+       RESET CHECKOUT
+    ================================== */
+
+    function resetCheckout() {
+
+        showStep(1);
+
+        successScreen.classList.remove("active");
+
+        document.getElementById("evaraCheckoutForm").reset();
+        document.getElementById("evaraDeliveryForm").reset();
+
+        document.getElementById("checkoutState").value = "Kerala";
+
+        document.querySelectorAll(".checkout-option-card")
+            .forEach(card => card.classList.remove("selected"));
+
+        document.querySelectorAll(".checkout-payment-card")
+            .forEach(card => card.classList.remove("selected"));
+
+        document.querySelector(".checkout-option-card")
+            ?.classList.add("selected");
+
+        document.querySelector(".checkout-payment-card")
+            ?.classList.add("selected");
+
+        renderCheckoutSummary();
+
+    }
+
+
+    /* ==================================
+       FINISH ORDER
+    ================================== */
+
+    checkoutDone.addEventListener("click", () => {
+
+        closeCheckout();
+
+        // Clear cart after successful demo order
+        localStorage.removeItem("evaraCart");
+
+        // Refresh cart & header counters
+        location.reload();
+
+    });
+
+
+    /* ==================================
+       ESC KEY
+    ================================== */
+
+    document.addEventListener("keydown", event => {
+
+        if (event.key === "Escape" &&
+            checkoutModal.classList.contains("active")) {
+
+            closeCheckout();
+
+        }
+
+    });
+
+
+});
+
+    </script>
+
 
 
 </body>
