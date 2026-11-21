@@ -802,6 +802,29 @@ body.shop-panel-open {
     }
 }
 
+        /* FILTER ANIMATION */
+
+.saree-product {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.saree-product.filter-hidden {
+    display: none !important;
+}
+
+
+/* ACTIVE FILTER */
+
+.filter-btn {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.filter-btn.active {
+    background: #986642;
+    color: #fff;
+    border-color: #986642;
+}
 
     </style>
 
@@ -1102,26 +1125,29 @@ body.shop-panel-open {
 
 
 
-        <!-- FILTER -->
-
+                <!-- FILTER -->
         <div class="collection-filter">
-
-            <button class="filter-btn active">
+        
+            <button class="filter-btn active" data-filter="all">
                 All Sarees
             </button>
-
-            <button class="filter-btn">
+        
+            <button class="filter-btn" data-filter="silk">
                 Silk
             </button>
-
-            <button class="filter-btn">
+        
+            <button class="filter-btn" data-filter="designer">
                 Designer
             </button>
-
-            <button class="filter-btn">
+        
+            <button class="filter-btn" data-filter="festive">
                 Festive
             </button>
-
+        
+            <button class="filter-btn" data-filter="classic">
+                Classic
+            </button>
+        
         </div>
 
 
@@ -1135,7 +1161,7 @@ body.shop-panel-open {
 
             <!-- PRODUCT 01 -->
 
-            <div class="saree-product">
+            <div class="saree-product" data-category="silk">
 
                 <div class="saree-image">
 
@@ -1230,7 +1256,7 @@ body.shop-panel-open {
 
             <!-- PRODUCT 02 -->
 
-            <div class="saree-product">
+            <div class="saree-product" data-category="designer">
 
                 <div class="saree-image">
 
@@ -1324,7 +1350,7 @@ body.shop-panel-open {
 
             <!-- PRODUCT 03 -->
 
-            <div class="saree-product">
+            <div class="saree-product" data-category="silk festive">
 
                 <div class="saree-image">
 
@@ -1418,7 +1444,7 @@ body.shop-panel-open {
 
             <!-- PRODUCT 04 -->
 
-            <div class="saree-product">
+            <div class="saree-product"  data-category="classic">
 
                 <div class="saree-image">
 
@@ -3356,6 +3382,69 @@ document.addEventListener("DOMContentLoaded", () => {
 
     </script>
 
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const products = document.querySelectorAll(".saree-product");
+
+    filterButtons.forEach(button => {
+
+        button.addEventListener("click", function () {
+
+            const selectedFilter = this.dataset.filter;
+
+            // Active button
+            filterButtons.forEach(btn => {
+                btn.classList.remove("active");
+            });
+
+            this.classList.add("active");
+
+            // Filter products
+            products.forEach(product => {
+
+                const categories = (
+                    product.dataset.category || ""
+                ).toLowerCase().split(" ");
+
+                const shouldShow =
+                    selectedFilter === "all" ||
+                    categories.includes(selectedFilter);
+
+                if (shouldShow) {
+
+                    product.classList.remove("filter-hidden");
+
+                    product.style.display = "";
+
+                    product.style.opacity = "0";
+                    product.style.transform = "translateY(15px)";
+
+                    requestAnimationFrame(() => {
+
+                        product.style.transition =
+                            "opacity 0.4s ease, transform 0.4s ease";
+
+                        product.style.opacity = "1";
+                        product.style.transform = "translateY(0)";
+
+                    });
+
+                } else {
+
+                    product.classList.add("filter-hidden");
+                    product.style.display = "none";
+                }
+
+            });
+
+        });
+
+    });
+
+});
+</script>
 
 
 </body>
