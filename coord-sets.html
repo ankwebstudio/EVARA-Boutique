@@ -1,0 +1,3196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Co-ord Sets Collection | Evara Boutique</title>
+
+    <meta name="description"
+          content="Explore Evara Boutique's elegant co-ord sets featuring contemporary silhouettes, premium fabrics and effortless styles for modern women.">
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link
+        rel="stylesheet"
+        href="css/style.css">
+
+    <!-- Collection CSS -->
+    <link
+        rel="stylesheet"
+        href="css/collection.css">
+
+    <style>
+        
+.saree-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.saree-product-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.saree-cart-btn,
+.saree-whatsapp-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: all .3s ease;
+}
+
+.saree-cart-btn {
+    background: #fff;
+    color: #986642;
+    border: 1px solid #e5d9ce;
+    cursor: pointer;
+}
+
+.saree-cart-btn:hover {
+    background: #986642;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+.saree-whatsapp-btn {
+    background: #25d366;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+}
+
+.saree-whatsapp-btn:hover {
+    background: #1da851;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+        /* OVERLAY */
+.shop-panel-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 9998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+}
+
+/* SIDEBAR */
+.shop-side-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 430px;
+    max-width: 100%;
+    height: 100vh;
+    background: #fff;
+    z-index: 9999;
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: transform 0.4s ease, visibility 0.4s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+/* OPEN STATE */
+.shop-side-panel.active {
+    transform: translateX(0);
+    visibility: visible;
+}
+
+.shop-panel-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* MOBILE */
+@media (max-width: 576px) {
+    .shop-side-panel {
+        width: 100%;
+    }
+}
+
+        
+/* =====================================================
+   EVARA CART & WISHLIST SIDEBAR
+===================================================== */
+
+/* PREVENT BACKGROUND SCROLL */
+
+body.shop-panel-open {
+    overflow: hidden;
+}
+
+
+/* =====================================================
+   OVERLAY
+===================================================== */
+
+.shop-panel-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(32, 25, 20, 0.48);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+
+    z-index: 9998;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: opacity 0.4s ease,
+                visibility 0.4s ease;
+}
+
+.shop-panel-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+
+/* =====================================================
+   MAIN SIDEBAR
+===================================================== */
+
+.shop-side-panel {
+    position: fixed;
+
+    top: 0;
+    right: 0;
+
+    width: 450px;
+    max-width: 100%;
+
+    height: 100vh;
+    height: 100dvh;
+
+    background: #fffdfb;
+
+    z-index: 9999;
+
+    display: flex;
+    flex-direction: column;
+
+    transform: translateX(100%);
+    visibility: hidden;
+
+    transition: transform 0.45s cubic-bezier(0.77, 0, 0.175, 1),
+                visibility 0.45s ease;
+
+    box-shadow: -12px 0 45px rgba(0, 0, 0, 0.12);
+
+    overflow: hidden;
+}
+
+.shop-side-panel.active {
+    transform: translateX(0);
+    visibility: visible;
+}
+
+
+/* =====================================================
+   SIDEBAR HEADER
+===================================================== */
+
+.shop-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 27px 28px 23px;
+
+    border-bottom: 1px solid #eee6df;
+
+    background: #fffdfb;
+}
+
+.shop-panel-heading h2 {
+    font-family: 'Playfair Display', serif;
+
+    font-size: 25px;
+    font-weight: 500;
+
+    color: #49382c;
+
+    margin: 0 0 5px;
+}
+
+.shop-panel-heading span {
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 9px;
+    letter-spacing: 3px;
+
+    color: #a68b75;
+}
+
+
+/* CLOSE BUTTON */
+
+.shop-panel-close {
+    width: 39px;
+    height: 39px;
+
+    border-radius: 50%;
+
+    border: 1px solid #e8ddd3;
+
+    background: transparent;
+
+    color: #76543e;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+.shop-panel-close:hover {
+    background: #986642;
+    color: #fff;
+    border-color: #986642;
+
+    transform: rotate(90deg);
+}
+
+
+/* =====================================================
+   SIDEBAR TABS
+===================================================== */
+
+.shop-panel-tabs {
+    display: flex;
+
+    padding: 0 28px;
+
+    border-bottom: 1px solid #eee6df;
+
+    background: #fffdfb;
+}
+
+.shop-tab {
+    position: relative;
+
+    flex: 1;
+
+    padding: 17px 8px;
+
+    border: none;
+    background: transparent;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 12px;
+    font-weight: 500;
+
+    color: #9b8b7f;
+
+    cursor: pointer;
+
+    transition: color 0.3s ease;
+}
+
+.shop-tab span {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 19px;
+    height: 19px;
+
+    margin-left: 4px;
+
+    border-radius: 50%;
+
+    background: #f2eae3;
+
+    color: #986642;
+
+    font-size: 10px;
+}
+
+.shop-tab::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -1px;
+
+    width: 100%;
+    height: 2px;
+
+    background: #986642;
+
+    transform: scaleX(0);
+
+    transition: transform 0.3s ease;
+}
+
+.shop-tab.active {
+    color: #76513a;
+}
+
+.shop-tab.active::after {
+    transform: scaleX(1);
+}
+
+
+/* =====================================================
+   SIDEBAR PRODUCT AREA
+===================================================== */
+
+.shop-panel-items {
+    flex: 1;
+
+    overflow-y: auto;
+
+    padding: 10px 28px 25px;
+
+    background: #fffdfb;
+}
+
+.shop-panel-items::-webkit-scrollbar {
+    width: 4px;
+}
+
+.shop-panel-items::-webkit-scrollbar-track {
+    background: #f8f3ef;
+}
+
+.shop-panel-items::-webkit-scrollbar-thumb {
+    background: #c7a58a;
+    border-radius: 10px;
+}
+
+
+/* =====================================================
+   PRODUCT ITEM
+===================================================== */
+
+.shop-item {
+    position: relative;
+
+    display: flex;
+    align-items: flex-start;
+
+    gap: 16px;
+
+    padding: 20px 0;
+
+    border-bottom: 1px solid #eee6df;
+
+    animation: shopItemAppear 0.35s ease both;
+}
+
+@keyframes shopItemAppear {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* PRODUCT IMAGE */
+
+.shop-item > img {
+    width: 95px;
+    height: 120px;
+
+    object-fit: cover;
+
+    border-radius: 3px;
+
+    background: #f4eee8;
+
+    flex-shrink: 0;
+}
+
+
+/* PRODUCT DETAILS */
+
+.shop-item-info {
+    flex: 1;
+    min-width: 0;
+    padding-top: 4px;
+}
+
+.shop-item-info h3 {
+    font-family: 'Playfair Display', serif;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    line-height: 1.4;
+
+    color: #49382c;
+
+    margin: 0 0 8px;
+}
+
+.shop-item-info p {
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    color: #986642;
+
+    margin: 0 0 13px;
+}
+
+
+/* =====================================================
+   QUANTITY CONTROLS
+===================================================== */
+
+.shop-item-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+}
+
+.shop-qty-btn {
+    width: 27px;
+    height: 27px;
+
+    border: 1px solid #e6d9ce;
+
+    background: transparent;
+
+    color: #76543e;
+
+    font-size: 17px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+.shop-qty-btn:hover {
+    background: #986642;
+    color: #fff;
+    border-color: #986642;
+}
+
+.shop-qty {
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 12px;
+    font-weight: 500;
+
+    color: #49382c;
+}
+
+
+/* =====================================================
+   MOVE TO CART BUTTON
+===================================================== */
+
+.shop-move-btn {
+    padding: 7px 13px;
+
+    border: 1px solid #986642;
+
+    background: transparent;
+
+    color: #986642;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 10px;
+    letter-spacing: 0.5px;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+.shop-move-btn:hover {
+    background: #986642;
+    color: #fff;
+}
+
+
+/* =====================================================
+   REMOVE BUTTON
+===================================================== */
+
+.shop-remove {
+    width: 30px;
+    height: 30px;
+
+    border: none;
+    background: transparent;
+
+    color: #b5a397;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+.shop-remove:hover {
+    color: #b34b3d;
+    transform: scale(1.12);
+}
+
+
+/* =====================================================
+   EMPTY CART / WISHLIST
+===================================================== */
+
+.shop-empty {
+    min-height: 330px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 30px 15px;
+
+    animation: shopItemAppear 0.4s ease;
+}
+
+.shop-empty > i {
+    font-size: 43px;
+
+    color: #c5a48a;
+
+    margin-bottom: 20px;
+}
+
+.shop-empty h3 {
+    font-family: 'Playfair Display', serif;
+
+    font-size: 23px;
+    font-weight: 500;
+
+    color: #49382c;
+
+    margin-bottom: 10px;
+}
+
+.shop-empty p {
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 12px;
+
+    color: #9b8b7f;
+
+    line-height: 1.8;
+
+    margin: 0;
+}
+
+
+/* =====================================================
+   SIDEBAR FOOTER
+===================================================== */
+
+.shop-panel-footer {
+    padding: 23px 28px 28px;
+
+    border-top: 1px solid #eee6df;
+
+    background: #fff;
+
+    flex-shrink: 0;
+}
+
+
+/* SUBTOTAL */
+
+.shop-subtotal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+}
+
+.shop-subtotal span {
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 13px;
+
+    color: #806b5b;
+}
+
+.shop-subtotal strong {
+    font-family: 'Playfair Display', serif;
+
+    font-size: 21px;
+    font-weight: 600;
+
+    color: #49382c;
+}
+
+
+/* =====================================================
+   CHECKOUT BUTTON
+===================================================== */
+
+.shop-checkout {
+    width: 100%;
+
+    padding: 16px 20px;
+
+    border: 1px solid #986642;
+
+    background: #986642;
+
+    color: #fff;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 11px;
+    font-weight: 500;
+
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition: all 0.35s ease;
+}
+
+.shop-checkout:hover:not(:disabled) {
+    background: #76513a;
+    border-color: #76513a;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 7px 18px rgba(120, 80, 50, 0.18);
+}
+
+.shop-checkout:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
+/* =====================================================
+   MOBILE RESPONSIVE
+===================================================== */
+
+@media (max-width: 576px) {
+
+    .shop-side-panel {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .shop-panel-header {
+        padding: 22px 20px 18px;
+    }
+
+    .shop-panel-heading h2 {
+        font-size: 23px;
+    }
+
+    .shop-panel-tabs {
+        padding: 0 20px;
+    }
+
+    .shop-panel-items {
+        padding: 8px 20px 20px;
+    }
+
+    .shop-item {
+        gap: 13px;
+        padding: 17px 0;
+    }
+
+    .shop-item > img {
+        width: 82px;
+        height: 108px;
+    }
+
+    .shop-item-info h3 {
+        font-size: 14px;
+    }
+
+    .shop-item-info p {
+        font-size: 12px;
+    }
+
+    .shop-panel-footer {
+        padding: 20px;
+    }
+
+    .shop-empty {
+        min-height: 280px;
+    }
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 360px) {
+
+    .shop-panel-header {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .shop-panel-items {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .shop-panel-footer {
+        padding: 17px 15px;
+    }
+
+    .shop-item > img {
+        width: 72px;
+        height: 98px;
+    }
+
+    .shop-item {
+        gap: 10px;
+    }
+}
+
+        /* FILTER ANIMATION */
+
+.saree-product {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.saree-product.filter-hidden {
+    display: none !important;
+}
+
+
+/* ACTIVE FILTER */
+
+.filter-btn {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.filter-btn.active {
+    background: #986642;
+    color: #fff;
+    border-color: #986642;
+}
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     TOP BAR
+===================================================== -->
+
+<div class="top-bar">
+
+    <i class="bi bi-gem"></i>
+
+    <span>
+        Premium Fashion • Free Shipping Above ₹999
+    </span>
+
+</div>
+
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav class="navbar navbar-expand-lg evara-navbar sticky-top">
+
+    <div class="container">
+
+        <!-- BRAND -->
+
+        <a class="navbar-brand evara-brand"
+           href="index.html">
+
+            <span class="brand-name">
+                EVARA
+            </span>
+
+            <span class="brand-subtitle">
+                B O U T I Q U E
+            </span>
+
+        </a>
+
+
+        <!-- MOBILE BUTTON -->
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#menu"
+                aria-controls="menu"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+        <!-- NAVIGATION -->
+
+        <div class="collapse navbar-collapse"
+             id="menu">
+
+            <ul class="navbar-nav mx-auto align-items-lg-center">
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="index.html#hero">
+
+                        Home
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link active"
+                       href="index.html#category">
+
+                        Collections
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="index.html#featured">
+
+                        New Arrivals
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="index.html#about">
+
+                        Our Story
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="index.html#lookbook">
+
+                        Lookbook
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="index.html#testimonials">
+
+                        Reviews
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="index.html#faq">
+
+                        FAQ
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="index.html#contact">
+
+                        Contact
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+
+            <!-- NAV ACTIONS -->
+
+            <div class="evara-nav-actions">
+
+              <!--  <a href="#"
+                   class="nav-icon"
+                   aria-label="Wishlist">
+
+                    <i class="bi bi-heart"></i>
+
+                </a>
+
+
+                <a href="#"
+                   class="nav-icon"
+                   aria-label="Shopping Bag">
+
+                    <i class="bi bi-bag"></i>
+
+                </a>  -->
+
+                   <!-- WISHLIST ICON -->
+    <button type="button"
+            class="nav-icon js-open-panel"
+            data-panel="wishlist"
+            aria-label="Open Wishlist">
+
+        <i class="bi bi-heart"></i>
+
+        <span class="nav-count" id="wishlistCount">0</span>
+
+    </button>
+
+
+    <!-- CART ICON -->
+    <button type="button"
+            class="nav-icon js-open-panel"
+            data-panel="cart"
+            aria-label="Open Shopping Bag">
+
+        <i class="bi bi-bag"></i>
+
+        <span class="nav-count" id="cartCount">0</span>
+
+    </button>
+
+
+                <a href="#"
+                   class="nav-whatsapp">
+
+                    <i class="bi bi-whatsapp"></i>
+
+                    <span>
+                        Chat With Us
+                    </span>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =====================================================
+     COLLECTION HERO
+===================================================== -->
+
+<section class="collection-hero">
+
+    <div class="container">
+
+        <span class="collection-label">
+            EVARA COLLECTION
+        </span>
+
+        <h1>
+            Co-ord Sets
+        </h1>
+
+        <p>
+            Effortless style, beautifully coordinated.
+            Discover contemporary co-ord sets designed
+            for modern everyday elegance.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     COLLECTION CONTENT
+===================================================== -->
+
+<section class="saree-collection">
+
+    <div class="container">
+
+
+        <!-- HEADING -->
+
+        <div class="collection-heading">
+
+            <div>
+
+                <span>
+                    THE CHURIDAR EDIT
+                </span>
+
+                <h2>
+                    Everyday Elegance
+                </h2>
+
+            </div>
+
+
+            <p>
+                From effortless everyday churidars to elevated
+                statement styles, discover pieces made for every moment.
+            </p>
+
+        </div>
+
+
+
+                <!-- FILTER -->
+        <div class="collection-filter">
+
+            <button class="filter-btn active" data-filter="all">All Co-ords</button>
+            <button class="filter-btn" data-filter="casual">Casual</button>
+            <button class="filter-btn" data-filter="designer">Designer</button>
+            <button class="filter-btn" data-filter="festive">Festive</button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             PRODUCT GRID
+        ================================================== -->
+
+        <div class="saree-grid">
+
+
+            
+            <!-- PRODUCT 01 -->
+            <div class="saree-product" data-category="casual">
+                <div class="saree-image">
+                    <img src="images/coord-1.png" alt="Elegant Everyday Co-ord Set" loading="lazy">
+                    <span class="saree-badge">NEW</span>
+                    <button class="saree-wishlist" type="button" aria-label="Add Elegant Everyday Co-ord Set to wishlist">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                    <div class="saree-overlay">
+                        <a href="view-details.html?product=coord" class="saree-view">
+                            View Details <i class="bi bi-arrow-up-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="saree-content">
+                    <span>CASUAL CO-ORD</span>
+                    <h3>Elegant Everyday Co-ord</h3>
+                    <p>A relaxed silhouette designed for effortless everyday style.</p>
+                    <div class="saree-bottom">
+                        <strong>₹1,999</strong>
+                        <div class="saree-product-actions">
+                            <button class="saree-cart-btn" type="button" aria-label="Add Elegant Everyday Co-ord Set to cart">
+                                <i class="bi bi-bag"></i>
+                            </button>
+                            <a href="https://wa.me/91xxxxxxxxx" class="saree-whatsapp-btn" aria-label="Enquire on WhatsApp" target="_blank" rel="noopener">
+                                <i class="bi bi-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCT 02 -->
+            <div class="saree-product" data-category="designer">
+                <div class="saree-image">
+                    <img src="images/coord-2.png" alt="Premium Designer Co-ord Set" loading="lazy">
+                    <span class="saree-badge">NEW</span>
+                    <button class="saree-wishlist" type="button" aria-label="Add Premium Designer Co-ord Set to wishlist">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                    <div class="saree-overlay">
+                        <a href="view-details.html?product=coord-2" class="saree-view">
+                            View Details <i class="bi bi-arrow-up-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="saree-content">
+                    <span>DESIGNER CO-ORD</span>
+                    <h3>Premium Designer Co-ord</h3>
+                    <p>Contemporary tailoring with refined details and a polished finish.</p>
+                    <div class="saree-bottom">
+                        <strong>₹2,499</strong>
+                        <div class="saree-product-actions">
+                            <button class="saree-cart-btn" type="button" aria-label="Add Premium Designer Co-ord Set to cart">
+                                <i class="bi bi-bag"></i>
+                            </button>
+                            <a href="https://wa.me/91xxxxxxxxx" class="saree-whatsapp-btn" aria-label="Enquire on WhatsApp" target="_blank" rel="noopener">
+                                <i class="bi bi-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCT 03 -->
+            <div class="saree-product" data-category="festive">
+                <div class="saree-image">
+                    <img src="images/coord-3.png" alt="Festive Co-ord Set" loading="lazy">
+                    <span class="saree-badge">EDIT</span>
+                    <button class="saree-wishlist" type="button" aria-label="Add Festive Co-ord Set to wishlist">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                    <div class="saree-overlay">
+                        <a href="view-details.html?product=coord-3" class="saree-view">
+                            View Details <i class="bi bi-arrow-up-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="saree-content">
+                    <span>FESTIVE</span>
+                    <h3>Festive Co-ord Set</h3>
+                    <p>Elegant textures and graceful detailing for celebrations.</p>
+                    <div class="saree-bottom">
+                        <strong>₹2,799</strong>
+                        <div class="saree-product-actions">
+                            <button class="saree-cart-btn" type="button" aria-label="Add Festive Co-ord Set to cart">
+                                <i class="bi bi-bag"></i>
+                            </button>
+                            <a href="https://wa.me/91xxxxxxxxx" class="saree-whatsapp-btn" aria-label="Enquire on WhatsApp" target="_blank" rel="noopener">
+                                <i class="bi bi-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCT 04 -->
+            <div class="saree-product" data-category="classic">
+                <div class="saree-image">
+                    <img src="images/coord-4.png" alt="Classic Minimal Co-ord Set" loading="lazy">
+                    
+                    <button class="saree-wishlist" type="button" aria-label="Add Classic Minimal Co-ord Set to wishlist">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                    <div class="saree-overlay">
+                        <a href="view-details.html?product=coord-4" class="saree-view">
+                            View Details <i class="bi bi-arrow-up-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="saree-content">
+                    <span>CLASSIC</span>
+                    <h3>Classic Minimal Co-ord</h3>
+                    <p>Clean lines and understated elegance for modern wardrobes.</p>
+                    <div class="saree-bottom">
+                        <strong>₹2,199</strong>
+                        <div class="saree-product-actions">
+                            <button class="saree-cart-btn" type="button" aria-label="Add Classic Minimal Co-ord Set to cart">
+                                <i class="bi bi-bag"></i>
+                            </button>
+                            <a href="https://wa.me/91xxxxxxxxx" class="saree-whatsapp-btn" aria-label="Enquire on WhatsApp" target="_blank" rel="noopener">
+                                <i class="bi bi-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     COLLECTION CTA
+===================================================== -->
+
+<section class="collection-cta">
+
+    <div class="container">
+
+        <span>
+            DISCOVER MORE
+        </span>
+
+        <h2>
+            Find Your Perfect Style
+        </h2>
+
+        <p>
+            Explore our other thoughtfully curated collections.
+        </p>
+
+        <a href="index.html#category"
+           class="collection-cta-button">
+
+            Explore Collections
+
+            <i class="bi bi-arrow-right"></i>
+
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="row gy-5">
+
+
+            <!-- BRAND -->
+
+            <div class="col-lg-4">
+
+                <h2 class="footer-logo">
+                    EVARA
+                </h2>
+
+                <p class="footer-text">
+
+                    Timeless fashion curated for modern women.
+                    Discover elegant collections crafted with
+                    premium fabrics, contemporary designs,
+                    and exceptional attention to detail.
+
+                </p>
+
+
+                <div class="social-links">
+
+                    <a href="#">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="bi bi-pinterest"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="bi bi-whatsapp"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- QUICK LINKS -->
+
+            <div class="col-lg-2">
+
+                <h5>
+                    Quick Links
+                </h5>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="index.html#hero">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="index.html#about">
+                            Our Story
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="index.html#category">
+                            Collections
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="index.html#faq">
+                            FAQ
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+
+            <!-- COLLECTIONS -->
+
+            <div class="col-lg-3">
+
+                <h5>
+                    Collections
+                </h5>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="sarees.html">
+                            Sarees
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="churidars.html">
+                            Churidars
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="coord-sets.html">
+                            Co-ord Sets
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="churidars.html">
+                            Churidars
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="party-wear.html">
+                            Party Wear
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="bridal.html">
+                            Bridal
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+
+            <!-- CONTACT -->
+
+            <div class="col-lg-3">
+
+                <h5>
+                    Contact
+                </h5>
+
+                <ul class="footer-contact">
+
+                    <li>
+
+                        <i class="bi bi-geo-alt-fill"></i>
+
+                        Kochi, Kerala
+
+                    </li>
+
+
+                    <li>
+
+                        <i class="bi bi-envelope-fill"></i>
+
+                        hello@evaraboutique.com
+
+                    </li>
+
+
+                    <li>
+
+                        <i class="bi bi-telephone-fill"></i>
+
+                        +91 98765 43210
+
+                    </li>
+
+
+                    <li>
+
+                        <i class="bi bi-clock-fill"></i>
+
+                        Mon - Sat : 10 AM - 7 PM
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <hr class="footer-divider">
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026
+                <strong>Evara Boutique</strong>.
+                All Rights Reserved.
+            </p>
+
+
+            <div class="developer">
+
+                <span>
+                    Designed & Developed by
+                </span>
+
+                <img
+                    src="images/ANK LOGO.png"
+                    alt="ANK Web Studio"
+                    class="ank-logo">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =====================================================
+     EVARA CART & WISHLIST SIDEBAR
+===================================================== -->
+
+<!-- OVERLAY -->
+
+<div class="shop-panel-overlay"
+     id="shopPanelOverlay">
+</div>
+
+
+<!-- SIDEBAR -->
+
+<aside class="shop-side-panel"
+       id="shopSidePanel"
+       aria-label="Shopping panel">
+
+    <!-- HEADER -->
+
+    <div class="shop-panel-header">
+
+        <div class="shop-panel-heading">
+
+            <h2 id="shopPanelTitle">
+                Shopping Bag
+            </h2>
+
+            <span>
+                EVARA BOUTIQUE
+            </span>
+
+        </div>
+
+
+        <button type="button"
+                class="shop-panel-close"
+                id="shopPanelClose"
+                aria-label="Close sidebar">
+
+            <i class="bi bi-x-lg"></i>
+
+        </button>
+
+    </div>
+
+
+    <!-- TABS -->
+
+    <div class="shop-panel-tabs">
+
+        <button type="button"
+                class="shop-tab active"
+                data-panel="cart">
+
+            Shopping Bag
+
+            <span id="cartTabCount">0</span>
+
+        </button>
+
+
+        <button type="button"
+                class="shop-tab"
+                data-panel="wishlist">
+
+            Wishlist
+
+            <span id="wishlistTabCount">0</span>
+
+        </button>
+
+    </div>
+
+
+    <!-- PRODUCTS -->
+
+    <div class="shop-panel-items"
+         id="shopPanelItems">
+
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <div class="shop-panel-footer"
+         id="shopPanelFooter">
+
+        <div class="shop-subtotal">
+
+            <span>
+                Subtotal
+            </span>
+
+            <strong id="cartSubtotal">
+                ₹0
+            </strong>
+
+        </div>
+
+
+        <button type="button"
+                class="shop-checkout"
+                id="shopCheckout"
+                disabled>
+
+            Proceed to Checkout
+
+            <i class="bi bi-arrow-right ms-2"></i>
+
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- FLOATING WHATSAPP -->
+
+<a href="#"
+   class="whatsapp">
+
+    <i class="bi bi-whatsapp"></i>
+
+</a>
+
+
+
+<!-- Bootstrap JS -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    /* =========================================
+       ELEMENTS
+    ========================================= */
+
+    const sidePanel = document.getElementById("shopSidePanel");
+    const overlay = document.getElementById("shopPanelOverlay");
+    const panelItems = document.getElementById("shopPanelItems");
+    const panelTitle = document.getElementById("shopPanelTitle");
+    const panelFooter = document.getElementById("shopPanelFooter");
+    const panelClose = document.getElementById("shopPanelClose");
+
+    const cartCountElement = document.getElementById("cartCount");
+    const wishlistCountElement = document.getElementById("wishlistCount");
+
+    const cartSubtotal = document.getElementById("cartSubtotal");
+    const cartTabCount = document.getElementById("cartTabCount");
+    const wishlistTabCount = document.getElementById("wishlistTabCount");
+
+    const checkoutButton = document.getElementById("shopCheckout");
+
+    /* =========================================
+       CHECK SIDEBAR
+    ========================================= */
+
+    if (!sidePanel || !overlay || !panelItems) {
+        console.error("EVARA sidebar elements are missing.");
+        return;
+    }
+
+    /* =========================================
+       STORAGE
+    ========================================= */
+
+    function loadStorage(key) {
+        try {
+            const data = JSON.parse(localStorage.getItem(key));
+            return Array.isArray(data) ? data : [];
+        } catch (error) {
+            return [];
+        }
+    }
+
+    let cart = loadStorage("evaraCart");
+    let wishlist = loadStorage("evaraWishlist");
+
+    let activePanel = "cart";
+
+    /* =========================================
+       SAVE DATA
+    ========================================= */
+
+    function saveData() {
+        localStorage.setItem("evaraCart", JSON.stringify(cart));
+        localStorage.setItem("evaraWishlist", JSON.stringify(wishlist));
+
+        updateCounts();
+        updateSubtotal();
+    }
+
+    /* =========================================
+       ESCAPE HTML
+    ========================================= */
+
+    function escapeHTML(value) {
+        return String(value ?? "").replace(/[&<>"']/g, char => ({
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;"
+        })[char]);
+    }
+
+    /* =========================================
+       GET PRODUCT DETAILS
+    ========================================= */
+
+    function getProduct(card) {
+
+        const name = card.querySelector("h3")?.textContent.trim();
+
+        const priceText =
+            card.querySelector(".saree-bottom strong")?.textContent || "0";
+
+        const image =
+            card.querySelector(".saree-image img")?.getAttribute("src");
+
+        return {
+            id: name,
+            name: name,
+            price: Number(priceText.replace(/[^\d]/g, "")),
+            image: image
+        };
+    }
+
+    /* =========================================
+       UPDATE NAVBAR COUNTS
+    ========================================= */
+
+    function updateCounts() {
+
+        const totalCart = cart.reduce(
+            (total, item) => total + Number(item.qty || 0), 0
+        );
+
+        if (cartCountElement) {
+            cartCountElement.textContent = totalCart;
+        }
+
+        if (wishlistCountElement) {
+            wishlistCountElement.textContent = wishlist.length;
+        }
+    }
+
+    /* =========================================
+       UPDATE SUBTOTAL
+    ========================================= */
+
+    function updateSubtotal() {
+
+        const total = cart.reduce(
+            (sum, item) =>
+                sum + (Number(item.price) * Number(item.qty)),
+            0
+        );
+
+        const quantity = cart.reduce(
+            (sum, item) => sum + Number(item.qty || 0),
+            0
+        );
+
+        if (cartSubtotal) {
+            cartSubtotal.textContent =
+                "₹" + total.toLocaleString("en-IN");
+        }
+
+        if (cartTabCount) {
+            cartTabCount.textContent = quantity;
+        }
+
+        if (wishlistTabCount) {
+            wishlistTabCount.textContent = wishlist.length;
+        }
+
+        if (checkoutButton) {
+            checkoutButton.disabled = cart.length === 0;
+        }
+    }
+
+    /* =========================================
+       OPEN SIDEBAR
+    ========================================= */
+
+    function openSidebar(type) {
+
+        activePanel = type;
+
+        sidePanel.classList.add("active");
+        overlay.classList.add("active");
+
+        document.body.classList.add("shop-panel-open");
+
+        renderSidebar();
+    }
+
+    /* =========================================
+       CLOSE SIDEBAR
+    ========================================= */
+
+    function closeSidebar() {
+
+        sidePanel.classList.remove("active");
+        overlay.classList.remove("active");
+
+        document.body.classList.remove("shop-panel-open");
+    }
+
+    /* =========================================
+       ADD TO CART
+    ========================================= */
+
+    function addToCart(product) {
+
+        if (!product.name || !product.image) return;
+
+        const existing = cart.find(item => item.id === product.id);
+
+        if (existing) {
+            existing.qty++;
+        } else {
+            cart.push({
+                ...product,
+                qty: 1
+            });
+        }
+
+        saveData();
+        openSidebar("cart");
+    }
+
+    /* =========================================
+       ADD / REMOVE WISHLIST
+    ========================================= */
+
+    function toggleWishlist(product) {
+
+        const existing = wishlist.find(
+            item => item.id === product.id
+        );
+
+        if (existing) {
+            wishlist = wishlist.filter(
+                item => item.id !== product.id
+            );
+        } else {
+            wishlist.push(product);
+        }
+
+        saveData();
+        updateWishlistIcons();
+        openSidebar("wishlist");
+    }
+
+    /* =========================================
+       UPDATE WISHLIST ICONS
+    ========================================= */
+
+    function updateWishlistIcons() {
+
+        document.querySelectorAll(".saree-product").forEach(card => {
+
+            const button = card.querySelector(".saree-wishlist");
+
+            if (!button) return;
+
+            const product = getProduct(card);
+
+            const active = wishlist.some(
+                item => item.id === product.id
+            );
+
+            button.innerHTML = active
+                ? '<i class="bi bi-heart-fill"></i>'
+                : '<i class="bi bi-heart"></i>';
+
+            button.classList.toggle("is-active", active);
+
+            button.setAttribute(
+                "aria-label",
+                active ? "Remove from wishlist" : "Add to wishlist"
+            );
+        });
+    }
+
+    /* =========================================
+       RENDER SIDEBAR
+    ========================================= */
+
+    function renderSidebar() {
+
+        const isCart = activePanel === "cart";
+        const products = isCart ? cart : wishlist;
+
+        panelTitle.textContent = isCart
+            ? "Shopping Bag"
+            : "Your Wishlist";
+
+        if (panelFooter) {
+            panelFooter.style.display = isCart ? "block" : "none";
+        }
+
+        document.querySelectorAll(".shop-tab[data-panel]").forEach(tab => {
+
+            tab.classList.toggle(
+                "active",
+                tab.dataset.panel === activePanel
+            );
+        });
+
+        /* EMPTY STATE */
+
+        if (products.length === 0) {
+
+            panelItems.innerHTML = `
+                <div class="shop-empty">
+                    <i class="bi ${isCart ? "bi-bag" : "bi-heart"}"></i>
+
+                    <h3>
+                        ${isCart
+                            ? "Your bag is empty"
+                            : "Your wishlist is empty"}
+                    </h3>
+
+                    <p>
+                        Discover something beautiful from EVARA.
+                    </p>
+                </div>
+            `;
+
+        } else {
+
+            /* PRODUCT ITEMS */
+
+            panelItems.innerHTML = products.map(item => `
+
+                <div class="shop-item">
+
+                    <img
+                        src="${escapeHTML(item.image)}"
+                        alt="${escapeHTML(item.name)}">
+
+                    <div class="shop-item-info">
+
+                        <h3>
+                            ${escapeHTML(item.name)}
+                        </h3>
+
+                        <p>
+                            ₹${Number(item.price).toLocaleString("en-IN")}
+                        </p>
+
+                        ${isCart ? `
+
+                            <div class="shop-item-actions">
+
+                                <button
+                                    type="button"
+                                    class="shop-qty-btn"
+                                    data-action="decrease"
+                                    data-id="${escapeHTML(item.id)}">
+                                    −
+                                </button>
+
+                                <span class="shop-qty">
+                                    ${Number(item.qty) || 1}
+                                </span>
+
+                                <button
+                                    type="button"
+                                    class="shop-qty-btn"
+                                    data-action="increase"
+                                    data-id="${escapeHTML(item.id)}">
+                                    +
+                                </button>
+
+                            </div>
+
+                        ` : `
+
+                            <button
+                                type="button"
+                                class="shop-move-btn"
+                                data-action="move"
+                                data-id="${escapeHTML(item.id)}">
+                                Move to Cart
+                            </button>
+
+                        `}
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="shop-remove"
+                        data-action="remove"
+                        data-id="${escapeHTML(item.id)}"
+                        aria-label="Remove product">
+
+                        <i class="bi bi-trash3"></i>
+
+                    </button>
+
+                </div>
+
+            `).join("");
+        }
+
+        updateSubtotal();
+    }
+
+    /* =========================================
+       PRODUCT CARD EVENTS
+    ========================================= */
+
+    document.querySelectorAll(".saree-product").forEach(card => {
+
+        const wishlistButton =
+            card.querySelector(".saree-wishlist");
+
+        const cartButton =
+            card.querySelector(".saree-cart-btn");
+
+        /* WISHLIST */
+
+        if (wishlistButton) {
+
+            wishlistButton.addEventListener("click", function () {
+
+                toggleWishlist(getProduct(card));
+
+            });
+        }
+
+        /* ADD TO CART */
+
+        if (cartButton) {
+
+            cartButton.addEventListener("click", function () {
+
+                addToCart(getProduct(card));
+
+            });
+        }
+    });
+
+    /* =========================================
+       SIDEBAR PRODUCT ACTIONS
+    ========================================= */
+
+    panelItems.addEventListener("click", function (event) {
+
+        const button = event.target.closest("[data-action]");
+
+        if (!button) return;
+
+        const id = button.dataset.id;
+        const action = button.dataset.action;
+
+        /* INCREASE */
+
+        if (action === "increase") {
+
+            const item = cart.find(product => product.id === id);
+
+            if (item) item.qty++;
+        }
+
+        /* DECREASE */
+
+        else if (action === "decrease") {
+
+            const item = cart.find(product => product.id === id);
+
+            if (item) {
+
+                item.qty--;
+
+                if (item.qty <= 0) {
+                    cart = cart.filter(
+                        product => product.id !== id
+                    );
+                }
+            }
+        }
+
+        /* REMOVE */
+
+        else if (action === "remove") {
+
+            if (activePanel === "cart") {
+
+                cart = cart.filter(
+                    product => product.id !== id
+                );
+
+            } else {
+
+                wishlist = wishlist.filter(
+                    product => product.id !== id
+                );
+            }
+        }
+
+        /* MOVE TO CART */
+
+        else if (action === "move") {
+
+            const item = wishlist.find(
+                product => product.id === id
+            );
+
+            if (item) {
+
+                const existing = cart.find(
+                    product => product.id === id
+                );
+
+                if (existing) {
+                    existing.qty++;
+                } else {
+                    cart.push({
+                        ...item,
+                        qty: 1
+                    });
+                }
+
+                wishlist = wishlist.filter(
+                    product => product.id !== id
+                );
+            }
+        }
+
+        saveData();
+        renderSidebar();
+        updateWishlistIcons();
+    });
+
+    /* =========================================
+       NAVBAR CART / WISHLIST EVENTS
+    ========================================= */
+
+    document.querySelectorAll(".js-open-panel").forEach(button => {
+
+        button.addEventListener("click", function () {
+
+            openSidebar(button.dataset.panel);
+
+        });
+    });
+
+    /* =========================================
+       SIDEBAR TAB EVENTS
+    ========================================= */
+
+    document.querySelectorAll(".shop-tab[data-panel]").forEach(button => {
+
+        button.addEventListener("click", function () {
+
+            openSidebar(button.dataset.panel);
+
+        });
+    });
+
+    /* =========================================
+       CLOSE BUTTON
+    ========================================= */
+
+    if (panelClose) {
+        panelClose.addEventListener("click", closeSidebar);
+    }
+
+    /* =========================================
+       OVERLAY CLICK
+    ========================================= */
+
+    overlay.addEventListener("click", closeSidebar);
+
+    /* =========================================
+       ESCAPE KEY
+    ========================================= */
+
+    document.addEventListener("keydown", function (event) {
+
+        if (event.key === "Escape") {
+            closeSidebar();
+        }
+    });
+
+    /* =========================================
+       INITIALIZE
+    ========================================= */
+
+    updateCounts();
+    updateSubtotal();
+    updateWishlistIcons();
+
+});
+</script>
+
+    
+<!-- EVARA PREMIUM CHECKOUT MODAL -->
+<div class="evara-checkout-modal" id="evaraCheckoutModal">
+
+    <div class="checkout-backdrop"></div>
+
+    <div class="checkout-container">
+
+        <!-- HEADER -->
+        <div class="checkout-header">
+            <div>
+                <span class="checkout-eyebrow">EVARA · CHECKOUT</span>
+                <h2>A thoughtful purchase.</h2>
+                <p>Every detail matters. Complete your order with care.</p>
+            </div>
+
+            <button class="checkout-close" id="checkoutClose" aria-label="Close checkout">
+                <i class="bi bi-x-lg"></i>
+            </button>
+        </div>
+
+        <!-- PROGRESS -->
+        <div class="checkout-progress">
+            <div class="checkout-progress-step active" id="checkoutStep1Indicator">
+                <span>01</span>
+                <p>Details</p>
+            </div>
+
+            <div class="checkout-progress-line"></div>
+
+            <div class="checkout-progress-step" id="checkoutStep2Indicator">
+                <span>02</span>
+                <p>Delivery</p>
+            </div>
+
+            <div class="checkout-progress-line"></div>
+
+            <div class="checkout-progress-step" id="checkoutStep3Indicator">
+                <span>03</span>
+                <p>Complete</p>
+            </div>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="checkout-body">
+
+            <!-- LEFT SIDE FORM -->
+            <div class="checkout-form-area">
+
+                <!-- STEP 1 -->
+                <div class="checkout-form-step active" id="checkoutStep1">
+
+                    <div class="checkout-section-heading">
+                        <span>YOUR INFORMATION</span>
+                        <h3>Who are we sending this to?</h3>
+                        <p>Let's start with a few details.</p>
+                    </div>
+
+                    <form id="evaraCheckoutForm">
+
+                        <div class="checkout-input-group">
+                            <label for="checkoutName">Full Name</label>
+                            <input type="text" id="checkoutName"
+                                   placeholder="Enter your full name" required>
+                        </div>
+
+                        <div class="checkout-input-row">
+
+                            <div class="checkout-input-group">
+                                <label for="checkoutEmail">Email Address</label>
+                                <input type="email" id="checkoutEmail"
+                                       placeholder="you@example.com" required>
+                            </div>
+
+                            <div class="checkout-input-group">
+                                <label for="checkoutPhone">Phone Number</label>
+                                <input type="tel" id="checkoutPhone"
+                                       placeholder="10-digit mobile number"
+                                       pattern="[6-9][0-9]{9}" maxlength="10" required>
+                            </div>
+
+                        </div>
+
+                        <button type="button" class="checkout-next-btn" id="checkoutNext1">
+                            Continue to Delivery
+                            <i class="bi bi-arrow-right"></i>
+                        </button>
+
+                    </form>
+                </div>
+
+
+                <!-- STEP 2 -->
+                <div class="checkout-form-step" id="checkoutStep2">
+
+                    <div class="checkout-section-heading">
+                        <span>DELIVERY DETAILS</span>
+                        <h3>Where should it arrive?</h3>
+                        <p>We will make sure your pieces reach you safely.</p>
+                    </div>
+
+                    <form id="evaraDeliveryForm">
+
+                        <div class="checkout-input-group">
+                            <label for="checkoutAddress">House / Building / Street</label>
+                            <input type="text" id="checkoutAddress"
+                                   placeholder="House name, street, address" required>
+                        </div>
+
+                        <div class="checkout-input-row">
+
+                            <div class="checkout-input-group">
+                                <label for="checkoutCity">City / Town</label>
+                                <input type="text" id="checkoutCity"
+                                       placeholder="Your city" required>
+                            </div>
+
+                            <div class="checkout-input-group">
+                                <label for="checkoutDistrict">District</label>
+                                <input type="text" id="checkoutDistrict"
+                                       placeholder="District" required>
+                            </div>
+
+                        </div>
+
+                        <div class="checkout-input-row">
+
+                            <div class="checkout-input-group">
+                                <label for="checkoutState">State</label>
+                                <input type="text" id="checkoutState"
+                                       value="Kerala" required>
+                            </div>
+
+                            <div class="checkout-input-group">
+                                <label for="checkoutPincode">PIN Code</label>
+                                <input type="text" id="checkoutPincode"
+                                       placeholder="6-digit PIN" maxlength="6"
+                                       pattern="[0-9]{6}" required>
+                            </div>
+
+                        </div>
+
+                        <div class="checkout-input-group">
+                            <label for="checkoutLandmark">Landmark <span>(Optional)</span></label>
+                            <input type="text" id="checkoutLandmark"
+                                   placeholder="Nearby landmark">
+                        </div>
+
+                        <!-- DELIVERY METHOD -->
+                        <div class="checkout-option-heading">
+                            <label>Delivery Preference</label>
+                        </div>
+
+                        <div class="checkout-delivery-options">
+
+                            <label class="checkout-option-card selected">
+                                <input type="radio" name="deliveryMethod"
+                                       value="Standard Delivery" checked>
+
+                                <div>
+                                    <strong>Standard</strong>
+                                    <span>Carefully packed · Free</span>
+                                </div>
+
+                                <b>FREE</b>
+                            </label>
+
+                            <label class="checkout-option-card">
+                                <input type="radio" name="deliveryMethod"
+                                       value="Express Delivery">
+
+                                <div>
+                                    <strong>Express</strong>
+                                    <span>Priority handling</span>
+                                </div>
+
+                                <b>₹150</b>
+                            </label>
+
+                        </div>
+
+                        <div class="checkout-buttons">
+
+                            <button type="button" class="checkout-back-btn" id="checkoutBack1">
+                                <i class="bi bi-arrow-left"></i>
+                                Back
+                            </button>
+
+                            <button type="button" class="checkout-next-btn" id="checkoutNext2">
+                                Continue to Payment
+                                <i class="bi bi-arrow-right"></i>
+                            </button>
+
+                        </div>
+
+                    </form>
+                </div>
+
+
+                <!-- STEP 3 -->
+                <div class="checkout-form-step" id="checkoutStep3">
+
+                    <div class="checkout-section-heading">
+                        <span>FINAL STEP</span>
+                        <h3>Almost yours.</h3>
+                        <p>Choose how you'd like to complete your purchase.</p>
+                    </div>
+
+                    <div class="checkout-payment-options">
+
+                        <label class="checkout-payment-card selected">
+                            <input type="radio" name="paymentMethod"
+                                   value="Cash on Delivery" checked>
+
+                            <div class="payment-icon">
+                                <i class="bi bi-cash"></i>
+                            </div>
+
+                            <div>
+                                <strong>Cash on Delivery</strong>
+                                <span>Pay when your order arrives</span>
+                            </div>
+
+                            <i class="bi bi-check-circle payment-check"></i>
+                        </label>
+
+                        <label class="checkout-payment-card">
+                            <input type="radio" name="paymentMethod"
+                                   value="UPI">
+
+                            <div class="payment-icon">
+                                <i class="bi bi-phone"></i>
+                            </div>
+
+                            <div>
+                                <strong>UPI Payment</strong>
+                                <span>Pay using UPI apps</span>
+                            </div>
+
+                            <i class="bi bi-check-circle payment-check"></i>
+                        </label>
+
+        <label class="checkout-payment-card">
+            <input type="radio" name="paymentMethod" value="Online Payment">
+
+            <div class="payment-icon">
+                <i class="bi bi-credit-card"></i>
+            </div>
+
+            <div>
+                <strong>Online Payment</strong>
+                <span>Debit / Credit Card</span>
+            </div>
+
+            <i class="bi bi-check-circle payment-check"></i>
+        </label>
+
+                    </div>
+
+                    <div class="checkout-note">
+                        <i class="bi bi-shield-lock"></i>
+                        <span>Your details are used only to process this order.</span>
+                    </div>
+
+                    <div class="checkout-buttons">
+
+                        <button type="button" class="checkout-back-btn" id="checkoutBack2">
+                            <i class="bi bi-arrow-left"></i>
+                            Back
+                        </button>
+
+                        <button type="button" class="checkout-place-btn" id="checkoutPlaceOrder">
+                            Place My Order
+                            <i class="bi bi-arrow-right"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SUCCESS SCREEN -->
+                <div class="checkout-success" id="checkoutSuccess">
+
+                    <div class="checkout-success-icon">
+                        <i class="bi bi-flower1"></i>
+                    </div>
+
+                    <span>THANK YOU FOR CHOOSING EVARA</span>
+
+                    <h2>Your order is<br>beautifully begun.</h2>
+
+                    <p>
+                        Your selection has been received.
+                        We look forward to preparing something special for you.
+                    </p>
+
+                    <div class="checkout-order-number">
+                        <span>ORDER REFERENCE</span>
+                        <strong id="checkoutOrderNumber">EVR-000000</strong>
+                    </div>
+
+                    <button type="button" class="checkout-done-btn" id="checkoutDone">
+                        Continue Exploring
+                        <i class="bi bi-arrow-right"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT ORDER SUMMARY -->
+            <aside class="checkout-summary">
+
+                <div class="checkout-summary-top">
+                    <span>YOUR SELECTION</span>
+                    <h3>Order Summary</h3>
+                </div>
+
+                <div id="checkoutSummaryItems" class="checkout-summary-items">
+                    <!-- Products rendered by JavaScript -->
+                </div>
+
+                <div class="checkout-summary-calculation">
+
+                    <div>
+                        <span>Subtotal</span>
+                        <strong id="checkoutSubtotal">₹0</strong>
+                    </div>
+
+                    <div>
+                        <span>Delivery</span>
+                        <strong id="checkoutDeliveryFee">FREE</strong>
+                    </div>
+
+                    <div class="checkout-total-row">
+                        <span>Total</span>
+                        <strong id="checkoutTotal">₹0</strong>
+                    </div>
+
+                </div>
+
+                <div class="checkout-summary-footer">
+                    <i class="bi bi-box-seam"></i>
+                    <p>Every order is packed with care, just for you.</p>
+                </div>
+
+            </aside>
+
+        </div>
+
+    </div>
+
+</div>
+
+    <script>
+        
+document.addEventListener("DOMContentLoaded", () => {
+
+    const checkoutModal = document.getElementById("evaraCheckoutModal");
+    const checkoutButton = document.getElementById("shopCheckout");
+    const checkoutClose = document.getElementById("checkoutClose");
+    const checkoutDone = document.getElementById("checkoutDone");
+
+    const step1 = document.getElementById("checkoutStep1");
+    const step2 = document.getElementById("checkoutStep2");
+    const step3 = document.getElementById("checkoutStep3");
+    const successScreen = document.getElementById("checkoutSuccess");
+
+    const next1 = document.getElementById("checkoutNext1");
+    const next2 = document.getElementById("checkoutNext2");
+    const back1 = document.getElementById("checkoutBack1");
+    const back2 = document.getElementById("checkoutBack2");
+    const placeOrder = document.getElementById("checkoutPlaceOrder");
+
+    const summaryItems = document.getElementById("checkoutSummaryItems");
+
+    const subtotalElement = document.getElementById("checkoutSubtotal");
+    const deliveryElement = document.getElementById("checkoutDeliveryFee");
+    const totalElement = document.getElementById("checkoutTotal");
+
+    const indicators = [
+        document.getElementById("checkoutStep1Indicator"),
+        document.getElementById("checkoutStep2Indicator"),
+        document.getElementById("checkoutStep3Indicator")
+    ];
+
+    if (!checkoutModal || !checkoutButton) return;
+
+
+    /* ==================================
+       HELPERS
+    ================================== */
+
+    function getCart() {
+        try {
+            return JSON.parse(localStorage.getItem("evaraCart")) || [];
+        } catch {
+            return [];
+        }
+    }
+
+    function getProductName(item) {
+        return item.name || item.title || item.productName || "EVARA Product";
+    }
+
+    function getProductPrice(item) {
+        const rawPrice = item.price ?? item.productPrice ?? 0;
+        return Number(String(rawPrice).replace(/[₹,\s]/g, "")) || 0;
+    }
+
+    function getProductQuantity(item) {
+        return Number(item.quantity ?? item.qty ?? 1) || 1;
+    }
+
+    function getProductImage(item) {
+        return item.image || item.img || item.imageUrl || "";
+    }
+
+    function formatPrice(value) {
+        return "₹" + Number(value).toLocaleString("en-IN");
+    }
+
+
+    /* ==================================
+       DELIVERY CHARGE
+    ================================== */
+
+    function getDeliveryCharge() {
+        const selected = document.querySelector(
+            'input[name="deliveryMethod"]:checked'
+        );
+
+        return selected && selected.value === "Express Delivery" ? 150 : 0;
+    }
+
+
+    /* ==================================
+       ORDER SUMMARY
+    ================================== */
+
+    function renderCheckoutSummary() {
+
+        const cart = getCart();
+
+        let subtotal = 0;
+
+        summaryItems.innerHTML = "";
+
+        if (!cart.length) {
+            summaryItems.innerHTML = `
+                <p class="checkout-empty-message">
+                    Your shopping bag is empty.
+                </p>
+            `;
+        }
+
+        cart.forEach(item => {
+
+            const price = getProductPrice(item);
+            const quantity = getProductQuantity(item);
+
+            subtotal += price * quantity;
+
+            const product = document.createElement("div");
+            product.className = "checkout-summary-product";
+
+            const image = document.createElement("img");
+            image.src = getProductImage(item);
+            image.alt = getProductName(item);
+
+            image.onerror = function () {
+                this.style.display = "none";
+            };
+
+            const info = document.createElement("div");
+            info.className = "checkout-summary-product-info";
+
+            const name = document.createElement("h4");
+            name.textContent = getProductName(item);
+
+            const qty = document.createElement("p");
+            qty.textContent = "Quantity: " + quantity;
+
+            const priceText = document.createElement("strong");
+            priceText.textContent = formatPrice(price * quantity);
+
+            info.append(name, qty, priceText);
+            product.append(image, info);
+
+            summaryItems.appendChild(product);
+
+        });
+
+        updateCheckoutTotals(subtotal);
+
+    }
+
+
+    /* ==================================
+       TOTALS
+    ================================== */
+
+    function updateCheckoutTotals(subtotal) {
+
+        const delivery = getDeliveryCharge();
+        const total = subtotal + delivery;
+
+        subtotalElement.textContent = formatPrice(subtotal);
+
+        deliveryElement.textContent = delivery === 0
+            ? "FREE"
+            : formatPrice(delivery);
+
+        totalElement.textContent = formatPrice(total);
+
+    }
+
+
+    /* ==================================
+       MODAL OPEN / CLOSE
+    ================================== */
+
+    function openCheckout() {
+
+        if (!getCart().length) {
+            alert("Your shopping bag is empty.");
+            return;
+        }
+
+        renderCheckoutSummary();
+        resetCheckout();
+
+        checkoutModal.classList.add("active");
+        document.body.classList.add("checkout-modal-open");
+
+    }
+
+    function closeCheckout() {
+
+        checkoutModal.classList.remove("active");
+        document.body.classList.remove("checkout-modal-open");
+
+    }
+
+    checkoutButton.addEventListener("click", openCheckout);
+
+    checkoutClose.addEventListener("click", closeCheckout);
+
+    checkoutModal.querySelector(".checkout-backdrop")
+        .addEventListener("click", closeCheckout);
+
+
+    /* ==================================
+       STEP NAVIGATION
+    ================================== */
+
+    function showStep(stepNumber) {
+
+        [step1, step2, step3].forEach(step => {
+            step.classList.remove("active");
+        });
+
+        successScreen.classList.remove("active");
+
+        if (stepNumber === 1) step1.classList.add("active");
+        if (stepNumber === 2) step2.classList.add("active");
+        if (stepNumber === 3) step3.classList.add("active");
+
+        indicators.forEach((indicator, index) => {
+
+            indicator.classList.remove("active", "completed");
+
+            if (index + 1 < stepNumber) {
+                indicator.classList.add("completed");
+            }
+
+            if (index + 1 === stepNumber) {
+                indicator.classList.add("active");
+            }
+
+        });
+
+        checkoutModal.querySelector(".checkout-container")
+            .scrollTo({ top: 0, behavior: "smooth" });
+
+    }
+
+
+    /* ==================================
+       VALIDATION
+    ================================== */
+
+    function validateFields(container) {
+
+        const fields = container.querySelectorAll(
+            "input[required]"
+        );
+
+        for (const field of fields) {
+
+            if (!field.checkValidity()) {
+
+                field.reportValidity();
+                field.focus();
+
+                return false;
+            }
+
+        }
+
+        return true;
+    }
+
+
+    /* STEP 1 -> STEP 2 */
+
+    next1.addEventListener("click", () => {
+
+        const form = document.getElementById("evaraCheckoutForm");
+
+        if (!validateFields(form)) return;
+
+        showStep(2);
+
+    });
+
+
+    /* STEP 2 -> STEP 3 */
+
+    next2.addEventListener("click", () => {
+
+        const form = document.getElementById("evaraDeliveryForm");
+
+        if (!validateFields(form)) return;
+
+        showStep(3);
+
+    });
+
+
+    /* BACK BUTTONS */
+
+    back1.addEventListener("click", () => showStep(1));
+    back2.addEventListener("click", () => showStep(2));
+
+
+    /* ==================================
+       SELECTED DELIVERY / PAYMENT STYLES
+    ================================== */
+
+    document.querySelectorAll(".checkout-option-card").forEach(card => {
+
+        card.addEventListener("click", () => {
+
+            document.querySelectorAll(".checkout-option-card")
+                .forEach(item => item.classList.remove("selected"));
+
+            card.classList.add("selected");
+
+            const radio = card.querySelector('input[type="radio"]');
+            radio.checked = true;
+
+            renderCheckoutSummary();
+
+        });
+
+    });
+
+
+    document.querySelectorAll(".checkout-payment-card").forEach(card => {
+
+        card.addEventListener("click", () => {
+
+            document.querySelectorAll(".checkout-payment-card")
+                .forEach(item => item.classList.remove("selected"));
+
+            card.classList.add("selected");
+
+            const radio = card.querySelector('input[type="radio"]');
+            radio.checked = true;
+
+        });
+
+    });
+
+
+    /* ==================================
+       PLACE ORDER
+    ================================== */
+
+    placeOrder.addEventListener("click", () => {
+
+        const cart = getCart();
+
+        if (!cart.length) {
+            alert("Your shopping bag is empty.");
+            return;
+        }
+
+        const deliveryForm = document.getElementById("evaraDeliveryForm");
+
+        if (!validateFields(deliveryForm)) {
+            showStep(2);
+            return;
+        }
+
+        const customerForm = document.getElementById("evaraCheckoutForm");
+
+        if (!validateFields(customerForm)) {
+            showStep(1);
+            return;
+        }
+
+        const subtotal = cart.reduce((sum, item) => {
+            return sum + getProductPrice(item) * getProductQuantity(item);
+        }, 0);
+
+        const deliveryCharge = getDeliveryCharge();
+
+        const orderNumber =
+            "EVR-" + Date.now().toString().slice(-6);
+
+        const order = {
+
+            orderId: orderNumber,
+
+            customer: {
+                name: document.getElementById("checkoutName").value.trim(),
+                email: document.getElementById("checkoutEmail").value.trim(),
+                phone: document.getElementById("checkoutPhone").value.trim()
+            },
+
+            address: {
+                street: document.getElementById("checkoutAddress").value.trim(),
+                city: document.getElementById("checkoutCity").value.trim(),
+                district: document.getElementById("checkoutDistrict").value.trim(),
+                state: document.getElementById("checkoutState").value.trim(),
+                pincode: document.getElementById("checkoutPincode").value.trim(),
+                landmark: document.getElementById("checkoutLandmark").value.trim()
+            },
+
+            delivery: document.querySelector(
+                'input[name="deliveryMethod"]:checked'
+            )?.value || "Standard Delivery",
+
+            payment: document.querySelector(
+                'input[name="paymentMethod"]:checked'
+            )?.value || "Cash on Delivery",
+
+            products: cart,
+
+            subtotal: subtotal,
+            deliveryCharge: deliveryCharge,
+            total: subtotal + deliveryCharge,
+
+            date: new Date().toISOString()
+
+        };
+
+
+        /* SAVE DEMO ORDER */
+
+        let orders = [];
+
+        try {
+            orders = JSON.parse(localStorage.getItem("evaraOrders")) || [];
+        } catch {
+            orders = [];
+        }
+
+        orders.push(order);
+
+        localStorage.setItem("evaraOrders", JSON.stringify(orders));
+
+
+        /* DISPLAY SUCCESS */
+
+        document.getElementById("checkoutOrderNumber")
+            .textContent = orderNumber;
+
+        step1.classList.remove("active");
+        step2.classList.remove("active");
+        step3.classList.remove("active");
+
+        indicators.forEach(indicator => {
+            indicator.classList.remove("active");
+            indicator.classList.add("completed");
+        });
+
+        successScreen.classList.add("active");
+
+        checkoutModal.querySelector(".checkout-container")
+            .scrollTo({ top: 0, behavior: "smooth" });
+
+    });
+
+
+    /* ==================================
+       RESET CHECKOUT
+    ================================== */
+
+    function resetCheckout() {
+
+        showStep(1);
+
+        successScreen.classList.remove("active");
+
+        document.getElementById("evaraCheckoutForm").reset();
+        document.getElementById("evaraDeliveryForm").reset();
+
+        document.getElementById("checkoutState").value = "Kerala";
+
+        document.querySelectorAll(".checkout-option-card")
+            .forEach(card => card.classList.remove("selected"));
+
+        document.querySelectorAll(".checkout-payment-card")
+            .forEach(card => card.classList.remove("selected"));
+
+        document.querySelector(".checkout-option-card")
+            ?.classList.add("selected");
+
+        document.querySelector(".checkout-payment-card")
+            ?.classList.add("selected");
+
+        renderCheckoutSummary();
+
+    }
+
+
+    /* ==================================
+       FINISH ORDER
+    ================================== */
+
+    checkoutDone.addEventListener("click", () => {
+
+        closeCheckout();
+
+        // Clear cart after successful demo order
+        localStorage.removeItem("evaraCart");
+
+        // Refresh cart & header counters
+        location.reload();
+
+    });
+
+
+    /* ==================================
+       ESC KEY
+    ================================== */
+
+    document.addEventListener("keydown", event => {
+
+        if (event.key === "Escape" &&
+            checkoutModal.classList.contains("active")) {
+
+            closeCheckout();
+
+        }
+
+    });
+
+
+});
+
+    </script>
+
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const products = document.querySelectorAll(".saree-product");
+
+    filterButtons.forEach(button => {
+
+        button.addEventListener("click", function () {
+
+            const selectedFilter = this.dataset.filter;
+
+            // Active button
+            filterButtons.forEach(btn => {
+                btn.classList.remove("active");
+            });
+
+            this.classList.add("active");
+
+            // Filter products
+            products.forEach(product => {
+
+                const categories = (
+                    product.dataset.category || ""
+                ).toLowerCase().split(" ");
+
+                const shouldShow =
+                    selectedFilter === "all" ||
+                    categories.includes(selectedFilter);
+
+                if (shouldShow) {
+
+                    product.classList.remove("filter-hidden");
+
+                    product.style.display = "";
+
+                    product.style.opacity = "0";
+                    product.style.transform = "translateY(15px)";
+
+                    requestAnimationFrame(() => {
+
+                        product.style.transition =
+                            "opacity 0.4s ease, transform 0.4s ease";
+
+                        product.style.opacity = "1";
+                        product.style.transform = "translateY(0)";
+
+                    });
+
+                } else {
+
+                    product.classList.add("filter-hidden");
+                    product.style.display = "none";
+                }
+
+            });
+
+        });
+
+    });
+
+});
+</script>
+
+
+</body>
+
+</html>
